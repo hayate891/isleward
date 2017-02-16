@@ -21,7 +21,7 @@ define([
 
 		onContextMenu: function(e) {
 			var target = this.target;
-			if ((e.button != 2) || (!target) || (!target.dialogue) || (target == window.player) || (th))
+			if ((e.button != 2) || (!target) || (!target.dialogue) || (target == window.player) || (target.player))
 				return;
 
 			var context = [
