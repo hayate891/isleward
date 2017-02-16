@@ -16,7 +16,7 @@ define([
 			});
 
 			var lessMiddleware = require('less-middleware');
-			app.use(lessMiddleware('./', {
+			app.use(lessMiddleware('../', {
 				force: true,
 				render: {
 					strictMath: true

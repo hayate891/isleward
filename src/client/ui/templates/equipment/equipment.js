@@ -101,6 +101,24 @@ define([
 						.on('mouseleave', this.onHoverItem.bind(this, null, null))
 						.on('click', this.buildSlot.bind(this, item.slot));
 				}, this);
+
+			items
+				.filter(function(item) {
+					return ((item.slot != 'twoHanded') && (item.spellId != null));
+				}, this)
+				.forEach(function(item) {
+					var imgX = -item.sprite[0] * 64;
+					var imgY = -item.sprite[1] * 64;
+
+					var elSlot = this.find('[slot="rune-' + item.spellId + '"]');
+					elSlot
+						.removeClass('empty')
+						.find('.icon')
+						.css('background', 'url(../../../images/items.png) ' + imgX + 'px ' + imgY + 'px')
+						.on('mousemove', this.onHoverItem.bind(this, elSlot, item, null))
+						.on('mouseleave', this.onHoverItem.bind(this, null, null))
+						.on('click', this.buildSlot.bind(this, item.slot));
+				}, this);
 		},
 
 		buildSlot: function(e) {
