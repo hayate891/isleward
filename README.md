@@ -1,5 +1,7 @@
 # ISLEWARD
 
+A multiplayer, moddable, extensible roguelike built with NodeJS, JS, HTML and CSS
+
 ### Installation
 1. Download and install NodeJS: `https://nodejs.org/en/download/`
 2. Open a new console window
