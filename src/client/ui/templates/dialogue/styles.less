@@ -1,0 +1,36 @@
+@import "../../../css/ui.less";
+
+@pad: 8px;
+
+.uiDialogue {
+	position: absolute;
+	bottom: 16px;
+	width: calc(320px + (@pad * 2));
+	padding: @pad;
+	background-color: fade(@brown, 50%);
+	display: none;
+
+	.portraitBox {
+		float: left;
+		margin-right: 12px;
+		display: none;
+
+		.portrait {
+			width: 64px;
+			height: 64px;
+		}
+	}
+
+	.textBox {
+		width: calc(100%);
+		float: left;
+		height: 100%;
+		color: @white;
+		text-align: center;
+		filter:
+			drop-shadow(0px -2px 0px @blackD) 
+			drop-shadow(0px 2px 0px @blackD)
+			drop-shadow(2px 0px 0px @blackD) 
+			drop-shadow(-2px 0px 0px @blackD);
+	}
+}

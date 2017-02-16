@@ -1,0 +1,71 @@
+@import "../../../css/ui.less";
+
+.uiStash {
+	display: none;
+	background-color: @blackB;
+	
+	position: relative;
+
+	.grid {
+		float: left;
+		width: 584px;
+		height: 424px;
+		overflow-y: scroll;
+		background-color: @blackB;
+		margin: 16px 0px 0px 16px;
+
+		.item {
+			width: 64px;
+			height: 64px;
+			float: left;
+			position: relative;
+			cursor: pointer;
+			box-sizing: border-box;
+			background-color: @blackC;
+
+			margin: 0px 8px 8px 0px;
+
+			&:nth-child(8n) {
+				margin: 0px 0px 8px 0px;
+			}
+
+			.quantity {
+				left: 3px;
+				bottom: 0px;
+				position: absolute;
+				color: @white;
+				text-shadow: 
+					2px 2px 0 #2d2136,
+					-2px -2px 0 #2d2136,
+					2px -2px 0 #2d2136,
+					-2px 2px 0 #2d2136,
+					2px 2px 0 #2d2136;
+			}
+
+			&.eq {
+				border: 4px solid lighten(@blackA, 4%);
+
+				.icon {
+					left: -4px;
+					top: -4px;
+				}
+			}
+
+			&.new {
+				background-color: fade(@white, 25%);
+			}
+
+			&:hover {
+				background-color: fade(@white, 10%);
+			}
+
+			.icon {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				left: 0px;
+				top: 0px;
+			}
+		}
+	}
+}

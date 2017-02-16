@@ -1,0 +1,46 @@
+@import "../../../css/ui.less";
+
+.uiOnline {
+	display: none;
+
+	width: 400px;
+	height: 400px;
+	background-color: @gray;
+	padding: 32px;
+	border: 4px solid @lightGray;
+	text-align: center;
+	
+	.list {
+		width: 100%;
+		height: 100%;
+		overflow-y: auto;
+		background-color: @darkGray;
+
+		.onlineUser {
+			color: @white;
+			height: 24px;
+			cursor: pointer;
+
+			> div {
+				float: left;
+				padding: 4px;
+				
+				&:nth-child(1) {
+					width: 10%;
+				}
+
+				&:nth-child(2) {
+					width: 60%;
+				}
+
+				&:nth-child(3) {	
+					width: 30%;
+				}
+			}
+
+			&:hover {
+				background-color: lighten(@darkGray, 25%);
+			}
+		}
+	}
+}

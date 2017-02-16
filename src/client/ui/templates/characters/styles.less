@@ -1,0 +1,141 @@
+@import "../../../css/ui.less";
+
+@leftWidth: 400px;
+@rightWidth: 400px;
+@boxPadding: 35px;
+
+@logoWidth: 559px;
+@logoHeight: 200px;
+
+@boxHeight: 300px;
+
+@messageHeight: @boxPadding;
+
+@totalWidth: (@leftWidth + @rightWidth + @boxPadding);
+@totalHeight: (@logoHeight + @boxHeight + (@boxPadding * 3) + @messageHeight);
+
+.uiCharacters {
+	width: @totalWidth;
+	height: @totalHeight;
+
+	.logo {
+		width: 562px;
+		height: @logoHeight;
+		margin-left: ((@totalWidth / 2) - (@logoWidth / 2));
+		margin-bottom: (@boxPadding * 2);
+	}
+
+	.left, .right {
+		height: @boxHeight;
+		float: left;
+		background-color: #3a3b4a;
+	}
+
+	.left {
+		width: @leftWidth;
+		overflow-y: auto;
+
+		.character {
+			height: 50px;
+			width: 100%;
+			text-align: center;
+			color: @white;
+			padding: 17px 0px 0px 0px;
+			cursor: pointer;
+
+			&:hover {
+				background-color: fade(@white, 15%);
+			}
+
+			&.selected {
+				background-color: fade(@white, 25%);
+			}
+		}
+	}
+
+	.right {
+		width: @rightWidth;
+		padding: 16px;
+		margin-left: @boxPadding;
+
+		.portrait {
+			width: 100%;
+			height: 160px;
+			background-color: @black;
+			padding: 16px 0 0 120px;
+
+			.sprite {
+				width: 32px;
+				height: 32px;
+				zoom: 4;
+				image-rendering: pixelated;
+				display: none;
+			}
+		}
+
+		.info {
+			height: 57px;
+			padding-top: 16px;
+			margin-bottom: 16px;
+			background-color: @black;
+			color: @white;
+
+			* {
+				float: left;
+				padding: 12px 16px;
+			}
+
+			.name {
+				width: 60%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+
+			.class {
+				width: 40%;
+				text-align: right;
+				color: darken(@white, 25%);
+			}
+		}
+
+		.button {
+			background-color: @blueC;
+			width: calc((100% - (16px * 2)) / 3);
+			float: left;
+			margin-right: 16px;
+			color: @white;
+
+			&:last-child {
+				margin-right: 0px;
+			}
+
+			&:hover {
+				background-color: @blueB;
+			}
+
+			&.deleting {
+				background-color: @red;
+				color: @white;
+			}
+		}
+
+		.spacer-h {
+			height: 91px;
+		}
+	}
+
+	.message {
+		height: @messageHeight;
+		width: 100%;
+		margin-top: @boxPadding;
+		float: left;
+		text-align: center;
+		color: @white;
+		filter:
+			drop-shadow(0px -2px 0px @blackD) 
+			drop-shadow(0px 2px 0px @blackD)
+			drop-shadow(2px 0px 0px @blackD) 
+			drop-shadow(-2px 0px 0px @blackD);
+	}
+}

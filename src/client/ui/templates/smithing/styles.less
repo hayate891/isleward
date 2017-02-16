@@ -1,0 +1,143 @@
+@import "../../../css/ui.less";
+
+.uiSmithing {
+	display: none;
+	background-color: @blackB;
+	border: 5px solid #c0c3cf;
+	padding: 10px;
+
+	.top {
+		margin-bottom: 20px;
+
+		.heading {
+			color: @orange;
+			text-align: center;
+			padding-bottom: 10px;
+		}
+	}
+
+	.col {
+		float: left;
+		margin-right: 10px;
+
+		&:last-child {
+			margin-right: 0px;
+		}
+
+		.heading {
+			width: 80px;
+			height: 16px;
+			color: @white;
+			text-align: center;
+			margin-bottom: 10px;
+		}
+
+		.content {
+			width: 80px;
+			height: 80px;
+			background-color: @blackD;
+
+			&.chance {
+				padding-top: 32px;
+				color: @white;
+				text-align: center;
+			}
+
+			&.item-picker, &.actionButton {
+				cursor: pointer;
+
+				&:hover {
+					background-color: @blackC;
+				}
+			}
+
+			&.item-picker {
+				> .icon {
+					margin: 8px;
+					display: inline-block;
+					width: 64px;
+					height: 64px;
+					background: url('../../../images/uiIcons.png') -256px -64px;
+				}
+			}
+
+			&.actionButton {
+				padding: 8px;
+				.icon {
+					width: 64px;
+					height: 64px;
+					background: url('../../../images/uiIcons.png') -192px -64px;
+				}
+			}
+
+			.item {
+				width: 100%;
+				height: 100%;
+				float: left;
+				position: relative;
+				cursor: pointer;
+				box-sizing: border-box;
+
+				.quantity {
+					left: 6px;
+					bottom: 3px;
+					position: absolute;
+					color: @white;
+					filter:
+						drop-shadow(0px -2px 0px @blackD) 
+						drop-shadow(0px 2px 0px @blackD)
+						drop-shadow(2px 0px 0px @blackD) 
+						drop-shadow(-2px 0px 0px @blackD);
+
+					&.red {
+						color: @red;
+					}
+				}
+
+				.icon {
+					width: 64px;
+					height: 64px;
+					position: absolute;
+					left: 8px;
+					top: 8px;
+					filter: 
+						brightness(100%)
+						drop-shadow(0px -4px 0px @blackD) 
+						drop-shadow(0px 4px 0px @blackD)
+						drop-shadow(4px 0px 0px @blackD) 
+						drop-shadow(-4px 0px 0px @blackD);
+				}
+			}
+		}
+
+		&:first-child {
+			.heading {
+				width: 160px;
+			}
+
+			.content {
+				width: 160px;
+				background-color: transparent;
+
+				.col-btn {
+					height: calc((100% - 10px) / 2);
+				    width: 100%;
+				    color: #f2f5f5;
+				    text-align: center;
+				    padding-top: 10px;
+				    background-color: @blackD;
+				    margin-bottom: 10px;
+				    cursor: pointer;
+
+				    &.selected {
+				    	color: @blueB;
+				    }
+
+				    &:hover {
+				    	background-color: @blackC;
+				    }
+				}
+			}
+		}
+	}
+}

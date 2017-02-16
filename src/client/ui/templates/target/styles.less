@@ -1,0 +1,110 @@
+@import "../../../css/ui.less";
+
+@pad: 8px;
+
+.uiTarget {
+	position: absolute;
+	left: 328px;
+	top: 10px;
+	width: calc(200px + (@pad * 2));
+	padding: @pad;
+	background-color: fade(#3a3b4a, 90%);
+	display: none;
+
+	.boxes {
+		width: 100%;
+		float: left;
+		height: 100%;
+
+		.infoBox {
+			color: @white;
+			width: 100%;
+			height: 18px;
+			margin-bottom: 5px;
+			position: relative;
+
+			> * {
+				float: left;
+			}
+
+			.infoName {
+				width: 70%;
+				overflow: hidden;
+			    text-overflow: ellipsis;
+			    white-space: nowrap;
+			}
+
+			.infoLevel {
+				width: 30%;
+				text-align: right;
+
+				&.high-level {
+					text-shadow: 
+						2px 0 @red,
+						-2px 0 @red,
+						0 -2px @red,
+						0 2px @red,
+						-2px -2px @red,
+						-2px 2px @red,
+						2px -2px @red,
+						2px 2px @red;
+				}
+			}
+		}
+
+		.statBox {
+			width: 100%;
+			height: 18px;
+			margin-bottom: 5px;
+			position: relative;
+
+			&:last-child {
+				margin-bottom: 0px;
+			}
+
+			[class^="stat"] {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				height: 100%;
+			}
+
+			.text {
+				position: absolute;
+				left: 0px;
+				top: 0px;
+				width: 100%;
+				height: 100%;
+				text-align: center;
+				color: @white;
+				padding: 2px 0px;
+
+				text-shadow: 
+					2px 0px #2d2136,
+					-2px 0px #2d2136,
+					0px -2px #2d2136,
+					0px 2px #2d2136,
+					-2px -2px #2d2136,
+					-2px 2px #2d2136,
+					2px -2px #2d2136,
+					2px 2px #2d2136;
+			}
+
+			&:nth-child(2) {
+				background-color: #802343;
+			}
+
+			&:nth-child(3) {
+				background-color: #42548d;
+			}
+
+			.statHp {
+				background-color: @red;
+			}
+
+			.statMana {
+				background-color: #3fa7dd;
+			}
+		}
+	}
+}

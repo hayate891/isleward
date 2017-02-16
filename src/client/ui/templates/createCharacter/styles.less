@@ -1,0 +1,166 @@
+@import "../../../css/ui.less";
+
+@boxHeight: 276px;
+@boxPadding: 27px;
+
+@logoWidth: 559px;
+@logoHeight: 200px;
+
+@messageHeight: @boxPadding;
+
+@totalWidth: (@logoWidth + (@boxPadding * 2) + 427px);
+@totalHeight: (@logoHeight + @boxHeight + (@boxPadding * 3) + @messageHeight);
+
+.uiCreateCharacter {
+	width: @totalWidth;
+	height: @totalHeight;
+
+	.logo {
+		width: 562px;
+		height: @logoHeight;
+		margin-left: ((@totalWidth / 2) - (@logoWidth / 2));
+		margin-bottom: (@boxPadding * 2);
+	}
+
+	.box-left {
+		float: left;
+		height: @boxHeight;
+		width: 613px;
+		background-color: #3a3b4a;
+
+		.left, .right {
+			float: left;
+			height: 100%;
+		}
+
+		.left {
+			width: calc(100% - (@boxPadding * 2) - 160px);
+			padding: @boxPadding 0px @boxPadding @boxPadding;
+
+			.txtClass, .txtCostume {
+				cursor: pointer;
+				-webkit-user-select: none;
+
+				&:active {
+					background-color: darken(@gray, 20%);
+				}
+			}
+
+			.txtCostume {
+				&:before {
+					content: 'costume ';
+				}
+			}
+		}
+
+		.right {
+			width: calc(160px + (@boxPadding * 2));
+			padding: @boxPadding @boxPadding @boxPadding @boxPadding;
+		}
+
+		.portrait {
+			width: 100%;
+			height: 160px;
+			background-color: @black;
+			padding: 16px 0 0 16px;
+			margin-bottom: @boxPadding;
+
+			.sprite {
+				width: 32px;
+				height: 32px;
+				zoom: 4;
+				image-rendering: pixelated;
+				background: url('../../../images/charas.png') -64px 0px;
+			}
+		}
+
+		.textbox {
+			width: 100%;
+			background-color: darken(@gray, 15%);
+			border: 3px solid lighten(@gray, 25%);
+			color: @white;
+			margin-bottom: @boxPadding;
+		}
+
+		.button {
+			background-color: @blueC;
+			width: calc((100% - @boxPadding) / 2);
+			float: left;
+			margin-right: @boxPadding;
+			color: @white;
+
+			&:last-child {
+				margin-right: 0px;
+			}
+
+			&:hover {
+				background-color: @blueB;
+			}
+		}
+
+		.message {
+			height: @messageHeight;
+			width: 100%;
+			margin-top: @boxPadding;
+			float: left;
+			text-align: center;
+			color: @redA;
+		}
+	}
+
+	.box-right {
+		padding: @boxPadding @boxPadding @boxPadding @boxPadding;
+		float: left;
+		height: @boxHeight;
+		width: 400px;
+		margin-left: 27px;
+		background-color: #3a3b4a;
+
+		.top {
+			width: 100%;
+			color: @white;
+
+			> * {
+				width: 100%;
+				text-align: center;
+			}
+
+			.heading {
+				margin-bottom: @boxPadding;
+				color: @blueA;
+			}
+
+			.list {
+				.prophecy {
+					padding-top: 0px;
+					width: 50%;
+					float: left;
+					height: 24px;
+					margin-bottom: 24px;
+					color: @redA;
+					cursor: pointer;
+
+					&:after {
+						content: '  ✗';
+					}
+
+					&.active {
+						color: @green;
+
+						&:after {
+							content: '  ✔';
+						}
+					}
+
+					&.disabled {
+						color: @white;
+					}
+
+					&:hover {
+						color: @white;
+					}
+				}
+			}
+		}
+	}
+}

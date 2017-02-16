@@ -1,0 +1,131 @@
+@import "../../../css/ui.less";
+
+@leftWidth: 400px;
+@rightWidth: 400px;
+@boxPadding: 16px;
+
+@logoWidth: 559px;
+@logoHeight: 200px;
+
+@boxHeight: 370px;
+
+@messageHeight: @boxPadding;
+
+@totalWidth: (@leftWidth + @rightWidth + (@boxPadding * 2));
+@totalHeight: (@logoHeight + @boxHeight + (@boxPadding * 3) + @messageHeight);
+
+.uiLogin {
+	display: none;
+	width: @totalWidth;
+	height: @totalHeight;
+	margin-top: -30px;
+
+	.logo {
+		width: 562px;
+		height: @logoHeight;
+		margin-left: ((@totalWidth / 2) - (@logoWidth / 2));
+		margin-bottom: (@boxPadding * 3);
+	}
+
+	.left, .right, .news {
+		height: @boxHeight;
+		float: left;
+		background-color: #3a3b4a;
+	}
+
+	.left {
+		width: @leftWidth;
+		padding: @boxPadding;
+	}
+
+	.right {
+		width: @rightWidth;
+		padding: @boxPadding;
+		margin-left: (@boxPadding * 2);
+
+		.textbox, input:-webkit-autofill {
+		    box-shadow: 0 0 0px 1000px darken(@gray, 15%) inset;
+			width: 100%;
+			color: @white;
+			-webkit-text-fill-color: @white;
+			margin-bottom: @boxPadding;
+		}
+
+		.message {
+			height: @messageHeight;
+			width: 100%;
+			margin-top: @boxPadding;
+			float: left;
+			text-align: center;
+			color: @redA;
+		}
+
+		.top-buttons {
+			width: 100%;
+			height: 35px;
+
+			.button {
+				background-color: @purpleB;
+				width: calc((100% - @boxPadding) / 2);
+				float: left;
+				margin-right: @boxPadding;
+				color: @white;
+
+				&:last-child {
+					margin-right: 0px;
+				}
+
+				&:hover {
+					background-color: @purpleA;
+				}
+			}
+		}
+
+		.buttons {
+			width: 100%;
+			height: 35px;
+			margin-top: 80px;
+
+			.button {
+				width: 100%;
+				margin-bottom: calc(@boxPadding / 2);
+				background-color: @blueC;
+				color: @white;
+
+				&:hover {
+					background-color: @blueB;
+				}
+			}
+		}
+	}
+
+	.news {
+		width: @leftWidth;
+		padding: @boxPadding;
+
+		.heading {
+			background-color: @grayD;
+			width: 100%;
+			color: @white;
+			margin-bottom: 8px;
+			text-align: center;
+			height: 35px;
+			padding-top: 9px;
+		}
+
+		.list {
+			overflow-y: auto;
+			padding: 16px;
+
+			.item {
+				text-align: justify;
+				color: @grayB;
+				margin-bottom: 22px;
+			}
+		}
+	}
+
+	.spacer-h {
+		height: 61px;
+	}
+}

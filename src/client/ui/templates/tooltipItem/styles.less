@@ -1,0 +1,88 @@
+@import "../../../css/ui.less";
+
+.uiTooltipItem {
+	.tooltip {
+		display: none;
+		position: absolute;
+		margin-left: -4px;
+		margin-top: -4px;
+		background-color: fade(@blackB, 95%);
+		pointer-events: none;
+		padding: 10px;
+		color: @white;
+		text-align: center;
+		line-height: 18px;
+		z-index: 999999;
+		max-width: 300px;
+
+		.name {
+			margin-bottom: 8px;
+
+			.power {
+				color: @green;
+				display: none;
+			}
+		}
+
+		.stats {
+			color: darken(@white, 20%);
+			margin-bottom: 8px;
+
+			.gainStat {
+				color: @green;
+			}
+
+			.loseStat {
+				color: @red;
+			}
+		}
+
+		.effects {
+			color: @tealC;
+			margin-bottom: 8px;
+		}
+
+		.faction {
+			color: darken(@white, 40%);
+			margin-bottom: 8px;
+		}
+
+		.level {
+			color: darken(@white, 40%);
+
+			&.high-level {
+				color: @red;
+			}
+		}
+
+		.material {
+			color: darken(@white, 40%);
+			display: none;
+		}
+
+		.quest {
+			color: darken(@white, 40%);
+			display: none;
+		}		
+
+		.info {
+			color: darken(@white, 60%);
+		}
+
+		.damage {
+			
+		}
+
+		.worth {
+			display: none;
+
+			&.no-afford {
+				color: @red;
+			}
+		}
+
+		&.no-compare .info {
+			display: none;
+		}
+	}
+}

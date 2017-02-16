@@ -1,0 +1,59 @@
+@import "../../../css/ui.less";
+
+.uiQuests {
+	position: absolute;
+	right: 16px;
+	top: 112px;
+	
+
+	.heading {
+		color: @yellow;
+		padding: 8px;
+		background-color: fade(#3a3b4a, 90%);
+	}
+
+	.list {
+		.quest {
+			cursor: pointer;
+			padding: 8px;
+			background-color: fade(#3a3b4a, 90%);
+
+			&:hover {
+				background-color: fade(lighten(#3a3b4a, 15%), 90%);
+			}
+
+			.name {
+				color: @white;
+			}
+
+			.description {
+				color: darken(@white, 35%);
+			}
+
+			.ready-text {
+				display: none;
+			}
+
+			&.active {
+				.name {
+					color: @blue;
+				}
+			}
+
+			&.ready {
+				.name {
+					color: @green;
+				}
+
+				.description {
+					display: none;
+				}
+
+				.ready-text {
+					display: block;
+					color: @white;
+				}
+			}
+		}
+	}
+}

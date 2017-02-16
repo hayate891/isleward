@@ -1,0 +1,71 @@
+@import "../../../css/ui.less";
+
+@pad: 8px;
+@btnSize: 64px;
+
+.uiMenu {
+	position: absolute;
+	right: 10px;
+	bottom: 10px;
+
+	width: ((@btnSize * 4) + (@pad * 10));
+	height: ((@btnSize * 2) + (@pad * 2));
+	padding: @pad;
+	background-color: fade(@darkGray, 90%);
+
+	[class^="btn"] {
+		width: @btnSize;
+		height: @btnSize;
+		float: left;
+		margin: 0px 8px;
+		float: left;
+
+		cursor: pointer;
+		position: relative;
+
+		&:hover {
+			background-color: fade(@white, 10%);
+		}
+
+		.icon {
+			pointer-events: none;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+		}
+
+		&.btnInventory .icon {
+			background: url('../../../images/uiIcons.png') 0px 0px;
+		}
+
+		&.btnEquipment .icon {
+			background: url('../../../images/uiIcons.png') -192px 0px;
+		}
+
+		&.btnSmithing .icon {
+			background: url('../../../images/uiIcons.png') -128px -64px;
+		}
+
+		&.btnOnline .icon {
+			background: url('../../../images/uiIcons.png') -64px 0px;
+		}
+
+		&.btnHelp .icon {
+			background: url('../../../images/uiIcons.png') -128px 0px;
+		}
+
+		&.btnLeaderboard .icon {
+			background: url('../../../images/uiIcons.png') -256px 0px;
+		}
+
+		&.btnReputation .icon {
+			background: url('../../../images/uiIcons.png') -320px 0px;
+		}
+
+		&.btnOptions .icon {
+			background: url('../../../images/uiIcons.png') 0px -64px;
+		}
+	}
+}

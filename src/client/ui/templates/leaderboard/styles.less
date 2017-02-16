@@ -1,0 +1,153 @@
+@import "../../../css/ui.less";
+
+.uiLeaderboard {
+	display: none;
+	width: 600px;
+	height: 385px;
+	border: 5px solid fade(@blackB, 90%);
+	text-align: center;
+
+	> .heading {
+		color: @blueA;
+		width: 100%;
+		height: 36px;
+		background-color: fade(@blackB, 90%);
+
+		.heading-text {
+			padding-top: 8px;
+			margin: auto;
+		}
+	}
+
+	.result {
+		background-color: fade(@blackC, 90%);
+		float: left;
+		width: 400px;
+		height: calc(100% - 36px);
+		padding: 5px;
+
+		.headings {
+			width: 100%;
+			height: 36px;
+
+			.col {
+				text-align: left;
+				padding: 5px 10px;
+				width: 50%;
+				float: left;
+				color: @white;
+			}
+		}
+
+		.list {
+			height: calc(100% - 26px - 36px);
+
+			.row {
+				width: 100%;
+				height: 26px;
+
+				&.self {
+					.col {
+						color: @green;
+					}
+				}
+
+				.col {
+					padding: 5px 10px;
+					float: left;
+					text-align: left;
+					width: 50%;
+					color: @grayB;
+					height: 100%;
+					overflow: hidden;
+					white-space: nowrap;
+					text-overflow: ellipsis;
+				}
+			}
+		}
+
+		.buttons {
+			width: calc(100% - 26px);
+			height: 26px;
+
+			.btn {
+				width: calc((100% - (13px * 3)) / 4);
+				margin-right: 13px;
+				float: left;
+				height: 100%;
+				color: @white;
+				padding-top: 5px;
+				cursor: pointer;
+				background-color: @purpleB;
+
+				&:hover {
+					background-color: @purpleA;
+				}
+
+				&:last-child {
+					margin-right: 0px;
+				}
+			}
+		}
+	}
+
+	.prophecies {
+		float: left;
+		width: calc(100% - 400px);
+		height: calc(100% - 36px);
+		position: relative;
+		background-color: fade(@blackC, 90%);
+		padding: 5px;
+
+		.heading {
+			width: 100%;
+			height: 36px;
+			color: @blueB;
+
+			.heading-text {
+				margin: auto;
+			}
+		}
+
+		.prophecy, .button {
+			cursor: pointer;
+		}
+		
+		.prophecy {
+			width: 100%;
+			padding: 5px 10px;
+			background-color: @grayD;
+			color: @white;
+			margin-bottom: 15px;
+
+			&.selected {
+				color: @green;
+			}
+
+			&:hover {
+				background-color: @grayC;
+			}
+
+			&.prophecy-mine, &.prophecy-none {
+				background-color: @grayC;
+
+				&:hover {
+					background-color: @grayB;
+				}
+			}
+		}
+
+		.button {
+			width: calc(100% - 10px);
+			background-color: @blueC;
+			padding: 5px 10px;
+			position: absolute;
+			bottom: 5px;
+			color: @white;
+
+			&:hover {
+				background-color: @blueB;
+			}
+		}
+	}
+}

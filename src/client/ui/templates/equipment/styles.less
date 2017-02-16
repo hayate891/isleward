@@ -1,0 +1,141 @@
+@import "../../../css/ui.less";
+
+.uiEquipment {
+	display: none;
+	z-index: 2;
+	border: 5px solid @blackB;
+	text-align: center;
+	width: 458px;
+	height: 534px;
+
+	> .heading {
+		color: @white;
+		width: 100%;
+		height: 36px;
+		background-color: @blackB;
+
+		.heading-text {
+			padding-top: 8px;
+			margin: auto;
+		}
+	}
+
+	.bottom {
+		height: calc(100% - 36px);
+		background-color: @blackC;
+
+		.tabs {
+			width: 100%;
+			height: 40px;
+			padding: 8px 8px 0px 8px;
+
+			.tab {
+				cursor: pointer;
+				background-color: @blackB;
+				color: @white;
+				margin-right: 8px;
+				float: left;
+				height: 100%;
+				padding-top: 8px;
+				padding-left: 8px;
+				padding-right: 8px;
+				width: calc((100% - 24px) / 4);
+
+				&:hover {
+					background-color: @blackA;
+				}
+
+				&.selected {
+					background-color: @blackA;
+					color: @blueA;
+				}
+
+				&:last-child {
+					margin-right: 0px;
+				}
+			}
+		}
+
+		.left, .stats, .right {
+			float: left;
+			height: calc(100% - 40px);
+		}
+
+		.stats {
+			width: calc(100% - (2 * 96px));
+			padding-top: 16px;
+
+			.stat {
+				height: 22px;
+
+				filter:
+					drop-shadow(0px -2px 0px @blackD) 
+					drop-shadow(0px 2px 0px @blackD)
+					drop-shadow(2px 0px 0px @blackD) 
+					drop-shadow(-2px 0px 0px @blackD);
+
+				&.blueText > font {
+					color: @blue;
+				}
+
+				&.empty {
+					height: 22px;
+				}
+
+				&.gold {
+					font {
+						color: @yellowB;
+					}
+				}
+			}
+		}
+
+		.left, .right, .itemList {
+			width: 96px;
+			padding: 8px;	
+
+			.slot {
+				width: 80px;
+				height: 80px;
+				background-color: @blackD;
+				margin-bottom: 8px;
+				cursor: pointer;
+				padding: 8px;
+
+				&:last-child {
+					margin-bottom: 0px;
+				}
+
+				.icon {
+					height: 100%;
+				}
+
+				&:hover {
+					.icon {
+						filter: brightness(160%);
+					}
+
+					&.empty {
+						background-color: fade(@blueA, 10%);
+					}
+				}
+			}
+		}
+
+		.itemList {
+			display: none;
+			position: absolute;
+			left: 0px;
+			top: 0px;
+			width: 100%;
+			height: 100%;
+			background-color: @blackC;
+			padding: 0px;
+
+			.slot {
+				float: left;
+				margin: 8px 0px 0px 8px;
+			}
+		}
+	}	
+}

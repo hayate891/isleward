@@ -1,0 +1,47 @@
+@import "../../../css/ui.less";
+
+.uiAnnouncements {
+	pointer-events: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	top: calc(50% + 92px);
+
+	.list {
+		position: relative;
+		width: 100%;
+
+		.message {
+			position: absolute;
+			height: 36px;
+			left: 50%;
+			transform: translateX(-50%);
+			text-align: center;
+			color: @white;
+			font-size: 18px;
+			background-color: fade(@blackD, 10%);
+			padding: 8px;
+			text-shadow: 2px 2px 0 @blackD,
+			   -2px -2px 0 @blackD,  
+			    2px -2px 0 @blackD,
+			   -2px  2px 0 @blackD,
+			    2px  2px 0 @blackD;
+			animation: 0.5s ease-in-out infinite bounce;
+
+			&.success {
+				color: @green;
+			}
+
+			&.failure {
+				color: @red;
+			}
+		}
+	}
+}
+
+@keyframes bounce {
+	0%   { top: 0px; }
+    50%  { top: 4px; }
+    100% { top: 0px ;}
+}

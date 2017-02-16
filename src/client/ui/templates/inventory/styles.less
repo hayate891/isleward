@@ -1,0 +1,158 @@
+@import "../../../css/ui.less";
+
+.uiInventory {
+	display: none;
+	z-index: 2;
+	width: 818px;
+	border: 5px solid @blackB;
+	text-align: center;
+
+	> .heading {
+		color: @blueA;
+		width: 100%;
+		height: 36px;
+		background-color: @blackB;
+
+		.heading-text {
+			padding-top: 8px;
+			margin: auto;
+		}
+	}
+	
+	position: relative;
+
+	.grid {
+		float: left;
+		width: 808px;
+		height: 408px;
+		overflow: hidden;
+		padding: 4px;
+		position: relative;
+		background-color: @blackC;
+
+		.item {
+			width: 72px;
+			height: 72px;
+			float: left;
+			position: relative;
+			cursor: pointer;
+			box-sizing: border-box;
+			margin: 4px;
+			background-color: @blackD;
+
+			&.hover {
+				background-color: fade(@blueA, 10%);
+			}
+
+			&.dragging {
+				position: absolute;
+				opacity: 0.5;
+				pointer-events: none;
+				background-color: transparent;
+
+				.icon {
+					filter: 
+						brightness(100%)
+						drop-shadow(0px -4px 0px @blackD) 
+						drop-shadow(0px 4px 0px @blackD)
+						drop-shadow(4px 0px 0px @blackD) 
+						drop-shadow(-4px 0px 0px @blackD);
+				}
+			}
+
+			.quantity {
+				left: 6px;
+				bottom: 3px;
+				position: absolute;
+				color: @white;
+				filter:
+					drop-shadow(0px -2px 0px @blackD) 
+					drop-shadow(0px 2px 0px @blackD)
+					drop-shadow(2px 0px 0px @blackD) 
+					drop-shadow(-2px 0px 0px @blackD);
+			}
+
+			.icon {
+				width: 64px;
+				height: 64px;
+				position: absolute;
+				left: 4px;
+				top: 4px;
+			}
+
+			&.eq {
+				/* border: 4px solid lighten(@blackB, 4%); */
+
+				/* .icon {
+					left: -4px;
+					top: -4px;
+				} */
+
+				.quantity {
+					color: @yellow;
+				}
+			}
+
+			&.new {
+				.quantity {
+					color: @green;
+				}
+			}
+
+			&:hover {
+				.icon {
+					filter: brightness(160%);
+				}
+			}
+		}
+	}
+
+	.tooltip {
+		display: none;
+		position: absolute;
+		border: 4px solid lighten(@blackA, 20%);
+		margin-left: -4px;
+		margin-top: -4px;
+		background-color: fade(@blackD, 95%);
+		pointer-events: none;
+		padding: 6px;
+		color: white;
+		text-align: center;
+		width: 212px;
+		line-height: 18px;
+
+		.name {
+			margin-bottom: 8px;
+		}
+
+		.stats {
+			color: darken(@white, 20%);
+			margin-bottom: 8px;
+
+			.gainStat {
+				color: @green;
+			}
+
+			.loseStat {
+				color: @red;
+			}
+		}
+
+		.level {
+			color: darken(@white, 40%);
+		}
+
+		.material {
+			color: darken(@white, 40%);
+			display: none;
+		}
+
+		.info {
+			color: darken(@white, 60%);
+		}
+
+		&.no-compare .info {
+			display: none;
+		}
+	}
+}

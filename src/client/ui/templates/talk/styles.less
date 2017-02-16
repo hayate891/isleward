@@ -1,0 +1,41 @@
+@import "../../../css/ui.less";
+
+.uiTalk {
+	border: 5px solid fade(@blackB, 90%);
+	width: 400px;
+	display: none;
+	text-align: center;
+	position: absolute;
+	top: 10px;
+
+	.source {
+		padding: 5px 5px;
+		background-color: fade(@blackB, 90%);
+
+		.name {
+			color: @blueA;
+			margin-bottom: 5px;
+		}
+
+		.msg {
+			color: @white;
+			line-height: 22px;
+		}
+	}
+
+	.options {
+		padding: 5px;
+		background-color: fade(@blackC, 90%);
+
+		.option {
+			color: @blueB;
+			padding: 5px 5px;
+			cursor: pointer;
+			line-height: 22px;
+
+			&:hover {
+				color: @white;
+			}
+		}
+	}
+}
