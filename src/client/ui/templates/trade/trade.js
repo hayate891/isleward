@@ -111,9 +111,6 @@ define([
 		},
 
 		onClick: function(el, item, action, e) {
-			//if ((action == 'buy') && (item.worth > window.player.trade.gold))
-			//	return;
-
 			el.addClass('disabled');
 
 			client.request({

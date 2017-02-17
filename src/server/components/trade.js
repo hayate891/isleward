@@ -239,7 +239,7 @@ define([
 
 			this.obj.syncer.set(true, 'trade', 'sellList', {
 				markup: target.trade.markup.buy,
-				items: this.obj.inventory.items
+				items: this.obj.inventory.items.filter(i => ((i.worth > 0) && (!i.eq)))
 			});
 		},
 
