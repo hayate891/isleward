@@ -28,16 +28,6 @@ define([
 				.on('keyup', this.onKeyDown.bind(this))
 				.eq(0).focus();
 
-			var name = 'aaa';
-			if (window.location.search == '?b')
-				name = 'bbb';
-			else if (window.location.search == '?c')
-				name = 'ccc';
-
-			this.find('input').eq(0).val('waffle');
-			this.find('input').eq(1).val('1skulpie');
-			this.find('.btnLogin').click();
-
 			renderer.buildTitleScreen();
 		},
 
