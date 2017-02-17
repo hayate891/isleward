@@ -101,9 +101,6 @@ define([
 
 					if (i == 0)
 						li.click();
-
-					//if (c.name == 'Rivenrime')
-					//	li.click();
 				}, this);
 		},
 		onCharacterClick: function(name, e) {
@@ -175,8 +172,6 @@ define([
 				this.find('.name').html(name + ' (hc - rip)');
 				this.find('.btnPlay').addClass('disabled');
 			}
-
-			this.find('.btnPlay').click();
 		},
 
 		setMessage: function(msg) {
