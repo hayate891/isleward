@@ -94,6 +94,13 @@ define([
 		},
 
 		learnAbility: function(id, forceLearn) {
+			var replaceId = null;
+			var newSpellId = id.spellId;
+			if (id.id != null) {
+				replaceId = id.replaceId;
+				id = id.id;
+			}
+
 			var item = this.findItem(id);
 			if ((!item) || (!item.spell) || ((item.spellId == null) && (item.eq) && (!forceLearn))) {
 				if (item)
@@ -104,7 +111,6 @@ define([
 			var spellbook = this.obj.spellbook;
 
 			if ((item.eq) && (!forceLearn)) {
-				item.eq = false;
 				delete item.eq;
 				spellbook.removeSpellById(item.spellId);
 				delete item.spellId;
@@ -112,6 +118,17 @@ define([
 				return;
 			}
 
+			if (replaceId != null) {
+				var replaceItem = this.findItem(replaceId);
+				if (replaceItem) {
+					delete replaceItem.eq;
+					spellbook.removeSpellById(replaceItem.spellId);
+					newSpellId = replaceItem.spellId;
+					delete replaceItem.spellId;
+					this.obj.syncer.setArray(true, 'inventory', 'getItems', replaceItem);
+				}
+			}
+			
 			if (spellbook.spells.length >= 3) {
 				if (item.slot)
 					item.spellId = -1;
@@ -119,7 +136,7 @@ define([
 				return;
 			}
 
-			item.spellId = spellbook.addSpellFromRune(item.spell);
+			item.spellId = spellbook.addSpellFromRune(item.spell, newSpellId);
 			if (item.spellId != -1)
 				item.eq = true;
 			else
@@ -464,9 +481,9 @@ define([
 					this.obj.equipment.equip(item.id);
 			} else {
 				var didEq = false;
-				if ((item.slot) && (this.obj.equipment)) {
-					didEq = this.obj.equipment.autoEquip(item.id);
-				}
+				//if ((item.slot) && (this.obj.equipment)) {
+				//	didEq = this.obj.equipment.autoEquip(item.id);
+				//}
 				if (!didEq) {
 					if (!item.effects)
 						this.obj.syncer.setArray(true, 'inventory', 'getItems', item);

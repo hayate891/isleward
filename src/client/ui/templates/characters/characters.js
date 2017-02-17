@@ -176,7 +176,7 @@ define([
 				this.find('.btnPlay').addClass('disabled');
 			}
 
-			//this.find('.btnPlay').click();
+			this.find('.btnPlay').click();
 		},
 
 		setMessage: function(msg) {

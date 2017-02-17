@@ -73,7 +73,7 @@ define([
 			return s;
 		},
 
-		addSpell: function(options) {
+		addSpell: function(options, spellId) {
 			if (!options.type) {
 				options = {
 					type: options
@@ -116,16 +116,17 @@ define([
 			if ((this.furthestRange == -1) || (builtSpell.range > this.furthestRange))
 				this.furthestRange = builtSpell.range;
 
-			var id = 0;
-			this.spells.forEach(function(s) {
-				if (s.id >= id)
-					id = s.id + 1;
-			});
-			builtSpell.id = id;
+			var id = [0, 1, 2].find(function(s) {
+				return (!this.spells.some(f => (f.id == s)));
+			}, this);
+			builtSpell.id = (spellId == null) ? id : spellId;
 
-			this.spells.push(builtSpell);
+			if (spellId == null)
+				this.spells.push(builtSpell);
+			else
+				this.spells.splice(spellId, 0, builtSpell);
 
-			builtSpell.calcDps();
+			builtSpell.calcDps(null, true);
 
 			if (this.obj.player) 
 				this.obj.syncer.setArray(true, 'spellbook', 'getSpells', builtSpell.simplify());
@@ -133,15 +134,13 @@ define([
 			return builtSpell.id;
 		},
 
-		addSpellFromRune: function(runeSpell) {
+		addSpellFromRune: function(runeSpell, spellId) {
 			var name = runeSpell.name.toLowerCase();
 			var playerSpell = playerSpells.find(s => s.name.toLowerCase() == name);
 			var playerSpellConfig = playerSpellsConfig[name];
 
-			if (!playerSpell) {
-				console.log(runeSpell);
+			if (!playerSpell)
 				return -1;
-			}
 
 			if (!runeSpell.rolls)
 				runeSpell.rolls = {};
@@ -184,7 +183,7 @@ define([
 			delete builtSpell.rolls;
 			delete builtSpell.random;
 
-			return this.addSpell(builtSpell);
+			return this.addSpell(builtSpell, spellId);
 		},
 
 		calcDps: function() {

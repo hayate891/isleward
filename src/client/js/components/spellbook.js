@@ -72,13 +72,15 @@ define([
 
 			if (blueprint.getSpells) {
 				blueprint.getSpells.forEach(function(s) {
-					var foundIndex = this.spells.firstIndex(fs => fs.id == s.id);
-					if (foundIndex != -1) {
-						this.spells.splice(foundIndex, 1, s);
+					if (this.spells.find(function(spell) {
+						return (spell.id == s.id);
+					}))
 						return;
-					}
-
-					this.spells.push(s);
+						
+					if (this.spells.length - 1 >= s.id)
+						this.spells.splice(s.id, 0, s);
+					else
+						this.spells.push(s);
 				}, this);
 
 				events.emit('onGetSpells', this.spells);

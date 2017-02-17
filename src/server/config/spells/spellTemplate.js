@@ -49,7 +49,7 @@ define([
 				this.cd--;
 		},
 
-		calcDps: function(target) {
+		calcDps: function(target, noSync) {
 			if (!this.values)
 				return;
 
@@ -84,7 +84,8 @@ define([
 				else
 					this.values.heal = ~~(dmg * 10) / 10 + '/tick';
 
-				this.obj.syncer.setArray(true, 'spellbook', 'getSpells', this.simplify());
+				if (!noSync)
+					this.obj.syncer.setArray(true, 'spellbook', 'getSpells', this.simplify());
 			}
 		},
 

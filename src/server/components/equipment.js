@@ -66,13 +66,15 @@ define([
 				}
 			}
 
+			var spellId = null;
 			var currentEqId = this.eq[item.slot];
-			if (currentEqId != null)
-				this.unequip(currentEqId);
-
 			var currentEq = this.obj.inventory.findItem(currentEqId);
 			if (currentEq == item)
 				return;
+			if (currentEqId != null) {
+				spellId = currentEq.spellId;
+				this.unequip(currentEqId);
+			}
 
 			var stats = item.stats;
 			for (var s in stats) {
@@ -89,8 +91,12 @@ define([
 			this.obj.spellbook.calcDps();
 
 			if ((!this.obj.mob) || (item.ability)) {
-				if (item.spell)
-					this.obj.inventory.learnAbility(itemId, true);
+				if (item.spell) {
+					this.obj.inventory.learnAbility({
+						id: itemId,
+						spellId: spellId
+					}, true);
+				}
 				else {
 					var result = item;
 					if (item.effects) {

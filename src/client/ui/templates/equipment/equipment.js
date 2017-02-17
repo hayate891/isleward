@@ -34,14 +34,13 @@ define([
 
 			this.onEvent('onKeyDown', this.onKeyDown.bind(this));
 			this.onEvent('onKeyUp', this.onKeyUp.bind(this));
-
-			this.find('.slot').on('click', this.buildSlot.bind(this));
 		},
 
 		toggle: function(show) {
 			this.shown = !this.el.is(':visible');
 
 			if (this.shown) {
+				this.find('.itemList').hide();
 				this.show();
 				this.onGetStats();
 				this.onGetItems();
@@ -59,7 +58,7 @@ define([
 			else if (key == 'shift') {
 				this.shiftDown = true;
 				if (this.hoverItem)
-					this.onHoverItem(this.hoverEl, this.hoverItem, null);
+					this.onHoverItem(this.hoverEl, this.hoverItem, this.hoverCompare);
 			}
 		},
 		onKeyUp: function(key) {
@@ -84,73 +83,98 @@ define([
 
 			this.find('.slot').addClass('empty');
 
+			var skipSpellId = 0;
+
+			this.find('[slot]')
+				.removeData('item')
+				.addClass('empty')
+				.find('.icon')
+					.off()
+					.css('background', '')
+					.on('click', this.buildSlot.bind(this));
+
 			items
 				.filter(function(item) {
-					return ((item.eq) && (item.slot));
+					var spellId = item.spellId;
+					if ((spellId != null) && (item.slot))
+						skipSpellId = spellId;
+
+					return ((item.eq) && ((item.slot) || (item.spellId != null)));
 				}, this)
 				.forEach(function(item) {
 					var imgX = -item.sprite[0] * 64;
 					var imgY = -item.sprite[1] * 64;
 
-					var elSlot = this.find('[slot="' + item.slot + '"]');
+					var slot = item.slot;
+					if (!slot) {
+						var spellId = item.spellId;
+						if (spellId > skipSpellId)
+							spellId--;
+						slot = 'rune-' + spellId;
+					}
+
+					var elSlot = this.find('[slot="' + slot + '"]');
 					elSlot
+						.data('item', item)
 						.removeClass('empty')
 						.find('.icon')
-						.css('background', 'url(../../../images/items.png) ' + imgX + 'px ' + imgY + 'px')
-						.on('mousemove', this.onHoverItem.bind(this, elSlot, item, null))
-						.on('mouseleave', this.onHoverItem.bind(this, null, null))
-						.on('click', this.buildSlot.bind(this, item.slot));
-				}, this);
-
-			items
-				.filter(function(item) {
-					return ((item.slot != 'twoHanded') && (item.spellId != null));
-				}, this)
-				.forEach(function(item) {
-					var imgX = -item.sprite[0] * 64;
-					var imgY = -item.sprite[1] * 64;
-
-					var elSlot = this.find('[slot="rune-' + item.spellId + '"]');
-					elSlot
-						.removeClass('empty')
-						.find('.icon')
-						.css('background', 'url(../../../images/items.png) ' + imgX + 'px ' + imgY + 'px')
-						.on('mousemove', this.onHoverItem.bind(this, elSlot, item, null))
-						.on('mouseleave', this.onHoverItem.bind(this, null, null))
-						.on('click', this.buildSlot.bind(this, item.slot));
+							.css('background', 'url(../../../images/items.png) ' + imgX + 'px ' + imgY + 'px')
+							.off()
+							.on('mousemove', this.onHoverItem.bind(this, elSlot, item, null))
+							.on('mouseleave', this.onHoverItem.bind(this, null, null))
+							.on('click', this.buildSlot.bind(this, elSlot));
 				}, this);
 		},
 
-		buildSlot: function(e) {
-			var slot = $(e.currentTarget).attr('slot');
+		buildSlot: function(el) {
+			if (el.currentTarget)
+				el = $(el.currentTarget).parent();
+
+			var slot = el.attr('slot');
+			var isRune = (slot.indexOf('rune') == 0);
 
 			var container = this.find('.itemList')
 				.empty()
 				.show();
 
-			this.hoverCompare = this.items.find(function(item) {
-				return ((item.slot == slot) && (item.eq));
-			});
+			this.hoverCompare = el.data('item');
 
 			var items = this.items
 				.filter(function(item) {
-					return ((item.slot == slot) && (!item.eq));
+					if (isRune)
+						return ((!item.slot) && (item.spell) && (!item.eq));
+					else
+						return ((item.slot == slot) && (!item.eq));
 				}, this);
+			items.splice(0, 0, {
+				name: 'None',
+				slot: this.hoverCompare ? this.hoverCompare.slot : null,
+				id: this.hoverCompare ? this.hoverCompare.id : null,
+				empty: true
+			});
+			if (this.hoverCompare)
+				items.splice(1, 0, this.hoverCompare);
 
 			items
 				.forEach(function(item) {
-					var imgX = -item.sprite[0] * 64;
-					var imgY = -item.sprite[1] * 64;
+					var sprite = item.sprite || [7, 0];
+
+					var spriteSheet = item.empty ? 'uiIcons' : 'items';
+					var imgX = -sprite[0] * 64;
+					var imgY = -sprite[1] * 64;
 
 					var el = $('<div class="slot"><div class="icon"></div></div>')
 						.appendTo(container);
 
 					el
 						.find('.icon')
-						.css('background', 'url(../../../images/items.png) ' + imgX + 'px ' + imgY + 'px')
+						.css('background', 'url(../../../images/' + spriteSheet + '.png) ' + imgX + 'px ' + imgY + 'px')
 						.on('mousemove', this.onHoverItem.bind(this, el, item, null))
 						.on('mouseleave', this.onHoverItem.bind(this, null, null))
 						.on('click', this.equipItem.bind(this, item));
+
+					if (item == this.hoverCompare)
+						el.find('.icon').addClass('eq');
 				}, this);
 
 			if (items.length == 0)
@@ -158,13 +182,43 @@ define([
 		},
 
 		equipItem: function(item) {
+			if (item == this.hoverCompare) {
+				this.find('.itemList').hide();
+				return;
+			}
+
+			var cpn = 'equipment';
+			var method = 'equip';
+			var data = item.id;
+
+			if (item.empty)
+				method = 'unequip';
+
+			if (!item.slot) {
+				cpn = 'inventory';
+				method = 'learnAbility';
+				data = {
+					id: item.id,
+					replaceId: this.hoverCompare ? this.hoverCompare.id : null
+				};
+
+				if (item.empty) {
+					if (!this.hoverCompare) {
+						this.find('.itemList').hide();
+						return;
+					}
+					else
+						data = this.hoverCompare.id;
+				}
+			}
+
 			client.request({
 				cpn: 'player',
 				method: 'performAction',
 				data: {
-					cpn: 'equipment',
-					method: 'equip',
-					data: item.id
+					cpn: cpn,
+					method: method,
+					data: data
 				}
 			});
 
