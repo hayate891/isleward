@@ -129,6 +129,7 @@ define([
 						forceStats: [preferStat]
 					});
 					mob.inventory.getItem(item);
+					mob.equipment.autoEquip(item.id);
 				}, this);
 			} else {
 				//TODO: Don't give the mob these items: he'll drop them anyway
