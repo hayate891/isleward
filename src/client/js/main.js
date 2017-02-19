@@ -35,8 +35,23 @@ define([
 		hasFocus: true,
 
 		init: function() {
+			client.init(this.onClientReady.bind(this));
+		},
+
+		onClientReady: function() {
+			client.request({
+				module: 'clientConfig',
+				method: 'getResourcesList',
+				callback: this.onGetResourceList.bind(this)
+			});
+		},
+
+		onGetResourceList: function(list) {
+			resources.init(list);
+
 			events.on('onResourcesLoaded', this.start.bind(this));
 		},
+
 		start: function() {
 			window.onfocus = this.onFocus.bind(this, true);
 			window.onblur = this.onFocus.bind(this, false);
@@ -46,7 +61,6 @@ define([
 			});
 
 			objects.init();
-			client.init();
 			renderer.init();
 			input.init();
 

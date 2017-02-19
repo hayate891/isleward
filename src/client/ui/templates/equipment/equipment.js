@@ -113,12 +113,14 @@ define([
 						slot = 'rune-' + spellId;
 					}
 
+					var spritesheet = item.spritesheet || '../../../images/items.png';
+
 					var elSlot = this.find('[slot="' + slot + '"]');
 					elSlot
 						.data('item', item)
 						.removeClass('empty')
 						.find('.icon')
-							.css('background', 'url(../../../images/items.png) ' + imgX + 'px ' + imgY + 'px')
+							.css('background', 'url("' + spritesheet + '") ' + imgX + 'px ' + imgY + 'px')
 							.off()
 							.on('mousemove', this.onHoverItem.bind(this, elSlot, item, null))
 							.on('mouseleave', this.onHoverItem.bind(this, null, null))
@@ -159,7 +161,7 @@ define([
 				.forEach(function(item) {
 					var sprite = item.sprite || [7, 0];
 
-					var spriteSheet = item.empty ? 'uiIcons' : 'items';
+					var spriteSheet = item.empty ? '../../../images/uiIcons.png' : item.spritesheet || '../../../images/items.png';
 					var imgX = -sprite[0] * 64;
 					var imgY = -sprite[1] * 64;
 
@@ -168,7 +170,7 @@ define([
 
 					el
 						.find('.icon')
-						.css('background', 'url(../../../images/' + spriteSheet + '.png) ' + imgX + 'px ' + imgY + 'px')
+						.css('background', 'url("' + spriteSheet + '") ' + imgX + 'px ' + imgY + 'px')
 						.on('mousemove', this.onHoverItem.bind(this, el, item, null))
 						.on('mouseleave', this.onHoverItem.bind(this, null, null))
 						.on('click', this.equipItem.bind(this, item));

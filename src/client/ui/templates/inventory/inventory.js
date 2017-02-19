@@ -119,7 +119,7 @@ define([
 				var itemEl = $(tplItem)
 					.appendTo(container);
 
-				var spritesheet = 'items';
+				var spritesheet = item.spritesheet || 'items';
 				if (item.material)
 					spritesheet = 'materials';
 				else if (item.quest)

@@ -1,9 +1,9 @@
 define([
-
+	'misc/events'
 ], function(
-
+	events
 ) {
-	return {
+	var types = {
 		head: {
 			'Helmet': {
 				sprite: [0, 0],
@@ -191,4 +191,7 @@ define([
 			}
 		}
 	}
+
+	events.emit('onBeforeGetItemTypes', types);
+	return types;
 });
