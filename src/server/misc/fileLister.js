@@ -13,9 +13,13 @@ define([
 		},
 
 		getFolderList: function(path) {
-			return fs.readdirSync(path).filter(function(file) {
-				return fs.statSync(fsPath.join(path, file)).isDirectory();
-			});
+			try {
+				return fs.readdirSync(path).filter(function(file) {
+					return fs.statSync(fsPath.join(path, file)).isDirectory();
+				});
+			} catch (e) {
+				return [];
+			}
 		}
 	};
 });
