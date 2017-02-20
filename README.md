@@ -1,6 +1,10 @@
-# ISLEWARD
+![Isleward](http://i.imgur.com/63NIVfg.png)
 
 A multiplayer, moddable, extensible roguelike built with NodeJS, JS, HTML and CSS
+
+[Test Server](http://play.isleward.com/) | [Discord](https://discord.gg/gnsn7ZP) | [Subreddit](https://www.reddit.com/r/isleward) | [Blog](http://blog.isleward.com/) | [Wiki](http://isleward.gamepedia.com/) | [Twitter](https://twitter.com/bigbadwofl) | [Patreon](http://patreon.com/bigbadwaffle)
+
+![Ingame Screenshots](http://i.imgur.com/p4ktJ5O.png)
 
 ### Installation
 1. Download and install NodeJS: `https://nodejs.org/en/download/`
