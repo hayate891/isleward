@@ -1,9 +1,9 @@
 define([
-
+	'misc/events'
 ], function(
-
+	events
 ) {
-	return {
+	var spells = {
 		'magic missile': {
 			statType: 'int',
 			statMult: 0.216,
@@ -172,4 +172,7 @@ define([
 			}
 		}
 	};
+
+	events.emit('onBeforeGetSpellsConfig', spells);
+	return spells;
 });

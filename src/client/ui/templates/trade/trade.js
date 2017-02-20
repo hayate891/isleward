@@ -62,7 +62,7 @@ define([
 				var size = 64;
 				var offset = 0;
 
-				var spritesheet = 'items';
+				var spritesheet = item.spritesheet || 'items';
 				if (item.material)
 					spritesheet = 'materials';
 				else if (item.quest)

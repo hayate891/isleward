@@ -9,9 +9,9 @@ global.io = true;
 var instancer = null;
 
 requirejs([
-	'extend', 'misc/helpers', 'components/components', 'world/instancer', 'security/io'
+	'extend', 'misc/helpers', 'components/components', 'world/instancer', 'security/io', 'misc/mods'
 ], function(
-	extend, helpers, components, _instancer, io
+	extend, helpers, components, _instancer, io, mods
 ) {
 	var onDbReady = function() {
 		global.extend = extend;
@@ -25,6 +25,8 @@ requirejs([
 				method: 'onReady'
 			});
 		});
+
+		mods.init();
 
 		setInterval(function() {
 			global.gc();

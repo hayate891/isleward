@@ -8,7 +8,7 @@ define([
 	var client = {
 		doneConnect: false,
 
-		init: function() {
+		init: function(onReady) {
 			var tType = 'websocket';
 			if (window.location.href.indexOf('polling') > -1)
 				tType = 'polling';
@@ -17,17 +17,20 @@ define([
 				transports: [ tType ]
 			});
 
-			this.socket.on('connect', this.onConnected.bind(this));
+			this.socket.on('connect', this.onConnected.bind(this, onReady));
 			this.socket.on('handshake', this.onHandshake.bind(this));
 			this.socket.on('event', this.onEvent.bind(this));
 			this.socket.on('events', this.onEvents.bind(this));
 			this.socket.on('dc', this.onDisconnect.bind(this));
 		},
-		onConnected: function() {
+		onConnected: function(onReady) {
 			if (this.doneConnect)
 				this.onDisconnect();
 			else
 				this.doneConnect = true;
+
+			if (onReady)
+				onReady();
 		},
 		onDisconnect: function() {
 			window.location = window.location;

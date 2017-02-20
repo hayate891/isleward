@@ -1,7 +1,7 @@
 define([
-
+	'misc/events'
 ], function(
-
+	events
 ) {
 	var config = {
 		'wizard 1': {
@@ -60,6 +60,8 @@ define([
 		}
 	};
 
+	events.emit('onBeforeGetSkins', config);
+
 	return {
 		getBlueprint: function(skinId) {
 			return config[skinId];
@@ -79,10 +81,35 @@ define([
 				if (!result[l.class])
 					result[l.class] = [];
 
-				result[l.class].push(l.sprite[0] + ',' + l.sprite[1]);
+				result[l.class].push({
+					sprite: l.sprite[0] + ',' + l.sprite[1],
+					spritesheet: l.spritesheet
+				});
 			});
 
 			return result;
+		},
+
+		getCell: function(className, costume) {
+			var res = Object.keys(config)
+				.filter(function(s) {
+					return (config[s].class == className);
+				})
+				.map(function(s) {
+					return config[s];
+				})[costume];
+
+			return (res.sprite[1] * 8) + res.sprite[0];
+		},
+
+		getSpritesheet: function(className) {
+			return Object.keys(config)
+				.filter(function(s) {
+					return (config[s].class == className);
+				})
+				.map(function(s) {
+					return config[s];
+				})[0].spritesheet;
 		}
 	};
 });

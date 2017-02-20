@@ -26,9 +26,10 @@ define([
 		spawn: function(character) {
 			var obj = this.obj;
 			extend(true, obj, {
-				sheetName: 'characters',
+				sheetName: classes.getSpritesheet(character.class),
 				layerName: 'mobs',
 				cell: character.cell,
+				previewSpritesheet: character.previewSpritesheet,
 				name: character.name,
 				class: character.class,
 				zoneName: character.zoneName || 'tutorial-cove',
