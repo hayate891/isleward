@@ -126,7 +126,7 @@ define([
 			if (faction == null)
 				return false;
 
-			if ((target.player) && (this.obj.player) && (!player.target))
+			if ((target.player) && (this.obj.player))
 				return ((this.obj.prophecies.hasProphecy('butcher')) && (target.prophecies.hasProphecy('butcher')));
 
 			var rep = this.obj.reputation;
