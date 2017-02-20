@@ -4,14 +4,16 @@ define([
 	'misc/helpers',	
 	'items/lootRoller',
 	'world/atlas',
-	'leaderboard/leaderboard'
+	'leaderboard/leaderboard',
+	'config/clientConfig'
 ], function(
 	extend,
 	cons,
 	helpers,
 	lootRoller,
 	atlas,
-	leaderboard
+	leaderboard,
+	clientConfig
 ) {
 	return {
 		init: function() {
@@ -21,6 +23,9 @@ define([
 			global.lootRoller = lootRoller;
 			global.atlas = atlas;
 			global.leaderboard = leaderboard;
+			global.clientConfig = clientConfig;
+
+			clientConfig.init();
 		}
 	};
 });

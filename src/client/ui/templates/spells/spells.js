@@ -43,9 +43,10 @@ define([
 					.on('mouseover', this.onShowTooltip.bind(this, el, spells[i]))
 					.on('mouseleave', this.onHideTooltip.bind(this, el));
 
+				var spritesheet = spells[i].spritesheet || '../../../images/abilityIcons.png';
 				el
 					.find('.icon').css({
-						'background': 'url("../../../images/abilityIcons.png") ' + x + 'px ' + y + 'px'
+						'background': 'url("' + spritesheet + '") ' + x + 'px ' + y + 'px'
 					})
 					.next().html(i + 1);
 

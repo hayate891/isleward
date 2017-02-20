@@ -4,14 +4,16 @@ define([
 	'world/atlas',
 	'components/components',
 	'leaderboard/leaderboard',
-	'security/io'
+	'security/io',
+	'misc/mods'
 ], function(
 	globals,
 	server,
 	atlas,
 	components,
 	leaderboard,
-	io
+	io,
+	mods
 ) {
 	return {
 		init: function() {
@@ -30,6 +32,7 @@ define([
 			server.init(this.onServerReady.bind(this));
 		},
 		onServerReady: function() {
+			mods.init();
 			atlas.init();
 			leaderboard.init();
 		}

@@ -28,13 +28,17 @@ define([
 		],
 		sprites: {},
 		ready: false,
-		init: function() {
+		init: function(list) {
+			list.forEach(function(l) {
+				this.spriteNames.push(l);
+			}, this);
+
 			this.spriteNames.forEach(function(s) {
 				var sprite = {
 					image: (new Image()),
 					ready: false
 				};
-				sprite.image.src = 'images/' + s + '.png';
+				sprite.image.src = s.indexOf('png') > -1 ? s : 'images/' + s + '.png';
 				sprite.image.onload = this.onSprite.bind(this, sprite);
 
 				this.sprites[s] = sprite;
@@ -58,8 +62,6 @@ define([
 			events.emit('onResourcesLoaded');
 		}
 	};
-
-	resources.init();
 
 	return resources;
 });
