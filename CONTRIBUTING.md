@@ -1,7 +1,5 @@
 This is a quick guide on contributing to Isleward
 
-## Issues
-
 ### Creating Issues
 * Use the integrated [Issue tracker](https://gitlab.com/Isleward/isleward/issues)
 * Before making a new issue, make sure the same issue is not already listed in the issue tracker
