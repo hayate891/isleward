@@ -119,7 +119,7 @@ define([
 		},
 
 		willAttack: function(target) {
-			if (this.obj = target)
+			if (this.obj == target)
 				return false;
 
 			var faction = target.aggro.faction;
