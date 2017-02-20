@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"path": "src/client",
+			"folder_exclude_patterns": [
+				"plugins"
+			]
+		},
+		{
+			"path": "src/server",
+			"folder_exclude_patterns": [
+				"node_modules"
+			]
+		}
+	]
+}
