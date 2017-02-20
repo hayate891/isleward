@@ -1,4 +1,4 @@
-![Isleward](https://gitlab.com/Isleward/isleward/raw/master/src/client/images/logo_4.png)
+![Isleward](https://gitlab.com/Isleward/isleward/raw/master/src/client/images/logo_1.png)
 
 A multiplayer, moddable, extensible roguelike built with NodeJS, JS, HTML and CSS
 
