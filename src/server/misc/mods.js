@@ -1,7 +1,9 @@
 define([
-	'misc/fileLister'
+	'misc/fileLister',
+	'misc/events'
 ], function(
-	fileLister
+	fileLister,
+	events
 ) {
 	return {
 		init: function() {
@@ -15,7 +17,19 @@ define([
 				catch (e) {}
 
 				if (mod) {
-					mod.folderName = 'server/mods/' + m
+					mod.events = events;
+					mod.folderName = 'server/mods/' + m;
+					mod.relativeFolderName = 'mods/' + m;
+
+					(mod.extraScripts || []).forEach(function(e) {
+						try {
+							var script = require('mods/' + m + '/' + e);
+							script.folderName = mod.folderName;
+							script.relativeFolderName = mod.relativeFolderName;
+						}
+						catch (e) {}
+					}, this);
+
 					mod.init();
 				}
 			}, this);
