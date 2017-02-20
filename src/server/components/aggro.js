@@ -119,11 +119,14 @@ define([
 		},
 
 		willAttack: function(target) {
+			if (this.obj = target)
+				return false;
+
 			var faction = target.aggro.faction;
 			if (faction == null)
 				return false;
 
-			if ((target.player) && (this.obj.player))
+			if ((target.player) && (this.obj.player) && (!player.target))
 				return ((this.obj.prophecies.hasProphecy('butcher')) && (target.prophecies.hasProphecy('butcher')));
 
 			var rep = this.obj.reputation;
