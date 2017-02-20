@@ -33,6 +33,20 @@ define([
 		},
 
 		sendPartyMessage: function(msg) {
+			if (!this.party) {
+				this.obj.socket.emit('events', {
+					onGetMessages: [{
+						messages: [{
+							class: 'q0',
+							message: 'you are not in a party',
+							type: 'info'
+						}]
+					}]
+				});
+
+				return;
+			}
+
 			var charname = this.obj.auth.charname;
 			var message = msg.data.message.substr(1);
 
