@@ -12,23 +12,11 @@ define([
 		type: 'killX',
 
 		build: function() {
-			var mobTypes = this.obj.instance.spawners.zone.mobs;
-
-			if (this.mobName) {
-				if (mobTypes[this.mobName.toLowerCase()].attackable == false)
-					this.mobName = null;
-			}
-
 			if (!this.mobName) {
+				var mobTypes = this.obj.instance.spawners.zone.mobs;
 				var mobCounts = this.obj.instance.spawners.mobTypes;
 				var keys = Object.keys(mobTypes).filter(function(m) {
-					return (
-						(m != 'default') && 
-						(
-							(mobTypes[m].attackable) ||
-							(mobTypes[m].attackable == null)
-						)
-					);
+					return (m != 'default');
 				});
 				this.mobType = keys[~~(Math.random() * keys.length)];
 				var needMax = 8;
