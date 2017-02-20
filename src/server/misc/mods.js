@@ -1,13 +1,23 @@
 define([
-	'mods/modList'
+	'misc/fileLister'
 ], function(
-	modList
+	fileLister
 ) {
 	return {
 		init: function() {
+			var modList = fileLister.getFolderList('mods');
+			console.log(modList);
+
+
 			modList.forEach(function(m) {
-				var mod = require('mods/' + m + '/index');
-				mod.init();
+				var mod = null;
+				try {
+					mod = require('mods/' + m + '/index');
+				}
+				catch (e) {}
+
+				if (mod)
+					mod.init();
 			}, this);
 		}	
 	};
