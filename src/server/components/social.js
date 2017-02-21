@@ -1,7 +1,9 @@
 define([
-	'world/atlas'
+	'world/atlas',
+	'config/roles'
 ], function(
-	atlas
+	atlas,
+	roles
 ) {
 	return {
 		type: 'social',
@@ -75,7 +77,7 @@ define([
 			else
 				level = 0;
 
-			var msgStyle = 'q' + level;
+			var msgStyle = roles.getRoleMessageStyle(this.obj) || ('q' + level);
 
 			var messageString = msg.data.message;
 			if (messageString[0] == '@') {
@@ -120,12 +122,14 @@ define([
 			} else if (messageString[0] == '%') {
 				this.sendPartyMessage(msg);
 			} else {
+				var prefix = roles.getRoleMessagePrefix(this.obj) || '';
+
 				io.sockets.emit('event', {
 					event: 'onGetMessages',
 					data: {
 						messages: [{
 							class: msgStyle,
-							message: charname + ': ' + msg.data.message,
+							message: prefix + charname + ': ' + msg.data.message,
 							type: 'chat'
 						}]
 					}
