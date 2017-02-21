@@ -5,7 +5,7 @@ define([
 ) {
 	return {
 		accounts: {
-			waffle: {
+			admin: {
 				level: 10,
 				messageStyle: 'color-cyan',
 				messagePrefix: '(dev) ',
