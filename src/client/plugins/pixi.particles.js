@@ -630,9 +630,6 @@ if (!Array.prototype.random) {
 			this.rawPosition.x += this.velocity.x * delta;
 			this.rawPosition.y += this.velocity.y * delta;
 
-			//if (isNaN(this.velocity.x))
-			//	console.log(this.startSpeed + ' ' + this.endSpeed);
-
 			this.position.x = ~~(this.rawPosition.x / 2) * 2;
 			this.position.y = ~~(this.rawPosition.y / 2) * 2;
 		}

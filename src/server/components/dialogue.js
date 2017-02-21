@@ -79,14 +79,6 @@ define([
 			this.sourceStates[sourceObj.id] = state;
 
 			if (!this.states) {
-				console.log('NO DIALOGUE STATES?!?!??!');
-				console.log('NO DIALOGUE STATES?!?!??!');
-				console.log('NO DIALOGUE STATES?!?!??!');
-				console.log('NO DIALOGUE STATES?!?!??!');
-				console.log('NO DIALOGUE STATES?!?!??!');
-				console.log('NO DIALOGUE STATES?!?!??!');
-				console.log('NO DIALOGUE STATES?!?!??!');
-				console.log(this.obj);
 				return null;
 			}
 			var stateConfig = this.states[state];
