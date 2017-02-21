@@ -10,7 +10,7 @@ define([
 		action: 'buy',
 
 		init: function(blueprint) {
-
+			
 		},
 
 		extend: function(blueprint) {
