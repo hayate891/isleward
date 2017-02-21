@@ -11,7 +11,7 @@ define([
 
 		maxBuyback: 10,
 
-		gold: 1000,
+		gold: 0,
 
 		target: null,
 
@@ -21,6 +21,8 @@ define([
 		},
 
 		init: function(blueprint) {
+			this.gold = blueprint.gold;
+
 			if (!blueprint.items)
 				return;
 

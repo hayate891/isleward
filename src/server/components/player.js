@@ -63,7 +63,7 @@ define([
 			obj.addComponent('spellbook');
 
 			obj.addComponent('dialogue');
-			obj.addComponent('trade');
+			obj.addComponent('trade', character.components.find(c => c.type == 'trade'));
 			obj.addComponent('reputation', character.components.find(c => c.type == 'reputation'));
 
 			obj.addComponent('social');

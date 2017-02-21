@@ -81,6 +81,9 @@ define([
 			items = items || this.items;
 			this.items = items;
 
+			if (!this.shown)
+				return;
+
 			this.find('.slot').addClass('empty');
 
 			var skipSpellId = 0;
@@ -248,8 +251,13 @@ define([
 		},
 
 		onGetStats: function(stats) {
-			stats = stats || this.stats;
-			this.stats = stats;
+			if (stats)
+				this.stats = stats;
+
+			stats = this.stats;
+
+			if (!this.shown)
+				return;
 
 			var container = this.el.find('.stats');
 
@@ -264,7 +272,7 @@ define([
 					level: stats.level,
 					'next level': xpRemaining + 'xp',
 					gap1: '',
-					gold: 0, //window.player.trade.gold,
+					gold: window.player.trade.gold,
 					gap2: '',
 					hp: ~~stats.hp + '/' + stats.hpMax,
 					mana: ~~stats.mana + '/' + stats.manaMax,
