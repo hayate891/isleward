@@ -86,7 +86,7 @@ define([
 				console.log('NO DIALOGUE STATES?!?!??!');
 				console.log('NO DIALOGUE STATES?!?!??!');
 				console.log('NO DIALOGUE STATES?!?!??!');
-				console.log(this.obj);
+				console.log(this.obj);				
 				return null;
 			}
 			var stateConfig = this.states[state];
