@@ -232,10 +232,7 @@ define([
 
 				if (a.obj.stats)
 					a.obj.stats.getXp(inc);
-				else {
-					console.log('give xp to???');
-					console.log(a.obj);
-				}
+				
 	
 				a.obj.fireEvent('afterKillMob', target);
 			}
