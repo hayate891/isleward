@@ -147,7 +147,9 @@ define([
 			else if (action == 'buyback')
 				item = this.findBuyback(itemId, requestedBy.name);
 			
-			var result = requestedBy.reputation.canEquipItem(item);
+			var result = true;
+			if (item.faction)
+				result = requestedBy.reputation.canEquipItem(item);
 
 			if (!result) {
 				requestedBy.instance.syncer.queue('onGetMessages', {
