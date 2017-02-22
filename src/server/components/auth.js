@@ -282,6 +282,11 @@ define([
 		createCharacter: function(msg) {
 			var data = msg.data;
 
+			if ((data.name.length < 3) || (data.name.length > 12)) {
+				msg.callback(messages.createCharacter.nameLength);
+				return;
+			}
+
 			io.get({
 				ent: data.name,
 				field: 'character',
