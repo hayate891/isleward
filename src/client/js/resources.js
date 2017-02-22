@@ -4,44 +4,37 @@ define([
 	events
 ) {
 	var resources = {
-		spriteNames: [
-			'charas',
-			'tiles',
-			'walls',
-			'mobs',
-			'bosses',
-			'bigObjects',
-			'objects',
-			'characters',
-			'attacks',
-			'ui',
-			'abilityIcons',
-			'uiIcons',
-			'items',
-			'materials', 
-			'questItems',
-			'auras',
-			'sprites',
-			'animChar',
-			'animMob',
-			'animBoss'
-		],
 		sprites: {},
+		spriteNames: null,
 		ready: false,
-		init: function(list) {
-			list.forEach(function(l) {
-				this.spriteNames.push(l);
-			}, this);
+		init: function(config) {
+			//Set global variables that define how big sprites and tiles are
+			for (var p in config.info) {
+				window[p] = config.info[p];
+			}
+			window.scaleMult = window.scale / window.spriteSize
+
+			this.spriteNames = config.list;
 
 			this.spriteNames.forEach(function(s) {
+				var sSplit = s.split('|');
+				var spriteLocation = s;
+				var spriteName = s;
+				if (sSplit.length > 1) {
+					spriteLocation = sSplit[1];
+					spriteName = sSplit[0];
+				}
+
 				var sprite = {
+					name: spriteName,
 					image: (new Image()),
 					ready: false
 				};
-				sprite.image.src = s.indexOf('png') > -1 ? s : 'images/' + s + '.png';
+
+				sprite.image.src = spriteLocation.indexOf('png') > -1 ? spriteLocation : 'images/' + spriteLocation + '.png';
 				sprite.image.onload = this.onSprite.bind(this, sprite);
 
-				this.sprites[s] = sprite;
+				this.sprites[spriteName] = sprite;
 			}, this);
 		},
 		onSprite: function(sprite) {

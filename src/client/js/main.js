@@ -41,13 +41,13 @@ define([
 		onClientReady: function() {
 			client.request({
 				module: 'clientConfig',
-				method: 'getResourcesList',
-				callback: this.onGetResourceList.bind(this)
+				method: 'getResourcesInfo',
+				callback: this.onGetResourcesInfo.bind(this)
 			});
 		},
 
-		onGetResourceList: function(list) {
-			resources.init(list);
+		onGetResourcesInfo: function(config) {
+			resources.init(config);
 
 			events.on('onResourcesLoaded', this.start.bind(this));
 		},

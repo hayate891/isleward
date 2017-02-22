@@ -5,8 +5,6 @@ define([
 	renderer,
 	events
 ) {
-	var scale = 40;
-
 	return {
 		type: 'player',
 

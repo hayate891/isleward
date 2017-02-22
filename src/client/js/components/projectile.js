@@ -5,8 +5,6 @@ define([
 	effects,
 	canvas
 ) {
-	var scale = 40;
-
 	return {
 		type: 'projectile',
 

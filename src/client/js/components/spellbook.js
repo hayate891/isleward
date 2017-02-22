@@ -7,8 +7,6 @@ define([
 	renderer,
 	events
 ) {
-	var scale = 40;
-
 	var objects = null;
 	require(['js/objects/objects'], function(o) {
 		objects = o;

@@ -5,8 +5,6 @@ define([
 	events,
 	renderer
 ) {
-	var scale = 40;
-
 	return {
 		type: 'stats',
 

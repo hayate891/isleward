@@ -3,8 +3,6 @@ define([
 ], function(
 	renderer
 ) {
-	var scale = 40;
-
 	return {
 		type: 'chatter',
 

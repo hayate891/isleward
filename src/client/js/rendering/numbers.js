@@ -7,9 +7,6 @@ define([
 	objects,
 	renderer
 ) {
-	var scale = 40;
-	var scaleMult = 5;
-
 	return {
 		list: [],
 

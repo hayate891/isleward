@@ -11,8 +11,6 @@ define([
 	input,
 	objects
 ) {
-	var scale = 40;
-
 	return {
 		type: 'mouseMover',
 

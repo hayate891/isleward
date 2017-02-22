@@ -15,8 +15,6 @@ define([
 	particles,
 	shaderOutline
 ) {
-	var scale = 40;
-	var scaleMult = 5;
 	var pixi = PIXI;
 
 	return {
@@ -88,24 +86,20 @@ define([
 
 			var layers = this.layers;
 			Object.keys(layers).forEach(function(l) {
-				if (l == 'tileSprites') {
-					layers[l] = new pixi.particles.ParticleContainer(2500);
-					layers[l].layer = 'tiles';
-				} else
-					layers[l] = new pixi.Container();
+				layers[l] = new pixi.Container();
 
 				this.stage.addChild(layers[l])
 			}, this);
 
-			var spriteNames = ['sprites', 'tiles', 'mobs', 'bosses', 'bigObjects', 'objects', 'characters', 'attacks', 'auras', 'walls', 'ui', 'animChar', 'animMob', 'animBoss'];
-			resources.spriteNames.forEach(function(s) {
-				if (s.indexOf('.png') > -1)
-					spriteNames.push(s);
-			});
+			resources.spriteNames.forEach(function(t) {
+				var spriteName = t;
+				var tSplit = t.split('|');
+				if (tSplit.length > 1)
+					spriteName = tSplit[0];
 
-			spriteNames.forEach(function(t) {
-				this.textures[t] = new pixi.BaseTexture(resources.sprites[t].image);
-				this.textures[t].scaleMode = pixi.SCALE_MODES.NEAREST;
+				var image = resources.sprites[spriteName].image;
+				this.textures[spriteName] = new pixi.BaseTexture(image);
+				this.textures[spriteName].scaleMode = pixi.SCALE_MODES.NEAREST;
 			}, this);
 
 			particles.init({
@@ -201,7 +195,7 @@ define([
 		},
 
 		getTexture: function(baseTex, cell, size) {
-			size = size || 8;
+			size = size || window.spriteSize;
 			var name = baseTex + '_' + cell;
 
 			var textureCache = this.textureCache;
@@ -211,7 +205,13 @@ define([
 			if (!cached) {
 				var y = ~~(cell / 8);
 				var x = cell - (y * 8);
-				cached = new pixi.Texture(this.textures[baseTex], new pixi.Rectangle(x * size, y * size, size, size));
+				try {
+					cached = new pixi.Texture(this.textures[baseTex], new pixi.Rectangle(x * size, y * size, size, size));
+				}
+				catch (e) {
+					cached = new pixi.Texture(this.textures[baseTex], new pixi.Rectangle(0 * size, 0 * size, size, size));		
+				}
+
 				textureCache[name] = cached;
 			}
 
@@ -222,7 +222,7 @@ define([
 			var container = this.layers.tileSprites;
 			this.stage.removeChild(container);
 
-			this.layers.tileSprites = container = new pixi.particles.ParticleContainer(2500);
+			this.layers.tileSprites = container = new pixi.Container(2500);
 			container.layer = 'tiles';
 			this.stage.addChild(container);
 
@@ -280,14 +280,14 @@ define([
 			var tile = new pixi.Sprite(this.getTexture('sprites', c + (0 * 160)));
 
 			tile.alpha = alpha;
-			tile.position.x = i * 8;
-			tile.position.y = j * 8;
-			tile.width = 8;
-			tile.height = 8;
+			tile.position.x = i * window.spriteSize;
+			tile.position.y = j * window.spriteSize;
+			tile.width = window.spriteSize;
+			tile.height = window.spriteSize;
 
 			if (canFlip) {
 				if (Math.random() < 0.5) {
-					tile.position.x += 8;
+					tile.position.x += window.spriteSize;
 					tile.scale.x = -1;
 				}
 			}
@@ -350,74 +350,60 @@ define([
 				}
 			}, this);
 
-			var padding = msg.padding ? JSON.parse(msg.padding) : {};
-
 			this.clean();
-			var container = new pixi.particles.ParticleContainer(270000);
-
-			var isPadX = false;
-			var isPadY = false;
-			var padX = 0;
-			var padY = 0;
-
-			if (!msg.padding) {
-				padX = 0;
-				padY = 0;
-			}
 
 			var chunkSize = this.chunkSize;
 
-			for (var i = -padX; i < w + padX; i++) {
-				if ((i < 0) || (i >= w))
-					isPadX = true;
-				else
-					isPadX = false;
-
-				for (var j = -padY; j < h + padY; j++) {
-					if ((j < 0) || (j >= h))
-						isPadY = true;
-					else
-						isPadY = false;
-
-					var cell = null;
-
-					cell = map[i][j];
-					if (!cell)
-						continue;
-					if (!cell.split)
-						cell += '';
-					cell = cell.split(',');
-					for (var k = 0; k < cell.length; k++) {
-						var c = cell[k];
-						if (c == 0)
-							continue;
-
-						c--;
-
-						var tile = this.buildTile(c, i, j);
-
-						container.addChild(tile);
-					}
-				}
-			}
-
-			var renderTexture = pixi.RenderTexture.create(w * 8, h * 8);
-			this.renderer.render(container, renderTexture);
-
-			var cw = w / this.chunkSize;
-			var ch = h / this.chunkSize;
+			var cw = w / chunkSize;
+			var ch = h / chunkSize;
 
 			for (var i = 0; i < cw; i++) {
-				var tw = Math.min(this.chunkSize, w - (i * chunkSize));
+				var tw = Math.min(chunkSize, w - (i * chunkSize));
 
 				for (var j = 0; j < ch; j++) {
-					var th = Math.min(this.chunkSize, h - (j * chunkSize));
+					var th = Math.min(chunkSize, h - (j * chunkSize));
 
-					var texture = new pixi.Texture(renderTexture, new pixi.Rectangle(i * this.chunkSize * 8, j * this.chunkSize * 8, tw * 8, th * 8));
+					var renderTexture = pixi.RenderTexture.create(tw * window.spriteSize, th * window.spriteSize);
+					var container = new pixi.particles.ParticleContainer(2700);
+
+					for (var x = i * chunkSize; x < (i * chunkSize) + tw; x++) {
+						for (var y = (j * chunkSize); y < (j * chunkSize) + th; y++) {
+							var cell = null;
+
+							cell = map[x][y];
+							if (!cell)
+								continue;
+							if (!cell.split)
+								cell += '';
+							cell = cell.split(',');
+							for (var k = 0; k < cell.length; k++) {
+								var c = cell[k];
+								if (c == 0)
+									continue;
+
+								c--;
+
+								var tile = this.buildTile(c, x - (i * chunkSize), y - (j * chunkSize));
+								container.addChild(tile);
+							}
+						}
+					}
+
+					this.renderer.render(container, renderTexture);
+
+					var texture = new pixi.Texture(
+						renderTexture, 
+						new pixi.Rectangle(
+							0, 
+							0, 
+							tw * window.spriteSize, 
+							th * window.spriteSize
+						)
+					);
 
 					var sprite = new pixi.Sprite(texture);
-					sprite.position.x = i * this.chunkSize * scale;
-					sprite.position.y = j * this.chunkSize * scale;
+					sprite.position.x = i * chunkSize * scale;
+					sprite.position.y = j * chunkSize * scale;
 					sprite.width = tw * scale;
 					sprite.height = th * scale;
 
