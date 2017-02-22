@@ -310,7 +310,7 @@ define([
 					x: cell.x / mapScale,
 					y: (cell.y / mapScale) - 1,
 					name: name,
-					properties: cell.properties
+					properties: cell.properties || {}
 				};
 
 				if ((this.zone) && (this.zone.objects) && (this.zone.objects[objZoneName.toLowerCase()]))

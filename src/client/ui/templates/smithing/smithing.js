@@ -220,7 +220,7 @@ define([
 			var imgX = -item.sprite[0] * 64;
 			var imgY = -item.sprite[1] * 64;
 
-			var spritesheet = 'items';
+			var spritesheet = item.spritesheet || 'items';
 			if (item.material)
 				spritesheet = 'materials';
 			else if (item.quest)

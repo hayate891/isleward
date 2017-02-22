@@ -1,9 +1,9 @@
 define([
-
+	'misc/events'
 ], function(
-
+	events
 ) {
-	return [{
+	var spells = [{
 		name: 'Magic Missile',
 		description: 'Launches an orb of unfocussed energy at your target.',
 		type: 'projectile',
@@ -382,4 +382,7 @@ define([
 			chance: 0.02
 		}
 	}];
+
+	events.emit('onBeforeGetSpellsInfo', spells);
+	return spells;
 });

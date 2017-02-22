@@ -97,7 +97,13 @@ define([
 				this.stage.addChild(layers[l])
 			}, this);
 
-			['sprites', 'tiles', 'mobs', 'bosses', 'bigObjects', 'objects', 'characters', 'attacks', 'auras', 'walls', 'ui', 'animChar', 'animMob', 'animBoss'].forEach(function(t) {
+			var spriteNames = ['sprites', 'tiles', 'mobs', 'bosses', 'bigObjects', 'objects', 'characters', 'attacks', 'auras', 'walls', 'ui', 'animChar', 'animMob', 'animBoss'];
+			resources.spriteNames.forEach(function(s) {
+				if (s.indexOf('.png') > -1)
+					spriteNames.push(s);
+			});
+
+			spriteNames.forEach(function(t) {
 				this.textures[t] = new pixi.BaseTexture(resources.sprites[t].image);
 				this.textures[t].scaleMode = pixi.SCALE_MODES.NEAREST;
 			}, this);

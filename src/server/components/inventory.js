@@ -11,7 +11,6 @@ define([
 	objects,
 	classes
 ) {
-
 	return {
 		type: 'inventory',
 

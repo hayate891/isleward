@@ -15,6 +15,8 @@ define([
 
 			item.type = type;
 			item.sprite = typeBlueprint.sprite;
+			if (typeBlueprint.spritesheet)
+				item.spritesheet = typeBlueprint.spritesheet;
 
 			if (typeBlueprint.spellName)
 				blueprint.spellName = typeBlueprint.spellName;

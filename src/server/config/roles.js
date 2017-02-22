@@ -7,6 +7,8 @@ define([
 		accounts: {
 			admin: {
 				level: 10,
+				messageStyle: 'color-cyan',
+				messagePrefix: '(dev) ',
 				items: [{
 					type: 'key',
 					name: 'Key to the world',
@@ -53,6 +55,16 @@ define([
 				this.sendMessage(player, message);
 
 			return success;
+		},
+
+		getRoleMessageStyle: function(player) {
+			var account = player.account;
+			return this.accounts[account] ? this.accounts[account].messageStyle : null;
+		},
+
+		getRoleMessagePrefix: function(player) {
+			var account = player.account;
+			return this.accounts[account] ? this.accounts[account].messagePrefix : null;
 		},
 
 		sendMessage: function(player, msg) {

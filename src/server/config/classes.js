@@ -1,9 +1,9 @@
 define([
-
+	'misc/events'
 ], function(
-
+	events
 ) {
-	return {
+	var classes = {
 		spells: {
 			wizard: ['ice spear'],
 			cleric: ['healing circle'],
@@ -41,6 +41,13 @@ define([
 			cleric: 'Mace',
 			thief: 'Dagger',
 			warrior: 'Axe'
+		},
+
+		getSpritesheet: function(className) {
+			return this.stats[className].spritesheet || 'characters';
 		}
 	};
+
+	events.emit('onBeforeGetClasses', classes);
+	return classes;
 });

@@ -15,7 +15,7 @@ module.exports = {
 					goto: 3
 				},
 				'1.3': {
-					msg: `Have you scanvenged anything worth selling lately?`,
+					msg: `Have you scavenged anything worth selling lately?`,
 					goto: 'tradeBuy'
 				},
 				'1.4': {
