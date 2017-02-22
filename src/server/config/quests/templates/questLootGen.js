@@ -70,6 +70,18 @@ define([
 
 				this.description = 'Loot ' + this.have + '/' + this.need + ' ' + this.item.name + ' from ' + this.mobName;
 				this.obj.syncer.setArray(true, 'quests', 'updateQuests', this.simplify(true));
+			},
+
+			afterDestroyItem: function(item, quantity) {
+				if (item.name.toLowerCase() != this.item.name.toLowerCase())
+					return;
+
+				this.have -= quantity;
+				if (this.have < 0)
+					this.have = 0;
+
+				this.description = 'Loot ' + this.have + '/' + this.need + ' ' + this.item.name + ' from ' + this.mobName;
+				this.obj.syncer.setArray(true, 'quests', 'updateQuests', this.simplify(true));
 			}
 		}
 	};
