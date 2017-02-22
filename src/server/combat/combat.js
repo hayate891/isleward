@@ -56,9 +56,6 @@ define([
 					isCrit = true;
 					amount *= 1.5;
 				}
-
-				if (isCrit)
-					amount *= 1.5;
 			}
 
 			return {
