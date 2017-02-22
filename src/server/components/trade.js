@@ -134,7 +134,7 @@ define([
 				return;
 			}
 
-			if (!targetTrade.canBuy(msg.itemId, this.obj)) {
+			if (!targetTrade.canBuy(msg.itemId, this.obj, msg.action)) {
 				this.resolveCallback(msg);
 				return;
 			}
@@ -262,7 +262,7 @@ define([
 			return this.items;
 		},
 
-		canBuy: function(itemId, requestedBy) {
+		canBuy: function(itemId, requestedBy, action) {
 			return true;
 		},
 

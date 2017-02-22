@@ -82,8 +82,6 @@ define([
 				}]
 			};
 
-			console.log(this.particles);
-
 			syncer.queue('onGetObject', effect);
 
 			this.queueCallback(this.onWarningOver.bind(this, x, y), this.delay * 350);
