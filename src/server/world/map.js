@@ -87,7 +87,7 @@ define([
 
 			mapFile = require('../config/maps/' + this.name + '/map');
 			this.mapFile = mapFile;
-
+			mapFile.properties = mapFile.properties || {};
 			mapScale = mapFile.tilesets[0].tileheight;
 
 			this.instanced = mapFile.properties.instanced;
