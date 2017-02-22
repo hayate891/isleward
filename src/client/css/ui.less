@@ -1,6 +1,14 @@
 @import "colors.less";
 
 [class^="ui"] {
+	input, textarea {
+		-webkit-user-select: text;
+		-khtml-user-select: text;
+		-moz-user-select: text;
+		-ms-user-select: text;
+		user-select: text;
+	}
+
 	.el {
 		height: 35px;
 		text-align: center;
