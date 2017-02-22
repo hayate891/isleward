@@ -195,6 +195,8 @@ define([
 			if (!item)
 				return;
 
+			amount = amount || item.quantity;
+
 			if (item.eq)
 				this.obj.equipment.unequip(id);
 
@@ -212,6 +214,8 @@ define([
 
 			if (this.obj.player)
 				this.getDefaultAbilities();
+
+			this.obj.fireEvent('afterDestroyItem', item, amount);
 
 			return item;
 		},
