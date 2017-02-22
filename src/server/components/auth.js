@@ -55,7 +55,15 @@ define([
 			var sLen = statKeys.length;
 			for (var i = 0; i < sLen; i++) {
 				var s = statKeys[i];
-				if ((s.indexOf('xp') > -1) || (s == 'level') || (s == 'hp') || (s == 'mana'))
+				if (
+					(
+						(s.indexOf('xp') > -1) &&
+						(s != 'xpIncrease')
+					) ||
+					(s == 'level') ||
+					(s == 'hp') ||
+					(s == 'mana')
+				)
 					continue;
 
 				delete stats.values[s];
