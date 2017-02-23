@@ -111,7 +111,7 @@ module.exports = {
 					},
 					faction: {
 						id: 'gaekatla',
-						tier: 1
+						tier: 6
 					},
 					markup: {
 						buy: 0.25,
@@ -143,7 +143,7 @@ module.exports = {
 				}
 			}
 		},
-		shopestrid: {
+		estrid: {
 			properties: {
 				cpnNotice: {
 					actions: {
@@ -162,7 +162,7 @@ module.exports = {
 				}
 			}
 		},
-		shoptola: {
+		tola: {
 			properties: {
 				cpnNotice: {
 					actions: {
@@ -181,7 +181,7 @@ module.exports = {
 				}
 			}
 		},
-		shoppriest: {
+		priest: {
 			properties: {
 				cpnNotice: {
 					actions: {
