@@ -26,7 +26,7 @@ define([
 					return false;
 			}
 			else if (targetName != null) {
-				target = this.obj.instance.objects.objects.find(o => o.name.toLowerCase() == targetName);
+				target = this.obj.instance.objects.objects.find(o => ((o.name) && (o.name.toLowerCase() == targetName)));
 				if (!target)
 					return false;	
 			}
