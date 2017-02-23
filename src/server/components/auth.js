@@ -3,13 +3,15 @@ define([
 	'misc/messages',
 	'security/connections',
 	'leaderboard/leaderboard',
-	'config/skins'
+	'config/skins',
+	'misc/profanities'
 ], function(
 	io,
 	messages,
 	connections,
 	leaderboard,
-	skins
+	skins,
+	profanities
 ) {
 	return {
 		type: 'auth',
@@ -250,6 +252,11 @@ define([
 					msg.callback(messages.login.illegal);
 					return;
 				}
+			}
+
+			if (!profanities.isClean(credentials.username)) {
+				msg.callback(messages.login.invalid);
+				return;
 			}
 
 			io.get({
