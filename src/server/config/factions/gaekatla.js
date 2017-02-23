@@ -52,9 +52,9 @@ define([
 				afterKillMob: function(item, mob) {
 					var effect = item.effects.find(e => (e.factionId == 'gaekatla'));
 
-					//var roll = Math.random() * 100;
-					//if (roll >= this.chance)
-					//	return;
+					var roll = Math.random() * 100;
+					if (roll >= this.chance)
+						return;
 
 					//Spawn a mob
 					var mob = spawners.spawn({
