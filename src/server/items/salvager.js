@@ -120,7 +120,7 @@ define([
 				if (m.qualityMult)
 					max *= (m.qualityMult * (item.quality + 1));
 
-				var quantity = Math.ceil(random.norm(0, 1) * max);
+				var quantity = Math.ceil(random.norm(0, 1) * max) || 1;
 				if (maxRoll)
 					quantity = Math.ceil(max);
 
