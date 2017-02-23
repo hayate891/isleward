@@ -5,7 +5,7 @@ define([
 ) {
 	return {
 		login: {
-			invalid: 'invalid username chosen',
+			invalid: 'invalid name chosen',
 			exists: 'username exists, please try another',
 			allFields: 'please complete all fields',
 			illegal: 'illegal characters in username/password',

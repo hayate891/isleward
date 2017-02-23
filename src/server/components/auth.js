@@ -302,6 +302,11 @@ define([
 				return;
 			}
 
+			if (!profanities.isClean(data.name)) {
+				msg.callback(messages.login.invalid);
+				return;
+			}
+
 			io.get({
 				ent: data.name,
 				field: 'character',
