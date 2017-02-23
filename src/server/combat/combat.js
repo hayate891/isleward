@@ -58,6 +58,8 @@ define([
 				}
 			}
 
+			amount *= 10000;
+
 			return {
 				amount: amount,
 				crit: isCrit,
