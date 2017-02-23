@@ -143,7 +143,7 @@ module.exports = {
 				}
 			}
 		},
-		estrid: {
+		shopestrid: {
 			properties: {
 				cpnNotice: {
 					actions: {
@@ -162,7 +162,7 @@ module.exports = {
 				}
 			}
 		},
-		tola: {
+		shoptola: {
 			properties: {
 				cpnNotice: {
 					actions: {
@@ -181,7 +181,7 @@ module.exports = {
 				}
 			}
 		},
-		priest: {
+		shoppriest: {
 			properties: {
 				cpnNotice: {
 					actions: {
