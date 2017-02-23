@@ -57,7 +57,7 @@ define([
 					//	return;
 
 					//Spawn a mob
-					var mob = spawners.spawn({
+					var mob = mob.instance.spawners.spawn({
 						amountLeft: 1,
 						blueprint: {
 							x: mob.x,
