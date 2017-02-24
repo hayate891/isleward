@@ -266,11 +266,12 @@ define([
 			x = ~~x;
 			y = ~~y;
 
+			//Colliders d
 			var node = this.graph.grid[x][y];
 			if (node)
 				return node.isWall();
 			else
-				return false;
+				return true;
 		},
 		isCellOpen: function(x, y) {
 			if ((x < 0) || (y < 0) || (x >= this.width) | (y >= this.height))

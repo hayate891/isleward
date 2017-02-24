@@ -83,7 +83,7 @@ define([
 						dx = ~~(dx / Math.abs(dx));
 						dy = ~~(dy / Math.abs(dy));
 						for (var l = 0; l < this.pushback; l++) {
-							if (physics.isTileBlocking(targetPos.x + dx, targetPos.y + dy)) {
+							if (physics.isTileBlocking(targetPos.x + dx, targetPos.y + dy, true)) {
 								if (physics.isTileBlocking(targetPos.x + dx, targetPos.y)) {
 									if (physics.isTileBlocking(targetPos.x, targetPos.y + dy)) {
 										break;

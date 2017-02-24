@@ -39,7 +39,7 @@ define([
 			random: {
 				damage: [6.7, 13.3],
 				i_radius: [1, 2.2],
-				i_pushback: [1, 4]
+				i_pushback: [5, 10]
 			}
 		},
 		'smite': {
