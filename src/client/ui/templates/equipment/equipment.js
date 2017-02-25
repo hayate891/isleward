@@ -90,10 +90,11 @@ define([
 
 			this.find('[slot]')
 				.removeData('item')
-				.addClass('empty')
+				.addClass('empty show-default-icon')
 				.find('.icon')
 					.off()
-					.css('background', '')
+					.css('background-image', '')
+					.css('background-position', '')
 					.on('click', this.buildSlot.bind(this));
 
 			items
@@ -121,7 +122,7 @@ define([
 					var elSlot = this.find('[slot="' + slot + '"]');
 					elSlot
 						.data('item', item)
-						.removeClass('empty')
+						.removeClass('empty show-default-icon')
 						.find('.icon')
 							.css('background', 'url("' + spritesheet + '") ' + imgX + 'px ' + imgY + 'px')
 							.off()
