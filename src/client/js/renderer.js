@@ -181,8 +181,10 @@ define([
 		},
 
 		onResize: function() {
-			this.width = $('body').width();
-			this.height = $('body').height();
+			var zoom = window.devicePixelRatio;
+
+			this.width = $('body').width() * zoom;
+			this.height = $('body').height() * zoom;
 
 			this.renderer.resize(this.width, this.height);
 			if (window.player) {
