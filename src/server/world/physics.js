@@ -203,7 +203,6 @@ define([
 			var cells = this.cells;
 			var grid = this.graph.grid;
 
-			var result = [];
 			for (var i = x1; i <= x2; i++) {
 				var row = cells[i];
 				var gridRow = grid[i];
@@ -217,11 +216,20 @@ define([
 							x: i,
 							y: j
 						};
+					} else {
+						//If the only contents are notices, we can still use it
+						var allNotices = !cell.some(c => !c.notice);
+						if (allNotices) {
+							return {
+								x: i,
+								y: j
+							};
+						}
 					}
 				}
 			}
 
-			return result;
+			return null;
 		},
 
 		getPath: function(from, to) {
