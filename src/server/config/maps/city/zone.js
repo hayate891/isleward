@@ -111,7 +111,7 @@ module.exports = {
 					},
 					faction: {
 						id: 'gaekatla',
-						tier: 1
+						tier: 6
 					},
 					markup: {
 						buy: 0.25,
