@@ -45,7 +45,10 @@ define([
 					var value = item.enchantedStats[p];
 
 					if (item.stats[p]) {
-						result.addStatMsgs.push('-' + value + ' ' + p);
+						result.addStatMsgs.push({
+							stat: p,
+							value: -value
+						});
 						item.stats[p] -= value;
 						if (item.stats[p] <= 0)
 							delete item.stats[p];
