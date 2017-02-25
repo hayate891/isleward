@@ -18,8 +18,14 @@ define([
 				var mobTypes = this.obj.instance.spawners.zone.mobs;
 				var mobCounts = this.obj.instance.spawners.mobTypes;
 				var keys = Object.keys(mobTypes).filter(function(m) {
-					return ((m != 'default') && (mobTypes[m].questItem));
-				});
+					var mobBlueprint = mobTypes[m];
+
+					return (
+						(m != 'default') && 
+						(mobBlueprint.questItem) &&
+						(mobBlueprint.level <= (this.obj.stats.values.level * 1.35))
+					);
+				}, this);
 				this.mobType = keys[~~(Math.random() * keys.length)];
 				var needMax = 8;
 				this.mobName = this.mobType.replace(/\w\S*/g, function(txt) {
