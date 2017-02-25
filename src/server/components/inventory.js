@@ -376,6 +376,9 @@ define([
 			if (this.obj.player)
 				delete item.fromMob;
 
+			//Store the quantity to send to the player
+			var quantity = item.quantity;
+
 			//Material?
 			var exists = false;
 			if ((item.material) || (item.quest)) {
@@ -437,8 +440,8 @@ define([
 				var messages = [];
 
 				var msg = item.name;
-				if (item.quantity)
-					msg += ' x' + item.quantity;
+				if (quantity)
+					msg += ' x' + quantity;
 				messages.push({
 					class: 'q' + item.quality,
 					message: 'loot (' + msg + ')',
