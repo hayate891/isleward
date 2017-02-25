@@ -15,12 +15,7 @@ define([
 		tpl: template,
 		centered: true,
 
-		classSprites: {
-			warrior: [1, 1],
-			wizard: [2, 0],
-			thief: [6, 0],
-			cleric: [4, 0]
-		},
+		classSprites: null,
 		class: 'wizard',
 		costume: 0,
 
@@ -172,13 +167,15 @@ define([
 		},
 
 		setSprite: function() {
-			var classSprite = this.classSprites[this.class];
-			var costume = classSprite[this.costume].split(',');
+			var classSprite = this.classSprites[this.class][this.costume];
+			var costume = classSprite.sprite.split(',');
 			var spirteX = -costume[0] * 32;
 			var spriteY = -costume[1] * 32;
 
+			var spritesheet = classSprite.spritesheet || '../../../images/charas.png';
+
 			this.find('.sprite')
-				.css('background', 'url("../../../images/charas.png") ' + spirteX + 'px ' + spriteY + 'px');
+				.css('background', 'url("' + spritesheet + '") ' + spirteX + 'px ' + spriteY + 'px');
 		}
 	};
 });

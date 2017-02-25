@@ -21,7 +21,9 @@ define([
 
 		onContextMenu: function(e) {
 			var target = this.target;
-			if ((e.button != 2) || (!target) || (!target.dialogue) || (target == window.player) || (target.player))
+			//This is kind of a hack. We check if the target has a prophecies component since we can't check for
+			// target.player (only the logged-in player has a player component)
+			if ((e.button != 2) || (!target) || (!target.dialogue) || (target == window.player) || (target.prophecies))
 				return;
 
 			var context = [

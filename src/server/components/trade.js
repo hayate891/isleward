@@ -11,7 +11,7 @@ define([
 
 		maxBuyback: 10,
 
-		gold: 1000,
+		gold: 0,
 
 		target: null,
 
@@ -21,6 +21,8 @@ define([
 		},
 
 		init: function(blueprint) {
+			this.gold = blueprint.gold;
+
 			if (!blueprint.items)
 				return;
 
@@ -132,7 +134,7 @@ define([
 				return;
 			}
 
-			if (!targetTrade.canBuy(msg.itemId, this.obj)) {
+			if (!targetTrade.canBuy(msg.itemId, this.obj, msg.action)) {
 				this.resolveCallback(msg);
 				return;
 			}
@@ -260,7 +262,7 @@ define([
 			return this.items;
 		},
 
-		canBuy: function(itemId, requestedBy) {
+		canBuy: function(itemId, requestedBy, action) {
 			return true;
 		},
 

@@ -119,7 +119,7 @@ define([
 				var itemEl = $(tplItem)
 					.appendTo(container);
 
-				var spritesheet = 'items';
+				var spritesheet = item.spritesheet || 'items';
 				if (item.material)
 					spritesheet = 'materials';
 				else if (item.quest)
@@ -282,14 +282,16 @@ define([
 				}
 			}
 
-			if ((!item.quest) && (!item.eq)) {
-				if ((window.player.stash.active) && (!item.noSalvage))
-					config.push(menuItems.stash);
+			if (!item.eq) {
+				if (!item.quest) {
+					if ((window.player.stash.active) && (!item.noSalvage))
+						config.push(menuItems.stash);
 
-				config.push(menuItems.drop);
+					config.push(menuItems.drop);
 
-				if ((!item.material) && (!item.noSalvage))
-					config.push(menuItems.salvage);
+					if ((!item.material) && (!item.noSalvage))
+						config.push(menuItems.salvage);
+				}
 
 				config.push(menuItems.destroy);
 			}

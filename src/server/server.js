@@ -10,7 +10,10 @@ define([
 			global.io = require('socket.io')(server);
 
 			app.use(function(req, res, next) {
-				req.url = '/client/' + req.url;
+				if (req.url.indexOf('/server') != 0)
+					req.url = '/client/' + req.url;
+				else
+					req.url.substr(7);
 
 				next();
 			});

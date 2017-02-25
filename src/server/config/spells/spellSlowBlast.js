@@ -128,7 +128,6 @@ define([
 		},
 
 		cast: function(action) {
-			console.log(1);
 			this.castingEffect = this.obj.effects.addEffect({
 				type: 'casting'
 			});

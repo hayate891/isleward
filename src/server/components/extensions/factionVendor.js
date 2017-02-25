@@ -140,9 +140,16 @@ define([
 			}
 		},
 
-		canBuy: function(itemId, requestedBy) {
-			var item = this.findItem(itemId, requestedBy.name);
-			var result = requestedBy.reputation.canEquipItem(item);
+		canBuy: function(itemId, requestedBy, action) {
+			var item = null;
+			if (action == 'buy')
+				item = this.findItem(itemId, requestedBy.name);
+			else if (action == 'buyback')
+				item = this.findBuyback(itemId, requestedBy.name);
+			
+			var result = true;
+			if (item.faction)
+				result = requestedBy.reputation.canEquipItem(item);
 
 			if (!result) {
 				requestedBy.instance.syncer.queue('onGetMessages', {

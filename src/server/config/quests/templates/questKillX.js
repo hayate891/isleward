@@ -12,19 +12,36 @@ define([
 		type: 'killX',
 
 		build: function() {
-			if (!this.mobName) {
+			//If we're not in the correct zone, don't do this check, it'll just crash the server
+			// since the mob won't be available (most likely) in the zoneFile
+			if (this.obj.zoneName == this.zoneName) {
 				var mobTypes = this.obj.instance.spawners.zone.mobs;
-				var mobCounts = this.obj.instance.spawners.mobTypes;
-				var keys = Object.keys(mobTypes).filter(function(m) {
-					return (m != 'default');
-				});
-				this.mobType = keys[~~(Math.random() * keys.length)];
-				var needMax = 8;
-				this.mobName = this.mobType.replace(/\w\S*/g, function(txt) {
-					return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-				});
+				if (this.mobName) {
+					var mobType = mobTypes[this.mobName.toLowerCase()];
+					//Maybe the zoneFile changed in the meantime. If so, regenerate
+					if ((!mobType) || (mobType.attackable == false))
+						this.mobName = null;
+				}
 
-				this.need = Math.max(1, ~~((needMax * 0.2) + (Math.random() * needMax * 0.8)));
+				if (!this.mobName) {
+					var mobCounts = this.obj.instance.spawners.mobTypes;
+					var keys = Object.keys(mobTypes).filter(function(m) {
+						return (
+							(m != 'default') &&
+							(
+								(mobTypes[m].attackable) ||
+								(mobTypes[m].attackable == null)
+							)
+						);
+					});
+					this.mobType = keys[~~(Math.random() * keys.length)];
+					var needMax = 8;
+					this.mobName = this.mobType.replace(/\w\S*/g, function(txt) {
+						return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+					});
+
+					this.need = Math.max(1, ~~((needMax * 0.2) + (Math.random() * needMax * 0.8)));
+				}
 			}
 
 			this.description = 'Kill ' + this.have + '/' + this.need + ' ' + this.mobName;

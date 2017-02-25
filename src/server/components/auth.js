@@ -55,7 +55,15 @@ define([
 			var sLen = statKeys.length;
 			for (var i = 0; i < sLen; i++) {
 				var s = statKeys[i];
-				if ((s.indexOf('xp') > -1) || (s == 'level') || (s == 'hp') || (s == 'mana'))
+				if (
+					(
+						(s.indexOf('xp') > -1) &&
+						(s != 'xpIncrease')
+					) ||
+					(s == 'level') ||
+					(s == 'hp') ||
+					(s == 'mana')
+				)
 					continue;
 
 				delete stats.values[s];
@@ -115,8 +123,8 @@ define([
 
 			var result = characters
 				.map(c => ({
-					name: c,
-					level: leaderboard.getLevel(c)
+					name: c.name ? c.name : c,
+					level: leaderboard.getLevel(c.name ? c.name : c)
 				}));
 
 			data.callback(result);
@@ -282,6 +290,11 @@ define([
 		createCharacter: function(msg) {
 			var data = msg.data;
 
+			if ((data.name.length < 3) || (data.name.length > 12)) {
+				msg.callback(messages.createCharacter.nameLength);
+				return;
+			}
+
 			io.get({
 				ent: data.name,
 				field: 'character',
@@ -300,14 +313,8 @@ define([
 			this.obj.class = data.class;
 			this.obj.costume = data.costume;
 
-			var tiles = {
-				wizard: [2, 3],
-				cleric: [4, 5],
-				thief: [6, 7],
-				warrior: [9, 10]
-			};
-
-			this.obj.cell = tiles[data.class][data.costume];
+			this.obj.cell = skins.getCell(this.obj.class, this.obj.costume);
+			this.obj.previewSpritesheet = skins.getSpritesheet(this.obj.class);
 
 			var simple = this.obj.getSimple(true);
 			simple.components.push({
@@ -360,10 +367,16 @@ define([
 		},
 		onDeleteCharacter: function(msg, result) {
 			this.characterList.spliceWhere(c => c == msg.data.name);
+			var characterList = this.characterList
+				.map(c => ({
+					name: c.name ? c.name : c,
+					level: leaderboard.getLevel(c.name ? c.name : c)
+				}));
+
 			io.set({
 				ent: this.username,
 				field: 'characterList',
-				value: JSON.stringify(this.characterList),
+				value: JSON.stringify(characterList),
 				callback: this.onRemoveFromList.bind(this, msg)
 			});
 

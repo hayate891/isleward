@@ -2,12 +2,14 @@ define([
 	'./../config/spells/spellTemplate',
 	'./../config/animations',
 	'./../config/spells',
-	'./../config/spellsConfig'
+	'./../config/spellsConfig',
+	'misc/events'
 ], function(
 	spellTemplate,
 	animations,
 	playerSpells,
-	playerSpellsConfig
+	playerSpellsConfig,
+	events
 ) {
 	return {
 		type: 'spellbook',
@@ -82,9 +84,15 @@ define([
 
 			var type = options.type[0].toUpperCase() + options.type.substr(1);
 
-			var typeTemplate = require('./config/spells/spell' + type);
+			var typeTemplate = {
+				type: type,
+				template: null
+			};
+			events.emit('onBeforeGetSpellTemplate', typeTemplate);
+			if (!typeTemplate.template)
+				typeTemplate.template = require('./config/spells/spell' + type);
 
-			var builtSpell = extend(true, {}, spellTemplate, typeTemplate, options);
+			var builtSpell = extend(true, {}, spellTemplate, typeTemplate.template, options);
 			builtSpell.obj = this.obj;
 			builtSpell.baseDamage = builtSpell.damage;
 			builtSpell.damage += (options.damageAdd || 0);

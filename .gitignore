@@ -1,2 +1,6 @@
 node_modules
 storage.db
+*.sublime-project
+*.sublime-workspace
+
+*.css

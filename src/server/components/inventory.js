@@ -11,7 +11,6 @@ define([
 	objects,
 	classes
 ) {
-
 	return {
 		type: 'inventory',
 
@@ -196,6 +195,8 @@ define([
 			if (!item)
 				return;
 
+			amount = amount || item.quantity;
+
 			if (item.eq)
 				this.obj.equipment.unequip(id);
 
@@ -213,6 +214,8 @@ define([
 
 			if (this.obj.player)
 				this.getDefaultAbilities();
+
+			this.obj.fireEvent('afterDestroyItem', item, amount);
 
 			return item;
 		},
@@ -480,42 +483,38 @@ define([
 				else
 					this.obj.equipment.equip(item.id);
 			} else {
-				var didEq = false;
-				//if ((item.slot) && (this.obj.equipment)) {
-				//	didEq = this.obj.equipment.autoEquip(item.id);
-				//}
-				if (!didEq) {
-					if (!item.effects)
-						this.obj.syncer.setArray(true, 'inventory', 'getItems', item);
-					else {
-						var result = extend(true, {}, item);
-						result.effects = result.effects.map(e => ({
-							factionId: e.factionId,
-							text: e.text,
-							properties: e.properties
-						}));
-						var reputation = this.obj.reputation;
+				if (!item.effects)
+					this.obj.syncer.setArray(true, 'inventory', 'getItems', item);
+				else {
+					var result = extend(true, {}, item);
+					result.effects = result.effects.map(e => ({
+						factionId: e.factionId,
+						text: e.text,
+						properties: e.properties
+					}));
+					
+					var reputation = this.obj.reputation;
 
-						if (result.factions) {
-							result.factions = result.factions.map(function(f) {
-								var faction = reputation.getBlueprint(f.id);
-								var factionTier = reputation.getTier(f.id);
+					//Don't do this check if we don't have a reputation cpn. That means this is most likely a bag
+					if ((reputation) && (result.factions)) {
+						result.factions = result.factions.map(function(f) {
+							var faction = reputation.getBlueprint(f.id);
+							var factionTier = reputation.getTier(f.id);
 
-								var noEquip = null;
-								if (factionTier < f.tier)
-									noEquip = true;
+							var noEquip = null;
+							if (factionTier < f.tier)
+								noEquip = true;
 
-								return {
-									name: faction.name,
-									tier: f.tier,
-									tierName: ['Hated', 'Hostile', 'Unfriendly', 'Neutral', 'Friendly', 'Honored', 'Revered', 'Exalted'][f.tier],
-									noEquip: noEquip
-								};
-							}, this);
-						}
-
-						this.obj.syncer.setArray(true, 'inventory', 'getItems', result);
+							return {
+								name: faction.name,
+								tier: f.tier,
+								tierName: ['Hated', 'Hostile', 'Unfriendly', 'Neutral', 'Friendly', 'Honored', 'Revered', 'Exalted'][f.tier],
+								noEquip: noEquip
+							};
+						}, this);
 					}
+
+					this.obj.syncer.setArray(true, 'inventory', 'getItems', result);
 				}
 			}
 
