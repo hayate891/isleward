@@ -1,6 +1,6 @@
 define([
-	'config/spells',
-	'config/spellsConfig'
+	'../../config/spells',
+	'../../config/spellsConfig'
 ], function(
 	spells,
 	spellsConfig

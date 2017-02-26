@@ -1,5 +1,5 @@
 define([
-	'items/config/slots'
+	'../config/slots'
 ], function(
 	configSlots
 ) {

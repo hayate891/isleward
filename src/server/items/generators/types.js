@@ -1,6 +1,6 @@
 define([
-	'items/config/types',
-	'items/config/armorMaterials'
+	'../config/types',
+	'../config/armorMaterials'
 ], function(
 	configTypes,
 	armorMaterials

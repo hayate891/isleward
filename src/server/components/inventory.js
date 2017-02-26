@@ -1,9 +1,9 @@
 define([
-	'items/generator',
-	'items/salvager',
-	'items/enchanter',
-	'objects/objects',
-	'config/classes'
+	'../items/generator',
+	'../items/salvager',
+	'../items/enchanter',
+	'../objects/objects',
+	'../config/classes'
 ], function(
 	generator,
 	salvager,

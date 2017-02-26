@@ -1,5 +1,5 @@
 define([
-	'misc/events'
+	'../../misc/events'
 ], function(
 	events
 ) {

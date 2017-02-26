@@ -1,5 +1,5 @@
 define([
-	'security/io'
+	'../security/io'
 ], function(
 	io
 ) {

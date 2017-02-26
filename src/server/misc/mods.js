@@ -1,6 +1,6 @@
 define([
-	'misc/fileLister',
-	'misc/events'
+	'./fileLister',
+	'./events'
 ], function(
 	fileLister,
 	events

@@ -1,5 +1,5 @@
 define([
-	'misc/fileLister'
+	'../misc/fileLister'
 ], function(
 	fileLister
 ) {

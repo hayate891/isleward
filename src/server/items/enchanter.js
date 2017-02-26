@@ -1,6 +1,6 @@
 define([
-	'items/generators/stats',
-	'items/salvager'
+	'./generators/stats',
+	'./salvager'
 ], function(
 	generatorStats,
 	salvager

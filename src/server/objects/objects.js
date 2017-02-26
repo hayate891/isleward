@@ -1,6 +1,6 @@
 define([
-	'objects/objBase',
-	'leaderboard/leaderboard'
+	'../objects/objBase',
+	'../leaderboard/leaderboard'
 ], function(
 	objBase,
 	leaderboard

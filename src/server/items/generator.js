@@ -1,13 +1,13 @@
 define([
-	'items/generators/level',
-	'items/generators/quality',
-	'items/generators/slots',
-	'items/generators/types',
-	'items/generators/stats',
-	'items/generators/names',
-	'items/generators/worth',
-	'items/generators/spellbook',
-	'items/salvager'
+	'./generators/level',
+	'./generators/quality',
+	'./generators/slots',
+	'./generators/types',
+	'./generators/stats',
+	'./generators/names',
+	'./generators/worth',
+	'./generators/spellbook',
+	'./salvager'
 ], function(
 	g1, g2, g3, g4, g5, g6, g7,
 	g8

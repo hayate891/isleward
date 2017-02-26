@@ -1,0 +1,10 @@
+{
+  "name": "isleward-tests",
+  "version": "0.0.1",
+  "description": "isleward-tests",
+  "dependencies": {
+    "extend": "^3.0.0",
+    "requirejs": "^2.3.3"
+  },
+  "devDependencies": {}
+}

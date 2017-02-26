@@ -1,5 +1,5 @@
 define([
-	'components/components'
+	'../components/components'
 ], function(
 	components
 ) {
