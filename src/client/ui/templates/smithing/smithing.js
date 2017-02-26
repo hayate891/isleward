@@ -3,13 +3,15 @@ define([
 	'js/system/client',
 	'html!ui/templates/smithing/template',
 	'css!ui/templates/smithing/styles',
-	'html!/ui/templates/smithing/templateItem'
+	'html!/ui/templates/smithing/templateItem',
+	'js/misc/statTranslations'
 ], function(
 	events,
 	client,
 	template,
 	styles,
-	templateItem
+	templateItem,
+	statTranslations
 ) {
 	return {
 		tpl: template,
@@ -89,7 +91,7 @@ define([
 			}
 
 			result.addStatMsgs.forEach(function(a) {
-				msg.msg += '<br /> ' + a;
+				msg.msg += '<br /> ' + ((a.value > 0) ? '+' : '-') + a.value + ' ' + statTranslations.translate(a.stat);
 			});
 
 			events.emit('onGetAnnouncement', msg);
