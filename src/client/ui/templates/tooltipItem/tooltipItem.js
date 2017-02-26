@@ -2,12 +2,14 @@ define([
 	'js/system/events',
 	'css!ui/templates/tooltipItem/styles',
 	'html!ui/templates/tooltipItem/template',
-	'html!ui/templates/tooltipItem/templateTooltip'
+	'html!ui/templates/tooltipItem/templateTooltip',
+	'js/misc/statTranslations'
 ], function(
 	events,
 	styles,
 	template,
-	tplTooltip
+	tplTooltip,
+	statTranslations
 ) {
 	return {
 		tpl: template,
@@ -59,7 +61,7 @@ define([
 
 			stats = Object.keys(tempStats)
 				.map(function(s) {
-					var statName = this.mapStat(s);
+					var statName = statTranslations.translate(s);
 					var value = tempStats[s];
 
 					if (['addCritChance', 'sprintChance', 'dmgPercent', 'xpIncrease'].indexOf(s) > -1)
@@ -216,44 +218,6 @@ define([
 
 			if (!canAfford)
 				this.tooltip.find('.worth').addClass('no-afford');
-		},
-
-		mapStat: function(stat) {
-			return {
-				'vit': 'vitality',
-				'hpMax': 'vitality',
-				'regenHp': 'health regeneration',
-				'manaMax': 'maximum mana',
-				'regenMana': 'mana regeneration',
-				'str': 'strength',
-				'int': 'intellect',
-				'dex': 'dexterity',
-				'armor': 'armor',
-				'addCritChance': 'increased crit chance',
-				'magicFind': 'magic find',
-				'sprintChance': 'sprint chance',
-				'dmgPercent': 'to all damage',
-				'allAttributes': 'to all attributes',
-				'xpIncrease': 'additional xp per kill',
-
-				'elementArcanePercent': 'increased arcane damage',
-				'elementFrostPercent': 'increased frost damage',
-				'elementFirePercent': 'increased fire damage',
-				'elementHolyPercent': 'increased holy damage',
-				'elementPhysicalPercent': 'increased physical damage',
-				'elementPoisonPercent': 'increased poison damage',
-
-				'elementArcaneResist': 'arcane resistance',
-				'elementFrostResist': 'frost resistance',
-				'elementFireResist': 'fire resistance',
-				'elementHolyResist': 'holy resistance',
-				'elementPhysicalResist': 'physical resistance',
-				'elementPoisonResist': 'poison resistance',
-				'elementAllResist': 'all resistance',
-
-				//This stat is used for gambling when you can't see the stats
-				'stats': 'stats'
-			}[stat];
 		}
 	};
 });
