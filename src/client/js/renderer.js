@@ -567,8 +567,8 @@ define([
 		},
 
 		buildObject: function(obj) {
-			var w = 8;
-			var h = 8;
+			var w = window.spriteSize;
+			var h = window.spriteSize;
 			if (obj.w) {
 				w = obj.w / scaleMult;
 				h = obj.h / scaleMult;
@@ -576,14 +576,14 @@ define([
 
 			if (obj.sheetName == 'bosses') {
 				obj.layerName = 'mobs';
-				w = 24;
-				h = 24;
+				w = window.spriteSize * 3;
+				h = window.spriteSize * 3;
 				obj.w = w * scaleMult;
 				obj.h = h * scaleMult;
 			} else if (obj.sheetName == 'bigObjects') {
 				obj.layerName = 'mobs';
-				w = 24;
-				h = 24;
+				w = window.spriteSize * 3;
+				h = window.spriteSize * 3;
 				obj.w = w * scaleMult;
 				obj.h = h * scaleMult;
 			}
@@ -616,9 +616,9 @@ define([
 		},
 
 		addFilter: function(sprite) {
-			var thickness = 16;
+			var thickness = window.spriteSize * 2;
 			if (sprite.width > scale)
-				thickness = 8;
+				thickness = window.spriteSize;
 
 			var filter = new shaderOutline(this.renderer.width, this.renderer.height, thickness, '0xffffff');
 
