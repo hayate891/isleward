@@ -3,7 +3,7 @@ module.exports = {
 		'1': {
 			msg: [{
 				msg: `What? Oh...what are you doing here?`,
-				options: [1.1, 1.2, 1.3, 1.4, 1.5]
+				options: [1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7]
 			}],
 			options: {
 				'1.1': {
@@ -25,6 +25,14 @@ module.exports = {
 				'1.5': {
 					msg: `I changed my mind, I want to buy something back.`,
 					goto: 'tradeBuyback'
+				},
+				'1.6': {
+					msg: `Send me to the big city.`,
+					goto: 'portalCity'
+				},
+				'1.7': {
+					msg: `Gimme`,
+					goto: 'getItem'
 				}
 			}
 		},
@@ -85,6 +93,18 @@ module.exports = {
 				}
 			}
 		},
+		'4': {
+			msg: `There you go!`,
+			options: {
+				
+			}
+		},
+		'5': {
+			msg: `You already have that!`,
+			options: {
+				
+			}
+		},
 		tradeBuy: {
 			cpn: 'trade',
 			method: 'startBuy',
@@ -105,6 +125,32 @@ module.exports = {
 			args: [{
 				targetName: 'hermit'
 			}]
+		},
+		portalCity: {
+			cpn: 'dialogue',
+			method: 'teleport',
+			args: [{
+				toZone: 'city',
+				toPos: {
+					x: 136,
+					y: 216
+				}
+			}]
+		},
+		getItem: {
+			cpn: 'dialogue',
+			method: 'getItem',
+			args: [{
+				item: {
+					name: 'fancy feather',
+					quest: true,
+					sprite: [0, 0]
+				}
+			}],
+			goto: {
+				success: 4,
+				failure: 5
+			}
 		}
 	}
 };
