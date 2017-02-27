@@ -847,6 +847,22 @@
                  "width":8,
                  "x":592,
                  "y":456
+                }, 
+                {
+                 "gid":628,
+                 "height":24,
+                 "id":618,
+                 "name":"Wastes Entrance",
+                 "properties":
+                    {
+                     "cpnPortal":"{\"zone\":\"manaWastes\",\"pos\":{\"x\":85,\"y\":47}}"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":24,
+                 "x":392,
+                 "y":432
                 }],
          "opacity":1,
          "properties":
@@ -1261,7 +1277,7 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":617,
+ "nextobjectid":619,
  "orientation":"orthogonal",
  "properties":
     {
@@ -1274,6 +1290,7 @@
  "tileheight":8,
  "tilesets":[
         {
+         "columns":8,
          "firstgid":1,
          "image":"..\/..\/..\/..\/client\/images\/walls.png",
          "imageheight":192,
@@ -1329,6 +1346,7 @@
          "tilewidth":8
         }, 
         {
+         "columns":8,
          "firstgid":193,
          "image":"..\/..\/..\/..\/client\/images\/mobs.png",
          "imageheight":80,
@@ -1352,6 +1370,7 @@
          "tilewidth":8
         }, 
         {
+         "columns":8,
          "firstgid":273,
          "image":"..\/..\/..\/..\/client\/images\/tiles.png",
          "imageheight":192,
@@ -1459,6 +1478,7 @@
          "tilewidth":8
         }, 
         {
+         "columns":8,
          "firstgid":465,
          "image":"..\/..\/..\/..\/client\/images\/objects.png",
          "imageheight":160,
@@ -1482,6 +1502,7 @@
          "tilewidth":8
         }, 
         {
+         "columns":8,
          "firstgid":625,
          "image":"..\/..\/..\/..\/client\/images\/bigObjects.png",
          "imageheight":240,

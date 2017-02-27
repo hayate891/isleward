@@ -8,6 +8,7 @@ define([
 		'tutorial',
 		'estuary',
 		'city',
-		'sewer'
+		'sewer',
+		'manaWastes'
 	];
 });
