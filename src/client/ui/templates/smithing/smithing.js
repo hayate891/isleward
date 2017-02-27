@@ -91,7 +91,7 @@ define([
 			}
 
 			result.addStatMsgs.forEach(function(a) {
-				msg.msg += '<br /> ' + ((a.value > 0) ? '+' : '-') + a.value + ' ' + statTranslations.translate(a.stat);
+				msg.msg += '<br /> ' + ((a.value > 0) ? '+' : '') + a.value + ' ' + statTranslations.translate(a.stat);
 			});
 
 			events.emit('onGetAnnouncement', msg);
