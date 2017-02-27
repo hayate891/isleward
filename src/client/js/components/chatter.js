@@ -56,6 +56,16 @@ define([
 			obj.chatSprite.visible = true;
 
 			this.cd = this.cdMax;
+		},
+
+		destroy: function() {
+			var chatSprite = this.obj.chatSprite;
+			if (!chatSprite)
+				return;
+
+			renderer.destroyObject({
+				sprite: chatSprite
+			});
 		}
 	};
 });
