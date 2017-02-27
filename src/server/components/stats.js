@@ -230,8 +230,17 @@ define([
 					get = ~~get;
 				}
 
-				if (a.obj.stats)
-					a.obj.stats.getXp(inc);
+				if (a.obj.stats) {
+					//Scale xp by source level so you can't just farm low level mobs (or get boosted on high level mobs).
+					//Mobs that are farther then 10 levels from you, give no xp
+					//We don't currently do this for quests/herb gathering
+					var levelDelta = level - a.obj.stats.values.level;
+					var amount = 0;
+					if (Math.abs(levelDelta) <= 10)
+						amount = ~~((get + (levelDelta * 10)) * Math.pow(1 - (Math.abs(levelDelta) / 10), 2));
+
+					a.obj.stats.getXp(amount, this.obj);
+				}
 				
 	
 				a.obj.fireEvent('afterKillMob', target);
