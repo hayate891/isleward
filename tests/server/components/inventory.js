@@ -4,8 +4,9 @@ define([
 	mocks
 ) {
 	return {
-		stashItemExists: function() {
-			var player = mocks.generate({
+		//Does the item exist in the stash after stashing it
+		stashItem_Exists: function() {
+			var player = mocks.player({
 				inventory: {
 					items: [{
 						id: 0
@@ -22,8 +23,10 @@ define([
 			if (!stashedItem)
 				return true;
 		},
-		stashItemQuantity: function() {
-			var player = mocks.generate({
+
+		//Does the stashed item have the correct quantity
+		stashItem_Quantity: function() {
+			var player = mocks.player({
 				inventory: {
 					items: [{
 						id: 0,

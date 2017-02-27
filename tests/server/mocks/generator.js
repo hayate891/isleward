@@ -4,9 +4,15 @@ define([
 	
 ) {
 	return {
-		generate: function(blueprint) {
+		player: function(blueprint) {
 			var result = {
-				fireEvent: function() {}
+				fireEvent: function() {},
+				syncer: {},
+				instance: {
+					syncer: {
+						queue: function() {}
+					}
+				}
 			};
 
 			blueprint.syncer = {};
@@ -21,6 +27,10 @@ define([
 			}
 
 			return result;
+		},
+
+		mob: function(blueprint) {
+			
 		}
 	};
 });

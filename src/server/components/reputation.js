@@ -1,5 +1,5 @@
 define([
-	'config/factionBase'
+	'../config/factionBase'
 ], function(
 	factionBase
 ) {
