@@ -17,6 +17,8 @@ define([
 			}
 
 			this.description = 'Loot 1x ' + this.slotName + ' slot item';
+
+			return true;
 		},
 
 		events: {

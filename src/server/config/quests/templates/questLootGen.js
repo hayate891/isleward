@@ -26,6 +26,11 @@ define([
 						(mobBlueprint.level <= (this.obj.stats.values.level * 1.35))
 					);
 				}, this);
+
+				//No level appropriate mobs found
+				if (keys.length == 0)
+					return false;
+
 				this.mobType = keys[~~(Math.random() * keys.length)];
 				var needMax = 8;
 				this.mobName = this.mobType.replace(/\w\S*/g, function(txt) {
@@ -39,6 +44,8 @@ define([
 
 			this.name = this.item.name + ' Gatherer';
 			this.description = 'Loot ' + this.have + '/' + this.need + ' ' + this.item.name + ' from ' + this.mobName;
+
+			return true;
 		},
 
 		oComplete: function() {

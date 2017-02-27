@@ -5,7 +5,9 @@ define([
 ) {
 	return {
 		init: function(hideMessage) {
-			this.build();
+			if (!this.build())
+				return false;
+
 			this.obj.syncer.setArray(true, 'quests', 'obtainQuests', this.simplify(true));
 
 			if (!hideMessage) {
@@ -17,6 +19,8 @@ define([
 					}]
 				}, [this.obj.serverId]);
 			}
+
+			return true;
 		},
 
 		ready: function() {

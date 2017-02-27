@@ -30,7 +30,12 @@ define([
 			quest.active = (this.obj.zoneName == quest.zoneName);
 
 			this.quests.push(quest);
-			quest.init(hideMessage);
+			if (!quest.init(hideMessage)) {
+				this.quests.spliceWhere(q => (q == quest));
+				return false;
+			}
+			else
+				return true;
 		},
 
 		complete: function(id) {
