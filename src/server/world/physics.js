@@ -278,7 +278,7 @@ define([
 			if (node)
 				return node.isWall();
 			else
-				return false;
+				return true;
 		},
 		isCellOpen: function(x, y) {
 			if ((x < 0) || (y < 0) || (x >= this.width) | (y >= this.height))
