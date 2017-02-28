@@ -100,12 +100,20 @@ define([
 		},
 
 		onGetParty: function(party) {
+			// Destroy invite frame if you join a party
+			if (this.invite) {
+				this.invite.el.remove();
+				this.invite = null;
+			}
+
 			var container = this.find('.party .list')
 				.empty();
 
 			this.party = party;
 			if (!party)
 				return;
+
+			var members = {};
 
 			party.forEach(function(p) {
 				if (p == window.player.serverId)
@@ -116,6 +124,10 @@ define([
 				});
 				var name = player ? player.name : 'unknown';
 				var level = 'level: ' + (player ? player.level : '?');
+
+				// Disallow duplicate frames for players in the party
+				if (members[name])
+					return;
 
 				var html = templatePartyMember
 					.replace('$NAME$', name)
@@ -135,6 +147,8 @@ define([
 				});
 				if ((memberObj) && (memberObj.stats))
 					this.onGetPartyStats(p, memberObj.stats.values);
+
+				members[name] = 1;
 			}, this);
 		},
 
