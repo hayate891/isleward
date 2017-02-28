@@ -100,6 +100,10 @@ define([
 		},
 
 		onGetParty: function(party) {
+			// Destroy invite frame if you join a party
+			if (this.invite)
+				this.destroyInvite();
+
 			var container = this.find('.party .list')
 				.empty();
 
