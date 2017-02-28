@@ -16,6 +16,8 @@ define([
 		statMult: 1,
 		targetGround: true,
 
+		needLos: true,
+
 		damage: 10,
 
 		delay: 10,

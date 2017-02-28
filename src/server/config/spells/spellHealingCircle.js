@@ -67,6 +67,7 @@ define([
 		duration: 70,
 
 		targetGround: true,
+		needLos: true,
 
 		cast: function(action) {
 			var obj = this.obj;
