@@ -23,6 +23,8 @@ define([
 		},
 
 		onGetTradeList: function(itemList, action) {
+			this.find('.heading-text').html(action);
+
 			var uiInventory = $('.uiInventory').data('ui');
 
 			var container = this.el.find('.grid')
@@ -54,8 +56,14 @@ define([
 					return 0;
 			});
 
-			var iLen = buyItems.length;
+			var iLen = Math.max(buyItems.length, 50);
 			for (var i = 0; i < iLen; i++) {
+				if (!buyItems[i]) {
+					$(tplItem).appendTo(container);		
+
+					continue;
+				}
+
 				var item = $.extend(true, {}, buyItems[i]);
 				item.worth = ~~(itemList.markup * item.worth);
 
@@ -74,7 +82,7 @@ define([
 				}
 
 				var imgX = (-item.sprite[0] * size) + offset;
-				var imgY = (-item.sprite[1] * size) + offset + 4;
+				var imgY = (-item.sprite[1] * size) + offset;
 
 				var itemEl = $(tplItem)
 					.appendTo(container);
