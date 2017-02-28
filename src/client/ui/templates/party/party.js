@@ -111,8 +111,6 @@ define([
 			if (!party)
 				return;
 
-			var members = {};
-
 			party.forEach(function(p) {
 				if (p == window.player.serverId)
 					return;
@@ -122,10 +120,6 @@ define([
 				});
 				var name = player ? player.name : 'unknown';
 				var level = 'level: ' + (player ? player.level : '?');
-
-				// Disallow duplicate frames for players in the party
-				if (members[name])
-					return;
 
 				var html = templatePartyMember
 					.replace('$NAME$', name)
@@ -145,8 +139,6 @@ define([
 				});
 				if ((memberObj) && (memberObj.stats))
 					this.onGetPartyStats(p, memberObj.stats.values);
-
-				members[name] = 1;
 			}, this);
 		},
 
