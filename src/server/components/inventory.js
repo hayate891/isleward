@@ -153,9 +153,10 @@ define([
 			var stash = this.obj.stash;
 			if (!stash.active)
 				return;
-
+			
+			var clonedItem = extend(true, {}, item);
 			this.destroyItem(id);
-			stash.deposit(item);
+			stash.deposit(clonedItem);
 		},
 
 		salvageItem: function(id) {
