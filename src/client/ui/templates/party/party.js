@@ -179,10 +179,12 @@ define([
 		},
 
 		destroyInvite: function(e) {
-			if ($(e.target).hasClass('btnAccept'))
-				this.acceptInvite();
-			else
-				this.declineInvite();
+			if (e) {
+				if ($(e.target).hasClass('btnAccept'))
+					this.acceptInvite();
+				else
+					this.declineInvite();
+			}
 
 			this.invite.el.remove();
 			this.invite = null;
