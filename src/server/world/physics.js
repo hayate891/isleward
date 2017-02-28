@@ -266,7 +266,6 @@ define([
 			x = ~~x;
 			y = ~~y;
 
-			//Colliders d
 			var node = this.graph.grid[x][y];
 			if (node)
 				return node.isWall();
