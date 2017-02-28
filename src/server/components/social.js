@@ -182,7 +182,7 @@ define([
 			}
 
 			// Only add if not yet in party
-			if (!this.party.find(f => (id === sourceId)))
+			if (!this.party.find(id => (id === sourceId)))
 				this.party.push(sourceId);
 
 			this.updatePartyOnThread();
