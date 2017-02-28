@@ -37,6 +37,11 @@ define([
 							(mobBlueprint.level <= ~~(this.obj.stats.values.level * 1.35))
 						);
 					}, this);
+
+					//No level appropriate mobs found
+					if (keys.length == 0)
+						return false;
+
 					this.mobType = keys[~~(Math.random() * keys.length)];
 					var needMax = 8;
 					this.mobName = this.mobType.replace(/\w\S*/g, function(txt) {
@@ -48,6 +53,8 @@ define([
 			}
 
 			this.description = 'Kill ' + this.have + '/' + this.need + ' ' + this.mobName;
+
+			return true;
 		},
 
 		events: {

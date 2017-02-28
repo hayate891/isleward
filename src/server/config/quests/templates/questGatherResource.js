@@ -15,6 +15,8 @@ define([
 			}
 
 			this.description = 'Gather ' + this.have + '/' + this.need + ' herbs';
+
+			return true;
 		},
 
 		events: {

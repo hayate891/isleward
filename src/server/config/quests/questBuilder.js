@@ -61,7 +61,8 @@ define([
 			quest.obj = obj;
 			quest.zoneName = zoneName;
 
-			oQuests.obtain(quest, !!template);
+			if (!oQuests.obtain(quest, !!template))
+				this.obtain(obj, template);
 		}
 	};
 });
