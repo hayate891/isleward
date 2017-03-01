@@ -81,6 +81,8 @@ define([
 
 				if (t.rep > rep)
 					break;
+				else if (i == tLen - 1)
+					tier = i;
 			}
 
 			if (tier < 0)
