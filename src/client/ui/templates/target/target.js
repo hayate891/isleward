@@ -13,6 +13,7 @@ define([
 		target: null,
 		lastHp: null,
 		lastMana: null,
+		lastLevel: null,
 
 		postRender: function() {
 			this.onEvent('onSetTarget', this.onSetTarget.bind(this));
@@ -50,6 +51,7 @@ define([
 			if (!this.target) {
 				this.lastHp = null;
 				this.lastMana = null;
+				this.lastLevel = null;
 				this.el.hide();
 			} else {
 				var el = this.el;
@@ -90,6 +92,16 @@ define([
 			}
 
 			var stats = target.stats.values;
+
+			if (stats.level != this.lastLevel) {
+				this.el.find('.infoLevel')
+					.html('(' + stats.level + ')')
+					.removeClass('high-level');
+
+				var crushing = (stats.level - 5 >= window.player.stats.level);
+				if (crushing)
+					this.el.find('.infoLevel').addClass('high-level');
+			}
 
 			if (stats.hp != this.lastHp) {
 				this.buildBar(0, stats.hp, stats.hpMax);
