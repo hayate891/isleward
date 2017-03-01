@@ -22,6 +22,7 @@ define([
 			'9': 'tab',
 			'13': 'enter',
 			'16': 'shift',
+			'17': 'ctrl',
 			'27': 'esc',
 			'37': 'left',
 			'38': 'up',
