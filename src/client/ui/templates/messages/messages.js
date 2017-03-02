@@ -17,12 +17,12 @@ define([
 		messages: [],
 		maxTtl: 500,
 
+		shiftDown: false,
+		hoverItem: null,
+
 		hoverFilter: false,
 
 		postRender: function() {
-			//HACK: Write a global manager
-			//setInterval(this.fade.bind(this), 100);
-
 			this.onEvent('onGetMessages', this.onGetMessages.bind(this));
 			this.onEvent('onDoWhisper', this.onDoWhisper.bind(this));
 
@@ -53,9 +53,8 @@ define([
 		},
 
 		onKeyDown: function(key, state) {
-			if (key == 'enter') {
+			if (key == 'enter')
 				this.toggle(true);
-			}
 		},
 
 		onDoWhisper: function(charName) {
@@ -75,13 +74,25 @@ define([
 			var container = this.find('.list');
 
 			messages.forEach(function(m) {
-				var el = $('<div class="list-message ' + m.class + '">' + m.message + '</div>')
+				var message = m.message;
+				if (m.item) {
+					var source = message.split(':')[0] + ': ';
+					message = source + '<span class="q' + (m.item.quality || 0) + '">' + message.replace(source, '') + '</span>';
+				}
+
+				var el = $('<div class="list-message ' + m.class + '">' + message + '</div>')
 					.appendTo(container);
 
 				if (m.type != null)
 					el.addClass(m.type);
 				else
 					el.addClass('info');
+
+				if (m.item) {
+					el.find('span')
+						.on('mousemove', this.showItemTooltip.bind(this, el, m.item))
+						.on('mouseleave', this.hideItemTooltip.bind(this));
+				}
 
 				this.messages.push({
 					ttl: this.maxTtl,
@@ -90,6 +101,35 @@ define([
 			}, this);
 
 			container.scrollTop(9999999);
+		},
+
+		hideItemTooltip: function() {
+			if (this.dragEl) {
+				this.hoverCell = null;
+				return;
+			}
+
+			events.emit('onHideItemTooltip', this.hoverItem);
+			this.hoverItem = null;
+		},
+		showItemTooltip: function(el, item, e) {
+			if (item)
+				this.hoverItem = item;
+			else
+				item = this.hoverItem;
+
+			if (!item)
+				return;
+
+			var ttPos = null;
+			if (el) {
+				ttPos = {
+					x: ~~(e.clientX + 32),
+					y: ~~(e.clientY)
+				};
+			}
+
+			events.emit('onShowItemTooltip', item, ttPos, null, true);
 		},
 
 		update: function() {

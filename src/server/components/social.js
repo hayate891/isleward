@@ -130,6 +130,7 @@ define([
 						messages: [{
 							class: msgStyle,
 							message: prefix + charname + ': ' + msg.data.message,
+							item: msg.data.item,
 							type: 'chat'
 						}]
 					}
