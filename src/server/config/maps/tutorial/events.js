@@ -14,6 +14,7 @@ module.exports = [{
 			amount: 5,
 			name: 'thieving imp',
 			level: 5,
+			cell: 51,
 			id: 'impthief-$',
 			hpMult: 5,
 			dmgMult: 1,
@@ -23,6 +24,7 @@ module.exports = [{
 		}, {
 			name: 'imp kingpin',
 			level: 8,
+			cell: 52,
 			hpMult: 10,
 			dmgMult: 2
 		}]

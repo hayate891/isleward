@@ -9,7 +9,7 @@ define([
 ) {
 	return {
 		build: function(mob, blueprint, scaleDrops, type) {
-			var typeDefinition = blueprint[type];
+			var typeDefinition = blueprint[type] || blueprint;
 
 			var drops = typeDefinition.drops;
 
@@ -20,15 +20,17 @@ define([
 				mob.nonSelectable = true;
 
 			mob.addComponent('effects');
-			if (type != 'regular') {
-				mob.effects.addEffect({
-					type: type
-				});
+			if (type) {
+				if (type != 'regular') {
+					mob.effects.addEffect({
+						type: type
+					});
 
-				mob['is' + type[0].toUpperCase() + type.substr(1)] = true;
+					mob['is' + type[0].toUpperCase() + type.substr(1)] = true;
 
-				mob.baseName = mob.name;
-				mob.name = typeDefinition.name || mob.baseName;
+					mob.baseName = mob.name;
+					mob.name = typeDefinition.name || mob.baseName;
+				}
 			}
 
 			mob.addComponent('stats', {
