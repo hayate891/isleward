@@ -36,6 +36,14 @@ define([
 			return cpn;
 		},
 
+		removeComponent: function(type) {
+			var cpn = this[type];
+			if (!cpn)
+				return;
+
+			cpn.destroyed = true;
+		},
+
 		extendComponent: function(ext, type, blueprint) {
 			var template = require('./components/extensions/' + type);
 			var cpn = this[ext];
@@ -58,6 +66,14 @@ define([
 				if (c.update) {
 					if (c.update())
 						usedTurn = true;
+				}
+
+				if (c.destroyed) {
+					this.syncer.setSelfArray(false, 'removeComponents', c.type);
+					this.components.spliceWhere(f => (f == c));
+					delete this[c.type];
+					len--;
+					i--;
 				}
 			}
 
@@ -112,6 +128,16 @@ define([
 								component = value.save ? value.save() : value.simplify(self);
 							else
 								component = value.simplify(self);
+
+							if (value.destroyed) {
+								if (!component) {
+									component = {
+										type: value.type
+									};
+								}
+
+								component.destroyed = true;
+							}
 
 							if (component)
 								result.components.push(component);

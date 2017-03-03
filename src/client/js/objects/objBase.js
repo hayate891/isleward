@@ -48,6 +48,18 @@ define([
 			}
 		},
 
+		removeComponent: function(type) {
+			var cpn = this[type];
+			if (!cpn)
+				return;
+
+			this.components.spliceWhere(function(c) {
+				return (c == cpn);
+			});
+
+			delete this[type];
+		},
+
 		render: function() {
 			return;
 			if (this.sheetName)

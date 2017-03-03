@@ -80,7 +80,10 @@ define([
 			} else {
 				var lLen = list.length;
 				for (var i = 0; i < lLen; i++) {
-					list[i].obj.aggro.unIgnore(obj);
+					var targetAggro = list[i].obj.aggro;
+					//Maybe the aggro component has been removed?
+					if (targetAggro)
+						targetAggro.unIgnore(obj);
 				}
 			}
 
@@ -201,7 +204,10 @@ define([
 					console.log('aggro obj empty???');
 					continue;
 				}
-				l.obj.aggro.unAggro(this.obj);
+				//Maybe the aggro component was removed?
+				var targetAggro = l.obj.aggro;
+				if (targetAggro)
+					targetAggro.unAggro(this.obj);
 			}
 
 			this.list = [];

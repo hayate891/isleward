@@ -108,6 +108,10 @@ module.exports = [{
 	}, {
 		type: 'eventChain',
 		config: [{
+			type: 'removeComponents',
+			mobs: 'imp-kingpin',
+			components: 'aggro'
+		}, {
 			type: 'mobTalk',
 			id: 'imp-kingpin',
 			text: `Aargh, no! I must get to my lair!`,

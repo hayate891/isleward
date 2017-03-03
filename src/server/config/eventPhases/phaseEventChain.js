@@ -58,6 +58,26 @@ define([
 						mob.addComponent(c.type, components[j]);
 					}
 				}
+			},
+			removeComponents: function(config) {
+				var objects = this.instance.objects.objects;
+
+				var components = config.components;
+				if (!components.push)
+					components = [ components ];
+				var cLen = components.length;
+
+				var mobs = config.mobs;
+				if (!mobs.push)
+					mobs = [ mobs ];
+				var mLen = mobs.length;
+
+				for (var i = 0; i < mLen; i++) {
+					var mob = objects.find(o => (o.id == mobs[i]));
+					for (var j = 0; j < cLen; j++) {
+						mob.removeComponent(components[j]);
+					}
+				}
 			}
 		}
 	};

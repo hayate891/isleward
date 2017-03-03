@@ -91,6 +91,17 @@ define([
 				cpn[property] = [];
 
 			cpn[property].push(value);
+		},
+
+		setSelfArray: function(self, property, value) {
+			var o = this.o;
+			if (self)
+				o = this.oSelf;
+
+			if (o[property] == null)
+				o[property] = [];
+
+			o[property].push(value);
 		}
 	};
 });

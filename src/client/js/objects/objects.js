@@ -201,6 +201,13 @@ define([
 
 			delete template.components;
 
+			if (template.removeComponents) {
+				template.removeComponents.forEach(function(r) {
+					obj.removeComponent(r);
+				});
+				delete template.removeComponents;
+			}
+
 			var oldX = obj.x;
 
 			var sprite = obj.sprite;

@@ -95,8 +95,8 @@ define([
 				objects.update();
 				spawners.update();
 				resourceSpawner.update();
-				syncer.update();
 				events.update();
+				syncer.update();
 
 				setTimeout(this.tick.bind(this), this.speed);
 			},
