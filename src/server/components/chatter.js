@@ -17,6 +17,9 @@ define([
 		},
 
 		update: function() {
+			if (this.chats.length == 0)
+				return;
+
 			if ((this.cd == 0) && (Math.random() < this.chance)) {
 				this.cd = this.cdMax;
 

@@ -219,25 +219,27 @@ define([
 			var data = action.data;
 			var physics = this.instance.physics;
 
-			if (physics.isTileBlocking(data.x, data.y))
-				return false;
-
-			data.success = true;
-			this.fireEvent('beforeMove', data);
-			if (data.success == false) {
-				action.priority = true;
-				this.queue(action);
-				return true;
-			}
-
-			if (!action.isDouble) {
-				var deltaX = Math.abs(this.x - data.x);
-				var deltaY = Math.abs(this.y - data.y);
-				if (
-					((deltaX > 1) || (deltaY > 1)) ||
-					((deltaX == 0) && (deltaY == 0))
-				)
+			if (!action.force) {
+				if (physics.isTileBlocking(data.x, data.y))
 					return false;
+
+				data.success = true;
+				this.fireEvent('beforeMove', data);
+				if (data.success == false) {
+					action.priority = true;
+					this.queue(action);
+					return true;
+				}
+
+				if (!action.isDouble) {
+					var deltaX = Math.abs(this.x - data.x);
+					var deltaY = Math.abs(this.y - data.y);
+					if (
+						((deltaX > 1) || (deltaY > 1)) ||
+						((deltaX == 0) && (deltaY == 0))
+					)
+						return false;
+				}
 			}
 
 			//Don't allow mob overlap during combat

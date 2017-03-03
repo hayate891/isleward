@@ -12,7 +12,8 @@ define([
 		cdMax: 150,
 
 		init: function(blueprint) {
-
+			if (blueprint.msg)
+				this.extend(blueprint);
 		},
 
 		update: function() {
