@@ -45,6 +45,7 @@ define([
 					zoneId: this.zoneId,
 					spawners: spawners,
 					questBuilder: questBuilder,
+					events: events,
 					zone: map.zone,
 					map: map
 				};

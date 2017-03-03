@@ -1,8 +1,9 @@
 @import "../../../css/ui.less";
 
-.uiQuests {
+.uiEvents {
+	margin-top: 10px;
 	width: 320px;
-
+	
 	.heading {
 		color: @yellow;
 		padding: 8px;
@@ -10,7 +11,7 @@
 	}
 
 	.list {
-		.quest {
+		.event {
 			cursor: pointer;
 			padding: 8px;
 			background-color: fade(#3a3b4a, 90%);
@@ -28,10 +29,6 @@
 				color: darken(@white, 35%);
 			}
 
-			.ready-text {
-				display: none;
-			}
-
 			&.active {
 				.name {
 					color: @blue;
@@ -45,11 +42,6 @@
 
 				.description {
 					display: none;
-				}
-
-				.ready-text {
-					display: block;
-					color: @white;
 				}
 			}
 		}

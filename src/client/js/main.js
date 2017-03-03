@@ -14,6 +14,7 @@ define([
 	'ui/templates/hud/hud',
 	'ui/templates/online/online',
 	'ui/templates/quests/quests',
+	'ui/templates/events/events',
 	'ui/templates/dialogue/dialogue',
 	'ui/templates/smithing/smithing',
 	'ui/templates/overlay/overlay',

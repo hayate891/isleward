@@ -291,6 +291,8 @@ define([
 			if (this.aggro)
 				this.aggro.move();
 
+			this.fireEvent('afterMove');
+
 			return true;
 		},
 

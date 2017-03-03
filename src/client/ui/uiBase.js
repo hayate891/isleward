@@ -15,8 +15,8 @@ define([
 
 		render: function() {
 			var container = '.ui-container';
-			if ((this.options) && (this.options.container))
-				container = this.options.container;;
+			if (this.container)
+				container += ' > ' + this.container;
 
 			this.el = $(this.tpl)
 				.appendTo(container)

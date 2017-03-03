@@ -39,6 +39,7 @@ define([
 				'tooltipItem',
 				'announcements',
 				'quests',
+				'events',
 				'progressBar',
 				'stash',
 				'smithing',

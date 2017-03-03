@@ -61,6 +61,7 @@ define([
 							}
 						});
 						this.spawnAnimation(mob);
+						this.event.objects.push(mob);
 					} else {
 						var mob = objects.buildObjects([{
 							x: x,
@@ -80,6 +81,8 @@ define([
 							var id = l.id.split('$').join(i);
 							mob.id = id;
 						}
+
+						this.event.objects.push(mob);
 					}
 				}
 			}, this);

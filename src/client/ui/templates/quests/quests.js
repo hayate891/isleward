@@ -15,6 +15,7 @@ define([
 		tpl: tpl,
 
 		quests: [],
+		container: '.right',
 
 		postRender: function() {
 			this.onEvent('onRezone', this.onRezone.bind(this));

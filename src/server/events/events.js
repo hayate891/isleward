@@ -47,6 +47,8 @@ define([
 			var event = {
 				config: config,
 				phases: [],
+				participators: [],
+				objects: [],
 				nextPhase: 0
 			};
 
@@ -54,6 +56,16 @@ define([
 		},
 
 		updateEvent: function(event) {
+			var objects = event.objects;
+			var oLen = objects.length;
+			for (var i = 0; i < oLen; i++) {
+				if (objects[i].destroyed) {
+					objects.splice(i, 1);
+					i--;
+					oLen--;
+				}
+			}
+
 			var currentPhases = event.phases;
 			var cLen = currentPhases.length;
 			var stillBusy = false;
@@ -80,7 +92,8 @@ define([
 				var phaseFile = 'phase' + p.type[0].toUpperCase() + p.type.substr(1);
 				var typeTemplate = require('config/eventPhases/' + phaseFile);
 				var phase = extend(true, {
-					instance: this.instance
+					instance: this.instance,
+					event: event
 				}, phaseTemplate, typeTemplate, p);
 				
 				event.phases.push(phase);
@@ -92,6 +105,41 @@ define([
 				if (!p.auto)
 					break;
 			}
+		},
+
+		getCloseEvents: function(obj) {
+			var x = obj.x;
+			var y = obj.y;
+
+			var configs = this.configs;
+			if (!configs)
+				return;
+
+			var cLen = configs.length;
+			var result = [];
+			for (var i = 0; i < cLen; i++) {
+				var event = configs[i].event;
+				if (!event)
+					continue;
+				else if (event.participators.some(p => (p == obj)))
+					continue;
+
+				var distance = event.config.distance;
+
+				var objects = event.objects;
+				var oLen = objects.length;
+				for (var j = 0; j < oLen; j++) {
+					var o = objects[j];
+
+					if ((Math.abs(x - o.x) < distance) && (Math.abs(y - o.y) < distance)) {
+						event.participators.push(obj);
+						result.push(event);
+						break;
+					}
+				}
+			}
+
+			return result;
 		}
 	};
 });
