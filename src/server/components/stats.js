@@ -205,7 +205,6 @@ define([
 
 		kill: function(target) {
 			var level = target.stats.values.level;
-			var inc = level * 10;
 
 			//Who should get xp?
 			var aggroList = target.aggro.list;
@@ -217,27 +216,27 @@ define([
 				if (dmg <= 0)
 					continue;
 
-				var get = inc;
+				var mult = 1;
 				//How many party members contributed
 				// Remember, maybe one of the aggro-ees might be a mob too
 				var party = a.obj.social ? a.obj.social.party : null;
 				if (party) {
-					var mult = aggroList.filter(function(f) {
+					var partySize = aggroList.filter(function(f) {
 						return ((a.damage > 0) && (party.indexOf(f.obj.serverId) > -1));
 					}).length;
-					mult--;
-					get *= (1 + (mult * 0.1));
-					get = ~~get;
+					partySize--;
+					mult = (1 + (partySize * 0.1));
 				}
 
 				if (a.obj.stats) {
 					//Scale xp by source level so you can't just farm low level mobs (or get boosted on high level mobs).
 					//Mobs that are farther then 10 levels from you, give no xp
 					//We don't currently do this for quests/herb gathering
-					var levelDelta = level - a.obj.stats.values.level;
-					var amount = 0;
+					var sourceLevel = a.obj.stats.values.level;
+					var levelDelta = level - sourceLevel;
+					var amount = level * 10 * mult;
 					if (Math.abs(levelDelta) <= 10)
-						amount = ~~((get + (levelDelta * 10)) * Math.pow(1 - (Math.abs(levelDelta) / 10), 2));
+						amount = ~~(((sourceLevel + levelDelta) * 10) * Math.pow(1 - (Math.abs(levelDelta) / 10), 2) * mult);
 
 					a.obj.stats.getXp(amount, this.obj);
 				}
