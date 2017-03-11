@@ -72,10 +72,14 @@ define([
 
 			if (blueprint.getSpells) {
 				blueprint.getSpells.forEach(function(s) {
-					if (this.spells.find(function(spell) {
+					var existIndex = this.spells.firstIndex(function(spell) {
 						return (spell.id == s.id);
-					}))
+					});
+
+					if (existIndex > -1) {
+						this.spells.splice(existIndex, 1, s);
 						return;
+					}
 						
 					if (this.spells.length - 1 >= s.id)
 						this.spells.splice(s.id, 0, s);

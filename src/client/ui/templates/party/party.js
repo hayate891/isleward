@@ -100,6 +100,10 @@ define([
 		},
 
 		onGetParty: function(party) {
+			// Destroy invite frame if you join a party
+			if (this.invite)
+				this.destroyInvite();
+
 			var container = this.find('.party .list')
 				.empty();
 
@@ -179,10 +183,12 @@ define([
 		},
 
 		destroyInvite: function(e) {
-			if ($(e.target).hasClass('btnAccept'))
-				this.acceptInvite();
-			else
-				this.declineInvite();
+			if (e) {
+				if ($(e.target).hasClass('btnAccept'))
+					this.acceptInvite();
+				else
+					this.declineInvite();
+			}
 
 			this.invite.el.remove();
 			this.invite = null;

@@ -130,6 +130,7 @@ define([
 						messages: [{
 							class: msgStyle,
 							message: prefix + charname + ': ' + msg.data.message,
+							item: msg.data.item,
 							type: 'chat'
 						}]
 					}
@@ -181,7 +182,10 @@ define([
 				this.updatePartyOnThread();
 			}
 
-			this.party.push(sourceId);
+			// Only add if not yet in party
+			if (!this.party.find(id => (id === sourceId)))
+				this.party.push(sourceId);
+
 			this.updatePartyOnThread();
 
 			this.party.forEach(function(p) {

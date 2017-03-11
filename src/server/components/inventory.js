@@ -153,9 +153,10 @@ define([
 			var stash = this.obj.stash;
 			if (!stash.active)
 				return;
-
+			
+			var clonedItem = extend(true, {}, item);
 			this.destroyItem(id);
-			stash.deposit(item);
+			stash.deposit(clonedItem);
 		},
 
 		salvageItem: function(id) {
@@ -376,6 +377,9 @@ define([
 			if (this.obj.player)
 				delete item.fromMob;
 
+			//Store the quantity to send to the player
+			var quantity = item.quantity;
+
 			//Material?
 			var exists = false;
 			if ((item.material) || (item.quest)) {
@@ -437,8 +441,8 @@ define([
 				var messages = [];
 
 				var msg = item.name;
-				if (item.quantity)
-					msg += ' x' + item.quantity;
+				if (quantity)
+					msg += ' x' + quantity;
 				messages.push({
 					class: 'q' + item.quality,
 					message: 'loot (' + msg + ')',

@@ -47,6 +47,7 @@ define([
 		items: [],
 
 		shiftDown: false,
+		ctrlDown: false,
 
 		dragItem: null,
 		dragEl: null,
@@ -127,7 +128,7 @@ define([
 
 				itemEl
 					.data('item', item)
-					//.on('click', this.onClick.bind(this, itemEl, item))
+					.on('click', this.onClick.bind(this, item))
 					.on('mousedown', this.onMouseDown.bind(this, itemEl, item, true))
 					.on('mouseup', this.onMouseDown.bind(this, null, null, false))
 					.on('mousemove', this.onHover.bind(this, itemEl, item))
@@ -148,6 +149,20 @@ define([
 					itemEl.find('.quantity').html('NEW');
 				}
 			}
+		},
+
+		onClick: function(item) {
+			if (!this.ctrlDown)
+				return;
+
+			client.request({
+				cpn: 'social',
+				method: 'chat',
+				data: {
+					message: '{' + item.name + '}',
+					item: item
+				}
+			});
 		},
 
 		onMouseDown: function(el, item, down, e) {
@@ -467,6 +482,8 @@ define([
 				if (this.hoverItem)
 					this.onHover();
 			}
+			else if (key == 'ctrl')
+				this.ctrlDown = true;
 		},
 		onKeyUp: function(key) {
 			if (key == 'shift') {
@@ -474,6 +491,8 @@ define([
 				if (this.hoverItem)
 					this.onHover();
 			}
+			else if (key == 'ctrl')
+				this.ctrlDown = false;
 		}
 	};
 });

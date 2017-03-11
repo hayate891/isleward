@@ -10,7 +10,6 @@ define([
 	return {
 		type: 'keyboardMover',
 
-		path: [],
 		moveCd: 0,
 		moveCdMax: 8,
 		direction: {

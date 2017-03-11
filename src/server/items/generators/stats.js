@@ -245,8 +245,12 @@ define([
 				value = Math.ceil(random.norm(statBlueprint.min, statBlueprint.max));
 
 			if (blueprint.statCount) {
-				if (result)
-					result.addStatMsgs.push('+' + value + ' ' + stat);
+				if (result) {
+					result.addStatMsgs.push({
+						stat: stat,
+						value: value
+					});
+				}
 
 				if (!item.enchantedStats)
 					item.enchantedStats = {};

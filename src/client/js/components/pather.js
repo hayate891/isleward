@@ -13,7 +13,8 @@ define([
 
 		path: [],
 
-		pathColor: 'rgba(255, 255, 255, 0.5)',
+		pathColor: '0x48edff',
+		pathAlpha: 0.2,
 
 		pathPos: {
 			x: 0,
@@ -50,7 +51,8 @@ define([
 				y: y,
 				sprite: renderer.buildRectangle({
 					layerName: 'effects',
-					alpha: 0.2,
+					color: this.pathColor,
+					alpha: this.pathAlpha,
 					x: (x * scale) + scaleMult,
 					y: (y * scale) + scaleMult,
 					w: scale - (scaleMult * 2),

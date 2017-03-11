@@ -26,7 +26,7 @@ define([
 					return false;
 			}
 			else if (targetName != null) {
-				target = this.obj.instance.objects.objects.find(o => o.name.toLowerCase() == targetName);
+				target = this.obj.instance.objects.objects.find(o => ((o.name) && (o.name.toLowerCase() == targetName)));
 				if (!target)
 					return false;	
 			}
@@ -95,8 +95,18 @@ define([
 
 			if (stateConfig.cpn) {
 				var cpn = sourceObj[stateConfig.cpn];
-				cpn[stateConfig.method].apply(cpn, stateConfig.args);
-				return;
+				var newArgs = extend(true, [], stateConfig.args);
+				newArgs.push(this.obj);
+				var result = cpn[stateConfig.method].apply(cpn, newArgs);
+
+				if (stateConfig.goto) {
+					if (result)
+						return this.getState(sourceObj, stateConfig.goto.success);
+					else
+						return this.getState(sourceObj, stateConfig.goto.failure);
+				}
+				else
+					return null;
 			}
 
 			var result = {
@@ -158,6 +168,26 @@ define([
 			return {
 				type: 'dialogue'
 			};
+		},
+
+		//These don't belong here, but I can't figure out where to put them right now
+		//They are actions that can be performed while chatting with someone
+		teleport: function(msg) {
+			this.obj.syncer.set(true, 'dialogue', 'state', null);	
+
+			var portal = extend(true, {}, require('./components/portal'), msg);
+			portal.collisionEnter(this.obj);
+		},
+
+		getItem: function(msg, source) {
+			var inventory = this.obj.inventory;
+			var exists = inventory.items.find(i => (i.name == msg.item.name));
+			if (!exists) {
+				inventory.getItem(msg.item);
+				return true;
+			}
+			else
+				return false;
 		}
 	};
 });

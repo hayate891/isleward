@@ -3,13 +3,15 @@ define([
 	'misc/messages',
 	'security/connections',
 	'leaderboard/leaderboard',
-	'config/skins'
+	'config/skins',
+	'misc/profanities'
 ], function(
 	io,
 	messages,
 	connections,
 	leaderboard,
-	skins
+	skins,
+	profanities
 ) {
 	return {
 		type: 'auth',
@@ -252,6 +254,11 @@ define([
 				}
 			}
 
+			if (!profanities.isClean(credentials.username)) {
+				msg.callback(messages.login.invalid);
+				return;
+			}
+
 			io.get({
 				ent: credentials.username,
 				field: 'login',
@@ -292,6 +299,11 @@ define([
 
 			if ((data.name.length < 3) || (data.name.length > 12)) {
 				msg.callback(messages.createCharacter.nameLength);
+				return;
+			}
+
+			if (!profanities.isClean(data.name)) {
+				msg.callback(messages.login.invalid);
 				return;
 			}
 
