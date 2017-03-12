@@ -75,13 +75,14 @@ define([
 				items: character.stash
 			});
 			obj.addComponent('effects', blueprintEffects);
-			obj.addComponent('equipment', character.components.find(c => c.type == 'equipment'));
-			obj.addComponent('inventory', character.components.find(c => c.type == 'inventory'));
-			obj.addComponent('quests', character.components.find(c => c.type == 'quests'));
 
 			var prophecies = character.components.find(c => c.type == 'prophecies');
 			if (prophecies)
 				obj.addComponent('prophecies', prophecies);
+
+			obj.addComponent('equipment', character.components.find(c => c.type == 'equipment'));
+			obj.addComponent('inventory', character.components.find(c => c.type == 'inventory'));
+			obj.addComponent('quests', character.components.find(c => c.type == 'quests'));
 
 			var blueprintEffects = character.components.find(c => c.type == 'effects') || {};
 			if (blueprintEffects.effects) {
