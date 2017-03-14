@@ -237,6 +237,8 @@ define([
 					var amount = level * 10 * mult;
 					if (Math.abs(levelDelta) <= 10)
 						amount = ~~(((sourceLevel + levelDelta) * 10) * Math.pow(1 - (Math.abs(levelDelta) / 10), 2) * mult);
+					else 
+						amount = 0;
 
 					a.obj.stats.getXp(amount, this.obj);
 				}
