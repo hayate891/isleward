@@ -66,7 +66,7 @@ define([
 			if ((target != null) && (target.id == null))
 				target = this.obj.instance.objects.objects.find(o => o.id == target);
 			else if (targetName != null)
-				target = this.obj.instance.objects.objects.find(o => o.name.toLowerCase() == targetName);
+				target = this.obj.instance.objects.objects.find(o => ((o.name) && (o.name.toLowerCase() == targetName)));
 
 			this.target = null;
 
@@ -230,7 +230,7 @@ define([
 			if ((target != null) && (target.id == null))
 				target = this.obj.instance.objects.objects.find(o => o.id == target);
 			else if (targetName != null)
-				target = this.obj.instance.objects.objects.find(o => o.name.toLowerCase() == targetName);
+				target = this.obj.instance.objects.objects.find(o => ((o.name) && (o.name.toLowerCase() == targetName)));
 
 			this.target = null;
 
