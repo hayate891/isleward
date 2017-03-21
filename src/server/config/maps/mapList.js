@@ -4,7 +4,6 @@ define([
 
 ) {
 	return [
-		'tutorial-cove',
 		'tutorial',
 		'estuary',
 		'city',

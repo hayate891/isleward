@@ -96,6 +96,30 @@ module.exports = {
 				}
 			}
 		},
+		'crazed seagull': {
+			level: 1,
+
+			rare: {
+				count: 0
+			},
+
+			regular: {
+				drops: {
+					chance: 100,
+					rolls: 1,
+					noRandom: true,
+					blueprints: [{
+						maxLevel: 1,
+						name: 'Family Heirloom',
+						quality: 2,
+						slot: 'neck',
+						type: 'Pendant',
+						noSalvage: true,
+						stats: ['hpMax', 'regenHp', 'regenMana']
+					}]
+				}
+			}
+		},
 		seagull: {
 			level: 2,
 			regular: {
