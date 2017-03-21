@@ -4,7 +4,7 @@ define([
 	'ui/factory',
 	'html!ui/templates/login/template',
 	'css!ui/templates/login/styles',
-	'js/renderer'
+	'js/rendering/renderer'
 ], function(
 	events,
 	client,

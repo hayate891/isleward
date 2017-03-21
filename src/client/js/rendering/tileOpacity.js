@@ -85,6 +85,15 @@ define([
 			120, 122								//Wall-mounted plants
 		],
 
+		getSheetNum: function(tile) {
+			if (tile < 192)
+				return 0;
+			else if (tile < 384)
+				return 1;
+			else
+				return 2;
+		},
+
 		map: function(tile) {
 			var sheetNum;
 

@@ -1,6 +1,6 @@
 define([
 	'js/system/client',
-	'js/renderer',
+	'js/rendering/renderer',
 	'js/system/events'
 ], function(
 	client,

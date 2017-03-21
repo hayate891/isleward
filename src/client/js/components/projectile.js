@@ -1,9 +1,7 @@
 define([
-	'js/rendering/effects',
-	'js/canvas'
+	'js/rendering/effects'
 ], function(
-	effects,
-	canvas
+	effects
 ) {
 	var scale = 40;
 

@@ -2,7 +2,7 @@ define([
 	'js/system/events',
 	'html!ui/templates/options/template',
 	'css!ui/templates/options/styles',
-	'js/renderer',
+	'js/rendering/renderer',
 	'ui/factory',
 	'js/objects/objects',
 	'js/system/client'

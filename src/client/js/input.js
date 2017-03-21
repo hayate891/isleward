@@ -1,6 +1,6 @@
 define([
 	'js/system/events',
-	'js/renderer'
+	'js/rendering/renderer'
 ], function(
 	events,
 	renderer

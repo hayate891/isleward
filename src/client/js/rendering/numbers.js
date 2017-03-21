@@ -1,7 +1,7 @@
 define([
 	'js/system/events',
 	'js/objects/objects',
-	'js/renderer'
+	'js/rendering/renderer'
 ], function(
 	events,
 	objects,

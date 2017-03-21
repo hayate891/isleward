@@ -1,7 +1,7 @@
 define([
 	'js/objects/objBase',
 	'js/system/events',
-	'js/renderer'
+	'js/rendering/renderer'
 ], function(
 	objBase,
 	events,

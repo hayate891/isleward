@@ -1,7 +1,7 @@
 define([
 	'js/system/client',
 	'ui/factory',
-	'js/renderer',
+	'js/rendering/renderer',
 	'js/objects/objects',
 	'js/rendering/effects',
 	'js/rendering/numbers',

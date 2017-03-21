@@ -1,6 +1,6 @@
 define([
 	'js/system/events',
-	'js/renderer',
+	'js/rendering/renderer',
 	'js/system/client',
 	'js/input',
 	'js/objects/objects'
