@@ -59,7 +59,7 @@
          "name":"hiddenWalls",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":240,
          "x":0,
          "y":0
@@ -2447,7 +2447,6 @@
  "tileheight":8,
  "tilesets":[
         {
-         "columns":8,
          "firstgid":1,
          "image":"..\/..\/..\/..\/client\/images\/walls.png",
          "imageheight":192,
@@ -2515,7 +2514,6 @@
          "tilewidth":8
         }, 
         {
-         "columns":8,
          "firstgid":193,
          "image":"..\/..\/..\/..\/client\/images\/mobs.png",
          "imageheight":80,
@@ -2539,7 +2537,6 @@
          "tilewidth":8
         }, 
         {
-         "columns":8,
          "firstgid":273,
          "image":"..\/..\/..\/..\/client\/images\/tiles.png",
          "imageheight":192,
@@ -2651,7 +2648,6 @@
          "tilewidth":8
         }, 
         {
-         "columns":8,
          "firstgid":465,
          "image":"..\/..\/..\/..\/client\/images\/objects.png",
          "imageheight":160,
@@ -2675,7 +2671,6 @@
          "tilewidth":8
         }, 
         {
-         "columns":8,
          "firstgid":625,
          "image":"..\/..\/..\/..\/client\/images\/bigObjects.png",
          "imageheight":240,

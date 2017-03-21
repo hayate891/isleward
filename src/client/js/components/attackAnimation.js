@@ -1,6 +1,6 @@
 define([
 	'js/rendering/effects',
-	'js/renderer'
+	'js/rendering/renderer'
 ], function(
 	effects,
 	renderer

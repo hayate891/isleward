@@ -1,6 +1,6 @@
 define([
 	'js/components/components',
-	'js/renderer',
+	'js/rendering/renderer',
 	'js/system/events'
 ], function(
 	components,

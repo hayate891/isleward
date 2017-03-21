@@ -5,8 +5,7 @@ define([
 	'css!ui/templates/inventory/styles',
 	'html!ui/templates/inventory/templateItem',
 	'html!ui/templates/inventory/templateTooltip',
-	'js/input',
-	'js/rendering/spriteShader'
+	'js/input'
 ], function(
 	events,
 	client,
@@ -14,8 +13,7 @@ define([
 	styles,
 	tplItem,
 	tplTooltip,
-	input,
-	spriteShader
+	input
 ) {
 	var qualityColors = [{
 		r: 252,

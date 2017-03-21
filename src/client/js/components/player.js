@@ -1,5 +1,5 @@
 define([
-	'js/renderer',
+	'js/rendering/renderer',
 	'js/system/events'
 ], function(
 	renderer,
