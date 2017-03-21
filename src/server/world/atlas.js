@@ -27,7 +27,7 @@ define([
 				instanceId = -1;
 
 			if (!thread) {
-				thread = this.getThreadFromName('tutorial-cove');
+				thread = this.getThreadFromName('tutorial');
 				obj.zoneName = thread.name;
 			}
 
@@ -172,7 +172,7 @@ define([
 				var thread = this.getThreadFromName(obj.zoneName);
 
 				if (!thread) {
-					thread = this.getThreadFromName('tutorial-cove');
+					thread = this.getThreadFromName('tutorial');
 					obj.zoneName = thread.name;
 					serverObj.zoneName = thread.name;
 				}

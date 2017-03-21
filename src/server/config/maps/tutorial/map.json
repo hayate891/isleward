@@ -140,8 +140,8 @@
                  "type":"",
                  "visible":true,
                  "width":8,
-                 "x":688,
-                 "y":712
+                 "x":672,
+                 "y":672
                 }, 
                 {
                  "gid":229,
@@ -556,8 +556,8 @@
                  "type":"",
                  "visible":true,
                  "width":8,
-                 "x":648,
-                 "y":536
+                 "x":592,
+                 "y":544
                 }, 
                 {
                  "gid":229,
@@ -732,8 +732,8 @@
                  "type":"",
                  "visible":true,
                  "width":8,
-                 "x":656,
-                 "y":632
+                 "x":672,
+                 "y":504
                 }, 
                 {
                  "gid":233,
@@ -766,6 +766,38 @@
                  "width":8,
                  "x":400,
                  "y":320
+                }, 
+                {
+                 "gid":229,
+                 "height":8,
+                 "id":626,
+                 "name":"Seagull",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":616,
+                 "y":688
+                }, 
+                {
+                 "gid":229,
+                 "height":8,
+                 "id":635,
+                 "name":"Crazed Seagull",
+                 "properties":
+                    {
+
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":616,
+                 "y":808
                 }],
          "opacity":1,
          "properties":
@@ -1001,6 +1033,126 @@
                  "width":24,
                  "x":632,
                  "y":400
+                }, 
+                {
+                 "height":112,
+                 "id":627,
+                 "name":"",
+                 "properties":
+                    {
+                     "cpnNotice":"{\"maxLevel\": 1, \"msg\": \"You open your eyes and cough. Saltwater burns your throat. You remember the storm, and the crash that left your ship in pieces.<br \/><br \/>You realize you need to find shelter. Use <font class='color-green'>wasd<\/font> or the <ont class='color-green'>arrow keys<\/font> to move.\"}"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":120,
+                 "x":384,
+                 "y":824
+                }, 
+                {
+                 "height":32,
+                 "id":628,
+                 "name":"",
+                 "properties":
+                    {
+                     "cpnNotice":"{\"maxLevel\": 1, \"msg\": \"You take a few steps, still weak from the ordeal. Through the glare of the sun, you see a creature to the north-east.<br \/><br \/>Press <font class='color-green'>v<\/font> to toggle nameplates.\"}"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":48,
+                 "x":520,
+                 "y":824
+                }, 
+                {
+                 "height":80,
+                 "id":629,
+                 "name":"",
+                 "properties":
+                    {
+                     "cpnNotice":"{\"maxLevel\": 1, \"msg\": \"You take a few steps, still weak from the ordeal. Through the glare of the sun, you see a creature to the north-east.<br \/><br \/>Press <font class='color-green'>v<\/font> to toggle nameplates.\"}"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":136,
+                 "x":504,
+                 "y":856
+                }, 
+                {
+                 "height":40,
+                 "id":630,
+                 "name":"",
+                 "properties":
+                    {
+                     "cpnNotice":"{\"maxLevel\": 2, \"msg\": \"The seagull's eyes are bloodshot and in its beak you see a glinting locket. It stole your family heirloom!<br \/><br \/>Click on it to target it then press <font class='color-green'>1<\/font> to toggle auto-attack. Remember to stand close if you are a warrior or thief.\"}"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":568,
+                 "y":800
+                }, 
+                {
+                 "height":8,
+                 "id":631,
+                 "name":"",
+                 "properties":
+                    {
+                     "cpnNotice":"{\"maxLevel\": 1, \"msg\": \"You take a few steps, still weak from the ordeal. Through the glare of the sun, you see a creature to the north-east.<br \/><br \/>Press <font class='color-green'>v<\/font> to toggle nameplates.\"}"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":8,
+                 "x":568,
+                 "y":848
+                }, 
+                {
+                 "height":40,
+                 "id":632,
+                 "name":"",
+                 "properties":
+                    {
+                     "cpnNotice":"{\"maxLevel\": 1, \"msg\": \"You can loot items by standing on them then open your inventory with <font class='color-green'>i<\/font>.<br \/><br \/>To equip an item, simply click on the item in your inventory.\"}"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":144,
+                 "x":568,
+                 "y":760
+                }, 
+                {
+                 "height":32,
+                 "id":633,
+                 "name":"",
+                 "properties":
+                    {
+                     "cpnNotice":"{\"maxLevel\": 1, \"msg\": \"You can loot items by standing on them then open your inventory with <font class='color-green'>i<\/font>.<br \/><br \/>To equip an item, simply click on the item in your inventory.\"}"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":144,
+                 "x":592,
+                 "y":728
+                }, 
+                {
+                 "height":56,
+                 "id":634,
+                 "name":"",
+                 "properties":
+                    {
+                     "cpnNotice":"{\"maxLevel\": 2, \"msg\": \"The seagull's eyes are bloodshot and in its beak you see a glinting locket. It stole your family heirloom!<br \/><br \/>Click on it to target it then press <font class='color-green'>1<\/font> to toggle auto-attack. Remember to stand close if you are a warrior or thief.\"}"
+                    },
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":112,
+                 "x":576,
+                 "y":800
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -1261,14 +1413,13 @@
          "x":0,
          "y":0
         }],
- "nextobjectid":617,
+ "nextobjectid":636,
  "orientation":"orthogonal",
  "properties":
     {
      "instanced":"0",
      "name":"Test Zone",
-     "padding":"{\"tiles\":[[6,10],[7,5]]}",
-     "spawn":"{\"x\":72,\"y\":86}"
+     "spawn":"{\"x\":60,\"y\":116}"
     },
  "renderorder":"right-down",
  "tileheight":8,

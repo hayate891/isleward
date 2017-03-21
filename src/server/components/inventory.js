@@ -565,6 +565,9 @@ define([
 				var blueprints = blueprint.blueprints;
 				for (var i = 0; i < blueprints.length; i++) {
 					var drop = blueprints[i];
+					if ((drop.maxLevel) && (drop.maxLevel < killSource.stats.values.level))
+						continue;
+
 					drop.level = drop.level || level;
 					drop.magicFind = magicFind;
 

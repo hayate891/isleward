@@ -32,7 +32,7 @@ define([
 				previewSpritesheet: character.previewSpritesheet,
 				name: character.name,
 				class: character.class,
-				zoneName: character.zoneName || 'tutorial-cove',
+				zoneName: character.zoneName || 'tutorial',
 				x: character.x,
 				y: character.y,
 				account: character.account,

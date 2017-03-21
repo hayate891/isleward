@@ -11,10 +11,13 @@ define([
 
 		syncer: null,
 
+		maxLevel: 0,
+
 		init: function(blueprint) {
 			this.msg = blueprint.msg;
 			this.actions = blueprint.actions || {};
 			this.announce = blueprint.announce;
+			this.maxLevel = blueprint.maxLevel || 0;
 
 			this.syncer = this.obj.instance.syncer;
 		},
@@ -43,6 +46,8 @@ define([
 		collisionEnter: function(obj) {
 			if (!obj.player)
 				return;
+			else if ((this.maxLevel) && (obj.stats.values.level > this.maxLevel))
+				return;
 
 			this.callAction(obj, 'enter');
 
@@ -66,6 +71,8 @@ define([
 
 		collisionExit: function(obj) {
 			if (!obj.player)
+				return;
+			else if ((this.maxLevel) && (obj.stats.values.level > this.maxLevel))
 				return;
 
 			this.callAction(obj, 'exit');

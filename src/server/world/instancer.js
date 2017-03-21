@@ -140,13 +140,11 @@ define([
 					objects.addObject(obj, this.onAddObject.bind(this));
 				else {
 					var o = objects.transferObject(obj);
-					if (o.zoneName != 'tutorial-cove')
-						questBuilder.obtain(o);
+					questBuilder.obtain(o);
 				}
 			},
 			onAddObject: function(obj) {
-				if (obj.zoneName != 'tutorial-cove')
-					questBuilder.obtain(obj);
+				questBuilder.obtain(obj);
 			},
 			updateObject: function(msg) {
 				var obj = objects.find(o => o.serverId == msg.id);
@@ -360,9 +358,7 @@ define([
 				}
 
 				obj.instance.spawners.scale(obj.stats.values.level);
-
-				if (obj.zoneName != 'tutorial-cove')
-					obj.instance.questBuilder.obtain(obj);
+				obj.instance.questBuilder.obtain(obj);
 			},
 			updateObject: function(msg) {
 				var id = msg.id;
@@ -502,9 +498,8 @@ define([
 					obj = instance.objects.transferObject(objToAdd);
 					obj.x = instance.map.spawn.x;
 					obj.y = instance.map.spawn.y;
-					if (obj.zoneName != 'tutorial-cove')
-						instance.questBuilder.obtain(obj);
-
+					
+					instance.questBuilder.obtain(obj);
 					obj.instance.spawners.scale(obj.stats.values.level);
 				}
 
