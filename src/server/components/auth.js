@@ -1,4 +1,5 @@
 define([
+	'bcrypt',
 	'security/io',
 	'misc/messages',
 	'security/connections',
@@ -6,6 +7,7 @@ define([
 	'config/skins',
 	'misc/profanities'
 ], function(
+	bcrypt,
 	io,
 	messages,
 	connections,
@@ -220,16 +222,21 @@ define([
 			io.get({
 				ent: credentials.username,
 				field: 'login',
-				callback: this.onLogin.bind(this, msg)
+				callback: this.onHashCompare.bind(this, msg)
 			});
 		},
-		onLogin: function(msg, result) {
+		onHashCompare: function(msg, hashedPassword) {
 			var credentials = msg.data;
 
-			if (!result)
+			bcrypt.compare(credentials.password, hashedPassword, this.onLogin.bind(this, msg, hashedPassword));
+		},
+		onLogin: function(msg, hashedPassword, err, compareResult) {
+			var credentials = msg.data;
+
+			if (!hashedPassword)
 				msg.callback(messages.login.incorrect);
 			else {
-				if (result == credentials.password) {
+				if (compareResult) {
 					this.username = credentials.username;
 					connections.logOut(this.obj);
 					msg.callback();
@@ -273,10 +280,13 @@ define([
 
 			var credentials = msg.data;
 
+			bcrypt.hash(credentials.password, 10, this.onHashGenerated.bind(this, msg));
+		},
+		onHashGenerated: function(msg, err, hashedPassword) {
 			io.set({
-				ent: credentials.username,
+				ent: msg.data.username,
 				field: 'login',
-				value: credentials.password,
+				value: hashedPassword,
 				callback: this.onRegister.bind(this, msg)
 			});
 		},
