@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "description": "isleward",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "express": "^4.13.1",
     "extend": "^3.0.0",
     "less-middleware": "^2.0.1",
