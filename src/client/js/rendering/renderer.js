@@ -412,8 +412,8 @@ define([
 
 			var w = this.w;
 			var h = this.h;
-			var x = player.x;
-			var y = player.y;
+			var x = ~~player.x;
+			var y = ~~player.y;
 			var sprites = this.sprites;
 			var map = this.map;
 			var container = this.layers.tileSprites;
