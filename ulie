@@ -1,0 +1,95 @@
+[1mdiff --git a/src/server/config/maps/tutorial/map.json b/src/server/config/maps/tutorial/map.json[m
+[1mindex ca23ad6..0cd0ec9 100644[m
+[1m--- a/src/server/config/maps/tutorial/map.json[m
+[1m+++ b/src/server/config/maps/tutorial/map.json[m
+[36m@@ -787,7 +787,7 @@[m
+                  "gid":229,[m
+                  "height":8,[m
+                  "id":635,[m
+[31m-                 "name":"Crazed Seagull",[m
+[32m+[m[32m                 "name":"Craze",[m
+                  "properties":[m
+                     {[m
+ [m
+[36m@@ -1040,7 +1040,7 @@[m
+                  "name":"",[m
+                  "properties":[m
+                     {[m
+[31m-                     "cpnNotice":"{\"maxLevel\": 1, \"msg\": \"You open your eyes and cough. Saltwater burns your throat. You remember the storm, and the crash that left your ship in pieces.<br \/><br \/>You realize you need to find shelter. Use <font class='color-green'>wasd<\/font> or the <ont class='color-green'>arrow keys<\/font> to move.\"}"[m
+[32m+[m[32m                     "cpnNotice":"{\"msg\": \"You open your eyes and cough. Saltwater burns your throat. You remember the storm, and the crash that left your ship in pieces.<br \/><br \/>You realize you need to find shelter. Use <font class='color-green'>wasd<\/font> or the <ont class='color-green'>arrow keys<\/font> to move.\"}"[m
+                     },[m
+                  "rotation":0,[m
+                  "type":"",[m
+[36m@@ -1055,7 +1055,7 @@[m
+                  "name":"",[m
+                  "properties":[m
+                     {[m
+[31m-                     "cpnNotice":"{\"maxLevel\": 1, \"msg\": \"You take a few steps, still weak from the ordeal. Through the glare of the sun, you see a creature to the north-east.<br \/><br \/>Press <font class='color-green'>v<\/font> to toggle nameplates.\"}"[m
+[32m+[m[32m                     "cpnNotice":"{\"msg\": \"You take a few steps, still weak from the ordeal. Through the glare of the sun, you see a creature to the north-east.<br \/><br \/>Press <font class='color-green'>v<\/font> to toggle nameplates.\"}"[m
+                     },[m
+                  "rotation":0,[m
+                  "type":"",[m
+[36m@@ -1070,7 +1070,7 @@[m
+                  "name":"",[m
+                  "properties":[m
+                     {[m
+[31m-                     "cpnNotice":"{\"maxLevel\": 1, \"msg\": \"You take a few steps, still weak from the ordeal. Through the glare of the sun, you see a creature to the north-east.<br \/><br \/>Press <font class='color-green'>v<\/font> to toggle nameplates.\"}"[m
+[32m+[m[32m                     "cpnNotice":"{\"msg\": \"You take a few steps, still weak from the ordeal. Through the glare of the sun, you see a creature to the north-east.<br \/><br \/>Press <font class='color-green'>v<\/font> to toggle nameplates.\"}"[m
+                     },[m
+                  "rotation":0,[m
+                  "type":"",[m
+[36m@@ -1085,7 +1085,7 @@[m
+                  "name":"",[m
+                  "properties":[m
+                     {[m
+[31m-                     "cpnNotice":"{\"maxLevel\": 2, \"msg\": \"The seagull's eyes are bloodshot and in its beak you see a glinting locket. It stole your family heirloom!<br \/><br \/>Click on it to target it then press <font class='color-green'>1<\/font> to toggle auto-attack. Remember to stand close if you are a warrior or thief.\"}"[m
+[32m+[m[32m                     "cpnNotice":"{\"msg\": \"The seagull's eyes are bloodshot and in its beak you see a glinting locket. It stole your family heirloom!<br \/><br \/>Click on it to target it then press <font class='color-green'>1<\/font> to toggle auto-attack. Remember to stand close if you are a warrior or thief.\"}"[m
+                     },[m
+                  "rotation":0,[m
+                  "type":"",[m
+[36m@@ -1100,7 +1100,7 @@[m
+                  "name":"",[m
+                  "properties":[m
+                     {[m
+[31m-                     "cpnNotice":"{\"maxLevel\": 1, \"msg\": \"You take a few steps, still weak from the ordeal. Through the glare of the sun, you see a creature to the north-east.<br \/><br \/>Press <font class='color-green'>v<\/font> to toggle nameplates.\"}"[m
+[32m+[m[32m                     "cpnNotice":"{\"msg\": \"You take a few steps, still weak from the ordeal. Through the glare of the sun, you see a creature to the north-east.<br \/><br \/>Press <font class='color-green'>v<\/font> to toggle nameplates.\"}"[m
+                     },[m
+                  "rotation":0,[m
+                  "type":"",[m
+[36m@@ -1115,7 +1115,7 @@[m
+                  "name":"",[m
+                  "properties":[m
+                     {[m
+[31m-                     "cpnNotice":"{\"maxLevel\": 1, \"msg\": \"You can loot items by standing on them then open your inventory with <font class='color-green'>i<\/font>.<br \/><br \/>To equip an item, simply click on the item in your inventory.\"}"[m
+[32m+[m[32m                     "cpnNotice":"{\"msg\": \"You can loot items by standing on them then open your inventory with <font class='color-green'>i<\/font>.<br \/><br \/>To equip an item, simply click on the item in your inventory.\"}"[m
+                     },[m
+                  "rotation":0,[m
+                  "type":"",[m
+[36m@@ -1130,7 +1130,7 @@[m
+                  "name":"",[m
+                  "properties":[m
+                     {[m
+[31m-                     "cpnNotice":"{\"maxLevel\": 1, \"msg\": \"You can loot items by standing on them then open your inventory with <font class='color-green'>i<\/font>.<br \/><br \/>To equip an item, simply click on the item in your inventory.\"}"[m
+[32m+[m[32m                     "cpnNotice":"{\"msg\": \"Far to the north, you see a small shack. Civilization!<br \/><br \/> You can read more help by pressing <font class='color-green'>h<\/font>.\"}"[m
+                     },[m
+                  "rotation":0,[m
+                  "type":"",[m
+[36m@@ -1145,7 +1145,7 @@[m
+                  "name":"",[m
+                  "properties":[m
+                     {[m
+[31m-                     "cpnNotice":"{\"maxLevel\": 2, \"msg\": \"The seagull's eyes are bloodshot and in its beak you see a glinting locket. It stole your family heirloom!<br \/><br \/>Click on it to target it then press <font class='color-green'>1<\/font> to toggle auto-attack. Remember to stand close if you are a warrior or thief.\"}"[m
+[32m+[m[32m                     "cpnNotice":"{\"msg\": \"The seagull's eyes are bloodshot and in its beak you see a glinting locket. It stole your family heirloom!<br \/><br \/>Click on it to target it then press <font class='color-green'>1<\/font> to toggle auto-attack. Remember to stand close if you are a warrior or thief.\"}"[m
+                     },[m
+                  "rotation":0,[m
+                  "type":"",[m
+[36m@@ -1419,7 +1419,8 @@[m
+     {[m
+      "instanced":"0",[m
+      "name":"Test Zone",[m
+[31m-     "spawn":"{\"x\":60,\"y\":116}"[m
+[32m+[m[32m     "padding":"{\"tiles\":[[6,10],[7,5]]}",[m
+[32m+[m[32m     "spawn":"{\"x\":72,\"y\":86}"[m
+     },[m
+  "renderorder":"right-down",[m
+  "tileheight":8,[m
