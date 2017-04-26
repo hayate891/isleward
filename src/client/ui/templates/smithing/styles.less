@@ -89,6 +89,12 @@
 						drop-shadow(2px 0px 0px @blackD) 
 						drop-shadow(-2px 0px 0px @blackD);
 
+					-moz-filter:
+						drop-shadow(0px -2px 0px @blackD) 
+						drop-shadow(0px 2px 0px @blackD)
+						drop-shadow(2px 0px 0px @blackD) 
+						drop-shadow(-2px 0px 0px @blackD);
+
 					&.red {
 						color: @red;
 					}
@@ -101,6 +107,13 @@
 					left: 8px;
 					top: 8px;
 					filter: 
+						brightness(100%)
+						drop-shadow(0px -4px 0px @blackD) 
+						drop-shadow(0px 4px 0px @blackD)
+						drop-shadow(4px 0px 0px @blackD) 
+						drop-shadow(-4px 0px 0px @blackD);
+
+					-moz-filter: 
 						brightness(100%)
 						drop-shadow(0px -4px 0px @blackD) 
 						drop-shadow(0px 4px 0px @blackD)

@@ -43,7 +43,16 @@
 		padding: @boxPadding;
 		margin-left: (@boxPadding * 2);
 
-		.textbox, input:-webkit-autofill {
+		input, .textbox, input:-webkit-autofill {
+		    box-shadow: 0 0 0px 1000px darken(@gray, 15%) inset;
+			width: 100%;
+			color: @white;
+			-webkit-text-fill-color: @white;
+			margin-bottom: @boxPadding;
+		}
+
+		/* We duplicate this for firefox which doesn't like the webkit selector */
+		input, .textbox {
 		    box-shadow: 0 0 0px 1000px darken(@gray, 15%) inset;
 			width: 100%;
 			color: @white;
