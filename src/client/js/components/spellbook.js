@@ -141,11 +141,7 @@ define([
 		},
 
 		tabTarget: function() {
-			this.onMouseDown(null, objects.getClosest(window.player.x, window.player.y, 10, false, this.target));
-		},
-
-		shiftTabTarget: function() {
-			this.onMouseDown(null, objects.getClosest(window.player.x, window.player.y, 10, true, this.target));
+			this.onMouseDown(null, objects.getClosest(window.player.x, window.player.y, 10, this.shiftDown, this.target));
 		},
 
 		build: function(destroy) {
@@ -179,11 +175,7 @@ define([
 				this.shiftDown = true;
 				return;
 			} else if (key == 'tab') {
-				if (this.shiftDown) {
-					this.shiftTabTarget();
-				} else {
-					this.tabTarget();
-				}
+				this.tabTarget();
 				return;
 			}
 

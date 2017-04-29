@@ -84,7 +84,7 @@ define([
 			} else {
 				fromIndex = (fromIndex + 1) % list.length;
 			}
-
+			console.log(fromIndex);
 			return list[fromIndex];
 		},
 
