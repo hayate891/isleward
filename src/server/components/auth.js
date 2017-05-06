@@ -1,4 +1,5 @@
 define([
+	'bcrypt',
 	'security/io',
 	'misc/messages',
 	'security/connections',
@@ -6,6 +7,7 @@ define([
 	'config/skins',
 	'misc/profanities'
 ], function(
+	bcrypt,
 	io,
 	messages,
 	connections,
@@ -220,22 +222,41 @@ define([
 			io.get({
 				ent: credentials.username,
 				field: 'login',
-				callback: this.onLogin.bind(this, msg)
+				callback: this.onHashCompare.bind(this, msg)
 			});
 		},
-		onLogin: function(msg, result) {
+		onHashCompare: function(msg, storedPassword) {
 			var credentials = msg.data;
 
-			if (!result)
+			bcrypt.compare(credentials.password, storedPassword, this.onLogin.bind(this, msg, storedPassword));
+		},
+		onLogin: function(msg, storedPassword, err, compareResult) {
+			if (!storedPassword)
 				msg.callback(messages.login.incorrect);
 			else {
-				if (result == credentials.password) {
-					this.username = credentials.username;
-					connections.logOut(this.obj);
-					msg.callback();
+				if (compareResult) { //If stored password matches the hashed password entered by the user, log them in directly
+					this.onLoginVerified(msg);
+				} else if (msg.data.password == storedPassword) { //If the stored password matches a plaintext password entered by the user; In that case the password gets hashed for the future
+					this.onUnhashedLogin(msg);
 				} else
 					msg.callback(messages.login.incorrect);
 			}
+		},
+		onUnhashedLogin: function(msg) {
+			bcrypt.hash(msg.data.password, 10, this.onPasswordHashed.bind(this, msg));
+		},
+		onPasswordHashed: function(msg, err, hashedPassword) {
+			io.set({
+				ent: msg.data.username,
+				field: 'login',
+				value: hashedPassword,
+				callback: this.onLoginVerified.bind(this, msg)
+            });
+		},
+		onLoginVerified: function(msg) {
+			this.username = msg.data.username;
+			connections.logOut(this.obj);
+			msg.callback();
 		},
 
 		register: function(msg) {
@@ -273,10 +294,13 @@ define([
 
 			var credentials = msg.data;
 
+			bcrypt.hash(credentials.password, 10, this.onHashGenerated.bind(this, msg));
+		},
+		onHashGenerated: function(msg, err, hashedPassword) {
 			io.set({
-				ent: credentials.username,
+				ent: msg.data.username,
 				field: 'login',
-				value: credentials.password,
+				value: hashedPassword,
 				callback: this.onRegister.bind(this, msg)
 			});
 		},
