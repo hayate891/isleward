@@ -19,6 +19,7 @@ define([
 			this.obj.addComponent('keyboardMover');
 			this.obj.addComponent('mouseMover');
 			this.obj.addComponent('serverActions');
+			this.obj.addComponent('walkTrail');
 
 			this.obj.addComponent('pather');
 
@@ -31,6 +32,8 @@ define([
 
 			if ((oldPos.x == obj.x) && (oldPos.y == obj.y))
 				return;
+
+			this.obj.walkTrail.leaveTrail(this.oldPos);
 
 			var dx = obj.x - oldPos.x;
 			var dy = obj.y - oldPos.y;
