@@ -57,6 +57,13 @@
 						drop-shadow(0px 4px 0px @blackD)
 						drop-shadow(4px 0px 0px @blackD) 
 						drop-shadow(-4px 0px 0px @blackD);
+
+					-moz-filter: 
+						brightness(100%)
+						drop-shadow(0px -4px 0px @blackD) 
+						drop-shadow(0px 4px 0px @blackD)
+						drop-shadow(4px 0px 0px @blackD) 
+						drop-shadow(-4px 0px 0px @blackD);
 				}
 			}
 
@@ -70,6 +77,13 @@
 					drop-shadow(0px 2px 0px @blackD)
 					drop-shadow(2px 0px 0px @blackD) 
 					drop-shadow(-2px 0px 0px @blackD);
+
+				-moz-filter: 
+					drop-shadow(0px -2px 0px @blackD) 
+					drop-shadow(0px 2px 0px @blackD)
+					drop-shadow(2px 0px 0px @blackD) 
+					drop-shadow(-2px 0px 0px @blackD);
+
 			}
 
 			.icon {
@@ -95,6 +109,8 @@
 			&:hover {
 				.icon {
 					filter: brightness(160%);
+
+					-moz-filter: brightness(160%);
 				}
 			}
 		}
