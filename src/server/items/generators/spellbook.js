@@ -84,6 +84,11 @@ define([
 				}
 			}
 
+			if (item.range) {
+				item.spell.properties = item.spell.properties || {};
+				item.spell.properties.range = item.range;
+			}
+
 			var perfection = ~~(propertyPerfection.reduce((p, n) => p += n, 0) / propertyPerfection.length * 4);
 			if (!item.slot)	
 				item.quality = perfection;

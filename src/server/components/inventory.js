@@ -33,8 +33,13 @@ define([
 			for (var i = 0; i < iLen; i++) {
 				var item = items[i];
 
+				//Hacks for old items
 				if ((item.spell) && (!item.spell.rolls))
 					continue;
+				else if ((item.spell) && (item.type == 'Spear')) {
+					item.spell.properties = item.spell.properties || {};
+					item.spell.properties.range = item.range;
+				}
 
 				if (item.effects) {
 					item.effects.forEach(function(e) {
@@ -55,9 +60,10 @@ define([
 					spellName: 'arcane barrier'
 				}));*/
 
-				/*for (var i = 0; i < 10; i++) {
+				/*for (var i = 0; i < 1; i++) {
 					var item = generator.generate({
 						slot: 'twoHanded',
+						type: 'Spear',
 						quality: 4,
 						level: 1
 					});
