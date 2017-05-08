@@ -135,6 +135,8 @@ define([
 				this.spells.splice(spellId, 0, builtSpell);
 
 			builtSpell.calcDps(null, true);
+			if (builtSpell.init)
+				builtSpell.init();
 
 			if (this.obj.player) 
 				this.obj.syncer.setArray(true, 'spellbook', 'getSpells', builtSpell.simplify());

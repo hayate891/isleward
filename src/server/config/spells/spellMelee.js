@@ -16,6 +16,11 @@ define([
 		col: 4,
 		row: 1,
 
+		init: function() {
+			if (this.range > 1)
+				this.needLos = true;
+		},
+
 		cast: function(action) {
 			var target = action.target;
 
