@@ -347,8 +347,10 @@ define([
 
 			if (topQuality == 0)
 				bagCell = 50;
-			else if (topQuality < 3)
+			else if (topQuality == 1)
 				bagCell = 51;
+			else if (topQuality == 2)
+				bagCell = 128;
 			else if (topQuality == 3)
 				bagCell = 52;
 			else
@@ -371,7 +373,7 @@ define([
 
 			return obj;
 		},
-
+		
 		getItem: function(item, hideMessage) {
 			//We need to know if a mob dropped it for quest purposes
 			var fromMob = item.fromMob;
