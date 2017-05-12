@@ -47,7 +47,6 @@ define([
 			var cd = config.source.mob ? 1 : config.cd;
 
 			var amount = dps * cd * 0.3;
-			amount *= 999999999;
 
 			var isCrit = false;
 			if (!config.noCrit) {
