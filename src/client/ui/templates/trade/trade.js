@@ -101,7 +101,13 @@ define([
 					itemEl.find('.quantity').html('EQ');
 
 				if (action == 'buy') {
-					if (item.worth > window.player.trade.gold)
+					var noAfford = (item.worth > window.player.trade.gold);
+					if ((!noAfford) && (item.factions)) {
+						noAfford = item.factions.some(function(f) {
+							return f.noEquip;
+						});
+					}
+					if (noAfford)
 						$('<div class="no-afford"></div>').appendTo(itemEl);
 				}
 
