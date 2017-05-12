@@ -148,7 +148,7 @@ define([
 				item = this.findBuyback(itemId, requestedBy.name);
 			
 			var result = true;
-			if (item.faction)
+			if (item.factions)
 				result = requestedBy.reputation.canEquipItem(item);
 
 			if (!result) {
