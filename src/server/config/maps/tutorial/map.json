@@ -1115,7 +1115,7 @@
                  "name":"",
                  "properties":
                     {
-                     "cpnNotice":"{\"maxLevel\": 1, \"msg\": \"You can loot items by standing on them then open your inventory with <font class='color-green'>i<\/font>.<br \/><br \/>To equip an item, simply click on the item in your inventory.\"}"
+                     "cpnNotice":"{\"maxLevel\": 2, \"msg\": \"You can loot items by standing on them then open your inventory with <font class='color-green'>i<\/font>.<br \/><br \/>To equip an item, simply right click the item in your inventory.\"}"
                     },
                  "rotation":0,
                  "type":"",
@@ -1130,7 +1130,7 @@
                  "name":"",
                  "properties":
                     {
-                     "cpnNotice":"{\"maxLevel\": 1, \"msg\": \"You can loot items by standing on them then open your inventory with <font class='color-green'>i<\/font>.<br \/><br \/>To equip an item, simply click on the item in your inventory.\"}"
+                     "cpnNotice":"{\"maxLevel\": 2, \"msg\": \"You can loot items by standing on them then open your inventory with <font class='color-green'>i<\/font>.<br \/><br \/>To equip an item, simply right click the item in your inventory.\"}"
                     },
                  "rotation":0,
                  "type":"",
