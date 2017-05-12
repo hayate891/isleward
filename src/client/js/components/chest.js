@@ -4,7 +4,7 @@ define([
 
 ) {
 	var colors = [
-		'9a5a3c',
+		'929398',
 		'3fa7dd',
 		'faac45',
 		'a24eff',
@@ -12,11 +12,11 @@ define([
 	];
 
 	var chances = [
-		0.01,
-		0.03,
-		0.055,
-		0.1,
-		0.16
+		0.0075,
+		0.02,
+		0.04,
+		0.08,
+		0.095
 	];
 
 	var indices = {
@@ -60,10 +60,17 @@ define([
 						end: 0.2
 					},
 					lifetime: {
-						start: 1,
-						end: 4
+						min: 1,
+						max: 4
 					},
-					chance: chances[index]
+					chance: chances[index],
+					spawnType: 'rect',
+					spawnRect: {
+						x: -4,
+						y: -4,
+						w: 8,
+						h: 8
+					}
 				}
 			});
 		},
