@@ -41,16 +41,10 @@ define([
 					item.spell.properties.range = item.range;
 				}
 
-				if (item.effects) {
-					item.effects.forEach(function(e) {
-						var faction = require('config/factions/' + e.factionId);
-						var statGenerator = faction.uniqueStat;
-						statGenerator.generate(item);
-					});
-				}
-
 				this.getItem(items[i], true);
 			}
+
+			this.hookItemEvents();
 
 			if ((this.obj.player) && (!isTransfer)) {
 				this.getDefaultAbilities();
@@ -75,6 +69,27 @@ define([
 			delete blueprint.items;
 
 			this.blueprint = blueprint;
+		},
+
+		transfer: function() {
+			this.hookItemEvents();
+		},
+
+		hookItemEvents: function() {
+			var items = this.items;
+			var iLen = items.length;
+			for (var i = 0; i < iLen; i++) {
+				var item = items[i];
+
+				if (item.effects) {
+					item.effects.forEach(function(e) {
+						var faction = require('config/factions/' + e.factionId);
+						var statGenerator = faction.uniqueStat;
+						statGenerator.generate(item);
+					});
+				}
+			}
+
 		},
 
 		//Client Actions
@@ -683,6 +698,9 @@ define([
 			var iLen = items.length;
 			for (var i = 0; i < iLen; i++) {
 				var item = items[i];
+				if (!item.eq)
+					continue;
+
 				var effects = item.effects;
 				if (!effects)
 					continue;

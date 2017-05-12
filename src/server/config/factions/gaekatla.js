@@ -37,6 +37,11 @@ define([
 
 					item.effects.push(result);
 				}
+				//This is a hack for items that were never generated properly
+				else if (!result.chance) {
+					result.chance = chanceRoll;
+					result.text = chanceRoll + '% chance on kill to summon a critter to assist you in battle';
+				}
 
 				if (!result.events)
 					result.events = {};
@@ -53,7 +58,7 @@ define([
 					var effect = item.effects.find(e => (e.factionId == 'gaekatla'));
 
 					var roll = Math.random() * 100;
-					if (roll >= this.chance)
+					if (roll >= effect.chance)
 						return;
 
 					//Spawn a mob

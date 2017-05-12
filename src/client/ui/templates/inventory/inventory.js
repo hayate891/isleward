@@ -418,9 +418,9 @@ define([
 		performItemAction: function(item, action) {
 			if (!item)
 				return;
-			else if ((action == 'equip') && ((item.material) || (item.quast) || (item.level > window.player.stats.values.level)))
+			else if ((action == 'equip') && ((item.material) || (item.quest) || (item.level > window.player.stats.values.level)))
 				return;
-			if (item.factions) {
+			if ((item.factions) && (action == 'equip')) {
 				if (item.factions.some(function(f) {
 						return f.noEquip;
 					}))
