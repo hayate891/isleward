@@ -47,7 +47,7 @@ define([
 				return;
 
 			var walkDistance = this.walkDistance;
-			if (walkDistance <= 0)
+			if ((!goHome) && (walkDistance <= 0))
 				return;
 
 			var obj = this.obj;
