@@ -220,6 +220,7 @@ define([
 
 	return {
 		isClean: function(text) {
+			text = text.toLowerCase();
 			var cb = text.indexOf.bind(text);
 
 			for (var i = 0; i < cLen; i++) {
