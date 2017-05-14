@@ -49,5 +49,6 @@ define([
 	};
 
 	events.emit('onBeforeGetClasses', classes);
+
 	return classes;
 });
