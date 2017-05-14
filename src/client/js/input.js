@@ -54,6 +54,10 @@ define([
 		},
 
 		resetKeys: function() {
+			for (var k in this.keys) {
+				events.emit('onKeyUp', k);
+			}
+
 			this.keys = {};
 		},
 
