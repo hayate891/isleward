@@ -25,6 +25,7 @@ define([
 				global.gc();
 			}, 60000);
 			
+			mods.init();
 			globals.init();
 			components.init(this.onComponentsReady.bind(this));
 		},
@@ -32,7 +33,6 @@ define([
 			server.init(this.onServerReady.bind(this));
 		},
 		onServerReady: function() {
-			mods.init();
 			atlas.init();
 			leaderboard.init();
 		}

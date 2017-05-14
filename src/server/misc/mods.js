@@ -33,6 +33,6 @@ define([
 					mod.init();
 				}
 			}, this);
-		}	
+		}
 	};
 });
