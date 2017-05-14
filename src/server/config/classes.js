@@ -45,10 +45,6 @@ define([
 
 		getSpritesheet: function(className) {
 			return this.stats[className].spritesheet || 'characters';
-		},
-
-		rebuild: function() {
-			events.emit('onBeforeGetClasses', classes);
 		}
 	};
 
