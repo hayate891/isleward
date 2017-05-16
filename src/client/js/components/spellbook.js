@@ -80,7 +80,7 @@ define([
 						this.spells.splice(existIndex, 1, s);
 						return;
 					}
-						
+
 					if (this.spells.length - 1 >= s.id)
 						this.spells.splice(s.id, 0, s);
 					else
@@ -141,7 +141,7 @@ define([
 		},
 
 		tabTarget: function() {
-			this.onMouseDown(null, objects.getClosest(window.player.x, window.player.y, 10, this.target));
+			this.onMouseDown(null, objects.getClosest(window.player.x, window.player.y, 10, this.shiftDown, this.target));
 		},
 
 		build: function(destroy) {
@@ -151,7 +151,7 @@ define([
 				data: {
 					instanceModule: 'customMap',
 					method: 'customize',
-					data: { 
+					data: {
 						tile: 189,
 						direction: this.obj.keyboardMover.direction,
 						destroy: destroy

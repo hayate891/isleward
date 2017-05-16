@@ -46,7 +46,7 @@ define([
 			events.emit('onMobHover', mob);
 		},
 
-		getClosest: function(x, y, maxDistance, fromMob, callback) {
+		getClosest: function(x, y, maxDistance, reverse, fromMob, callback) {
 			var objects = this.objects;
 			var oLen = objects.length;
 
@@ -79,7 +79,13 @@ define([
 				return (l.id == fromMob.id);
 			});
 
-			return list[(fromIndex + 1) % list.length];
+			if (reverse) {
+				fromIndex = (fromIndex === 0 ? list.length : fromIndex) - 1;
+			} else {
+				fromIndex = (fromIndex + 1) % list.length;
+			}
+			
+			return list[fromIndex];
 		},
 
 		onRezone: function(oldZone) {
